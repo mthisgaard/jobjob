@@ -1,4 +1,4 @@
 class Task < ApplicationRecord
   belongs_to :job
-  validates :title, :company, :url, presence: true
+  validates :title, presence: true
 end
