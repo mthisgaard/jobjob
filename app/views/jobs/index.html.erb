@@ -3,12 +3,26 @@
   <div id="job-stats" class="my-3">
     <h3>Your job stats</h3>
   </div>
-    <div id="jobs" class="my-3">
+  <div id="jobs" class="my-3">
     <h3>Your jobs</h3>
-    <% @jobs.each do |job| %>
-      <p><%= job.title %></p>
-    <% end %>
+    <div class="cards">
+      <% @jobs.each do |job| %>
+        <div class="card my-2 p-3">
+          <h2><%= job.title %></h2>
+          <p><%= job.company %></p>
+          <p>Status: <%= job.status %></p>
+          <h3>Tasks</h3>
+          <ul>
+            <% job.tasks.each do |task| %>
+            <li><%= task.title %></li>
+            <% end %>
+          </ul>
+          <h4>Add task</h4> 
+          <%= render 'task_form', job: job, task: @new_task %>
+        </div>
+      <% end %>
+    </div>
     <h4>Add a job</h4>
-    <%= render 'job_form', job: @job %>
+    <%= render 'job_form', job: @new_job %>
   </div>
 </div>

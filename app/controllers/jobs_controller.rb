@@ -2,7 +2,8 @@ class JobsController < ApplicationController
 
   def index
     @jobs = policy_scope(Job)
-    @job = Job.new
+    @new_job = Job.new
+    @new_task = Task.new
     authorize @jobs
   end
 
