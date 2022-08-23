@@ -1,0 +1,36 @@
+.card {
+  border: none;
+}
+.card body{
+  text-align: end;
+  padding-top: 100px;
+  padding-left: 24px;
+}
+
+.card-title {
+  font-size: xxx-large;
+  font-weight: 700;
+}
+
+.card-text {
+  font-size: large;
+  font-weight: 400;
+}
+
+.container-call-to-action {
+  text-align: center;
+  background-color: #D3F3EE;
+  padding: 100px;
+}
+
+.btn {
+  transition-duration: 0.4s;
+  background-color: #fafa37;
+  border: none;
+}
+
+.btn:hover {
+  background-color: #68E1FD;
+  color: black;
+  border: none;
+}
