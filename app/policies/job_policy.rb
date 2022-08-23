@@ -9,4 +9,8 @@ class JobPolicy < ApplicationPolicy
   def index?
     record.first.user == user
   end
+
+  def create?
+    record.user == user
+  end
 end
