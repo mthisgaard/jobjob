@@ -48,7 +48,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_23_023036) do
     t.date "deadline"
     t.text "notes"
     t.string "url"
-    t.integer "status", default: 0
+    t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
@@ -58,7 +58,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_23_023036) do
   create_table "tasks", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.boolean "done", default: false
+    t.boolean "done"
     t.bigint "job_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -82,7 +82,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_23_023036) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-
   add_foreign_key "jobs", "users"
   add_foreign_key "tasks", "jobs"
 end

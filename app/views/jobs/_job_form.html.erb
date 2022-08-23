@@ -4,6 +4,7 @@
   <%= f.input :deadline, as: :date, html5: true %>
   <%= f.input :url, :label => "Job url" %>
   <%= f.input :notes %>
-  <%# <%= f.input :documents, as: :file %>
+  <%= f.input :cv, as: :file %>
+  <%= f.input :cover_letter, as: :file %>
   <%= f.submit 'Add job', class: 'btn btn-primary' %>
 <% end %>

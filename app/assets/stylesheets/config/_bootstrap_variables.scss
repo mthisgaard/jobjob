@@ -23,3 +23,10 @@ $border-radius-lg: 2px;
 $border-radius-sm: 2px;
 
 // Override other variables below!
+$position-values: (
+  0: 0,
+  5: 5%,
+  10: 10%,
+  50: 50%,
+  100: 100%
+);

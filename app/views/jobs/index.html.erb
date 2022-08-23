@@ -1,31 +1,16 @@
-<div class="row justify-content-center">
-  <div class="col-md-8">
-    <h2>Welcome back, <%= current_user.first_name.capitalize %>!</h2>
-    <div id="job-stats" class="my-3">
-      <h3>Your job stats</h3>
-    </div>
-    <div id="jobs" class="my-3">
+<div class="container my-5">
+  <h2>Welcome back, <%= current_user.first_name.capitalize %>!</h2>
+  <div id="job-stats" class="my-3">
+    <h3>Your job stats</h3>
+  </div>
+  <div id="jobs" class="my-3">
+    <div class="jobs container">
       <h3>Your jobs</h3>
-      <div class="cards">
-        <% @jobs.each do |job| %>
-          <div class="card my-2 p-3">
-            <h2><%= job.title %></h2>
-            <p><%= job.company %></p>
-            <p>Status: <%= job.status %></p>
-            <h3>Tasks</h3>
-            <% job.tasks.each do |task| %>
-              <div class="d-flex" data-controller="edit-task">
-                <%= render 'task_done', task: task %>
-                <%= task.title %>
-              </div>
-            <% end %>
-            <h4>Add task</h4> 
-            <%= render 'task_form', job: job, task: @new_task %>
-          </div>
-        <% end %>
-      </div>
-      <h4>Add a job</h4>
-      <%= render 'job_form', job: @new_job %>
+      <% @jobs.each do |job| %>
+        <%= render 'jobs/job_list', job: job %>
+      <% end %>
     </div>
+    <h4>Add a job</h4>
+    <%= render 'job_form', job: @new_job %>
   </div>
 </div>
