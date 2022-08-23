@@ -5,5 +5,10 @@
   </div>
     <div id="jobs" class="my-3">
     <h3>Your jobs</h3>
+    <% @jobs.each do |job| %>
+      <p><%= job.title %></p>
+    <% end %>
+    <h4>Add a job</h4>
+    <%= render 'job_form', job: @job %>
   </div>
 </div>
