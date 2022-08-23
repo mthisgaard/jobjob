@@ -3,14 +3,13 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
-    @job = Job.find(params[])
+    @job = Job.find(params[:job_id])
     @task.job = @job
-    @task.user = current_user
     authorize @task
     if @task.save
       redirect_to jobs_path
     else
-      render , status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 

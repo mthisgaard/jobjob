@@ -7,6 +7,6 @@ class TaskPolicy < ApplicationPolicy
   end
 
   def create?
-    record.first.user == user
+    true
   end
 end
