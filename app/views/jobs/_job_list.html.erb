@@ -1,4 +1,3 @@
-  
 <div class="job">
   <div class="accordion-item whole-job">
     <h2 class="accordion-header" id="flush-heading<%= job.id %>">
@@ -9,9 +8,15 @@
     </h2>
     <div id="flush-collapse<%= job.id %>" class="accordion-collapse collapse job-card-content" aria-labelledby="flush-heading<%= job.id %>" data-bs-parent="#accordionFlushExample">
       <div class="d-flex job-body justify-content-between">
-        <div class="to-do">To Do:</div>
+        <div class="to-do"><strong>To Do:</strong>
+          <% job.tasks.each do |task| %>
+            <p class="job-task"> <%= task.title %> </p>
+          <% end %>
+        </div>
         <div class="center-border"></div>
-        <div class="notes">Notes:</div>
+        <div class="notes"><strong>Notes:</strong>
+          <p><%= job.notes %></p>
+        </div>
       </div>
       <div class="appointments">
         <strong>Appointments:</strong>
