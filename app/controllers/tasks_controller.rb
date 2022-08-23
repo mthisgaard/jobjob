@@ -14,10 +14,12 @@ class TasksController < ApplicationController
   end
 
   def update
+    authorize @task
+    @task = Task.find(params[:id])
     if @task.update(task_params)
-      redirect_to task_path(@task)
+      redirect_to jobs_path
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
