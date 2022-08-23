@@ -1,0 +1,63 @@
+.job {
+  box-shadow: 0 0 6px rgba(0,0,0,0.2);
+  padding: 16px;
+  padding-bottom: 0px;
+  border-radius: 3px;
+  margin-bottom: 16px;
+  background-color: white;
+}
+
+.job-card-content {
+}
+
+.center-border {
+  width: 1px;
+  border-left: 1px solid lightgray;
+
+}
+
+.job-body {
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+
+  padding-top: 8px;
+  padding-bottom: 8px;
+
+}
+
+.notes {
+  text-align: start;
+  width: 50%;
+  padding-left: 8px;
+}
+
+.notes p {
+  padding-left: 16px;
+}
+
+.whole-job {
+  // padding-bottom: 8px;
+  padding-bottom: 0px;
+
+}
+
+.to-do {
+  // border-right: 1px solid lightgray;
+  width: 50%;
+}
+
+.appointments {
+  margin: 0;
+  padding-top: 8px;
+
+  padding-bottom: 8px;
+}
+
+.appointment {
+  padding-left: 8px;
+  margin: 0;
+}
+
+.job-task {
+  padding-left: 8px;
+}

@@ -3,11 +3,13 @@
   <div id="job-stats" class="my-3">
     <h3>Your job stats</h3>
   </div>
-    <div id="jobs" class="my-3">
-    <h3>Your jobs</h3>
-    <% @jobs.each do |job| %>
-      <p><%= job.title %></p>
-    <% end %>
+  <div id="jobs" class="my-3">
+    <div class="jobs container">
+      <h3>Your jobs</h3>
+      <% @jobs.each do |job| %>
+        <%= render 'jobs/job_list', job: job %>
+      <% end %>
+    </div>
     <h4>Add a job</h4>
     <%= render 'job_form', job: @job %>
   </div>
