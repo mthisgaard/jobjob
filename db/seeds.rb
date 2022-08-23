@@ -13,32 +13,37 @@ puts "created #{User.count} users"
 puts 'Creating jobs...'
 User.all.each do |user|
   rand(6..9).times do
-    Job.create!(
+    job = Job.new(
       title: Faker::Job.title,
       company: Faker::Company.name,
       deadline: Date.today + rand(20),
       url: 'https://www.linkedin.com/jobs/'
-      user: user
     )
+    job.user = user
+    job.save!
   end
 end
 puts "created #{Job.count} jobs"
 
 puts 'Creating tasks...'
 Job.all.each do |job|
-    Task.create!(
-      title: 'Research the company'
-      job: job
-    )
-    Task.create!(
-      title: 'Write cover letter'
-      job: job
-    )
-    Task.create!(
-      title: 'Call contact person at the company'
-      job: job
-    )
-  end
+  task_1 = Task.new(
+    title: 'Research the company'
+  )
+  task_1.job = job
+  task_1.save!
+
+  task_2 = Task.new(
+    title: 'Write cover letter'
+  )
+  task_2.job = job
+  task_2.save!
+
+  task_3 = Task.new(
+    title: 'Call contact person at the company'
+  )
+  task_3.job = job
+  task_3.save!
 end
 puts "created #{Task.count} tasks"
 
