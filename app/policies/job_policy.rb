@@ -4,9 +4,9 @@ class JobPolicy < ApplicationPolicy
     def resolve
       scope.where(user_id: user)
     end
+  end
 
-    def index?
-      jobs.user == user
-    end
+  def index?
+    record.first.user == user
   end
 end
