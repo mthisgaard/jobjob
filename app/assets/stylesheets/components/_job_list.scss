@@ -61,3 +61,28 @@
 .job-task {
   padding-left: 8px;
 }
+
+.job-status {
+  padding: 3px 6px;
+  border-radius: 6px;
+  border: 0.2px solid lightgray;
+}
+.pending {
+  background-color: #D3F3EE;
+}
+
+.applied {
+  background-color: #68E1FD;
+}
+
+.interview {
+  background-color: #fafa37;
+}
+
+.rejected {
+  background-color: red;
+}
+
+.offer {
+  background: lawngreen;
+}
