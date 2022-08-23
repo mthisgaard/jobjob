@@ -6,7 +6,7 @@ class CreateJobs < ActiveRecord::Migration[7.0]
       t.date :deadline
       t.text :notes
       t.string :url
-      t.integer :status
+      t.integer :status, default: 0
 
       t.timestamps
     end
