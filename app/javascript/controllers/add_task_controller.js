@@ -4,6 +4,18 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["tasks", "form"]
 
-  connect() {
+  create(event) {
+    event.preventDefault()
+  
+    fetch(this.formTarget.action, {
+      method: "POST",
+      headers: { "Accept": "text/plain" },
+      body: new FormData(this.formTarget)
+    })
+      .then(response => response.text())
+      .then((data) => {
+          console.log(data);
+          // this.tasksTarget.outerHTML = data;
+      })
   }
 }

@@ -2,14 +2,21 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:update, :destroy]
 
   def create
-    @task = Task.new(task_params)
     @job = Job.find(params[:job_id])
+    @task = Task.new(task_params)
     @task.job = @job
     authorize @task
     if @task.save
-      redirect_to jobs_path
+      respond_to do |format|
+        format.html
+        format.text do
+          render partial: "jobs/tasks",
+                 locals: { job: @job },
+                 formats: [:html]
+        end
+      end
     else
-      render :new, status: :unprocessable_entity
+      render "/jobs", status: :unprocessable_entity
     end
   end
 
@@ -19,7 +26,7 @@ class TasksController < ApplicationController
     if @task.update(task_params)
       redirect_to jobs_path
     else
-      render :edit, status: :unprocessable_entity
+      render "/jobs", status: :unprocessable_entity
     end
   end
 

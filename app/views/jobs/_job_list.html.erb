@@ -8,17 +8,7 @@
     </h2>
     <div id="flush-collapse<%= job.id %>" class="accordion-collapse collapse job-card-content" aria-labelledby="flush-heading<%= job.id %>" data-bs-parent="#accordionFlushExample">
       <div class="d-flex job-body justify-content-between">
-        <div class="to-do" data-controller="add-task" ><strong>Tasks</strong>
-          <div data-add-task-target="tasks">
-            <% job.tasks.each do |task| %>
-              <div class="d-flex">
-                <%= render 'task_done', task: task %>
-                <%= task.title %>
-              </div>
-            <% end %>
-            <%= render 'task_form', job: job, task: @new_task %>
-          </div>
-        </div>
+        <%= render 'tasks', job: job %>
         <div class="center-border"></div>
         <div class="notes"><strong>Notes:</strong>
           <p><%= job.notes %></p>
