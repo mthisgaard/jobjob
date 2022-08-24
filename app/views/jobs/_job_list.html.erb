@@ -8,10 +8,10 @@
     </h2>
     <div id="flush-collapse<%= job.id %>" class="accordion-collapse collapse job-card-content" aria-labelledby="flush-heading<%= job.id %>" data-bs-parent="#accordionFlushExample">
       <div class="d-flex job-body justify-content-between">
-        <div class="to-do"><strong>To Do:</strong>
-          <% job.tasks.each do |task| %>
-            <p class="job-task"> <%= task.title %> </p>
-          <% end %>
+        <div data-controller="add-task">
+          <%= render 'tasks', tasks: job.tasks.order(:done, :created_at) %>
+          <br>
+          <%= render 'jobs/task_form', job: job, task: @new_task %>
         </div>
         <div class="center-border"></div>
         <div class="notes" data-controller="edit-notes" >

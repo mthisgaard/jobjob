@@ -2,7 +2,8 @@ class JobsController < ApplicationController
 
   def index
     @jobs = policy_scope(Job)
-    @job = Job.new
+    @new_job = Job.new
+    @new_task = Task.new
     authorize @jobs
   end
 
@@ -13,7 +14,7 @@ class JobsController < ApplicationController
     if @job.save
       redirect_to jobs_path
     else
-      render :new, status: :unprocessable_entity
+      render "/jobs", status: :unprocessable_entity
     end
   end
 

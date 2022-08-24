@@ -7,5 +7,8 @@ import { application } from "./application"
 import EditNotesController from "./edit_notes_controller"
 application.register("edit-notes", EditNotesController)
 
+import AddTaskController from "./add_task_controller"
+application.register("add-task", AddTaskController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
