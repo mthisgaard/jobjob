@@ -23,9 +23,18 @@
           <% end %>
         </div>
       </div>
-      <div class="appointments">
-        <strong>Appointments:</strong>
-        <p class="appointment">no appointments</p>
+      <div class="appointments d-flex justify-content-between">
+        <div>
+          <strong>Appointments:</strong>
+          <p class="appointment">no appointments</p>
+        </div>
+        <div>
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target= "#jobs<%= job.id %>" >
+            Edit this job
+          </button>
+          <%= render "modal", job: job %>
+        </div>
       </div>
     </div>
   </div>
