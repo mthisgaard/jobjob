@@ -3,21 +3,73 @@
     <h2>Welcome back, <%= current_user.first_name.capitalize %>!</h2>
     <div>
       <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#jobs<%= @job.id %>">
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#jobs<%= @new_job.id %>">
         Add new job
       </button>
-      <%= render 'modal', job: @job %>
+      <%= render 'modal', job: @new_job %>
     </div>
   </div>
   <div id="job-stats" class="my-3">
-    <h3>Your job stats</h3>
-  </div>
-  <div id="jobs" class="my-3">
-    <div class="jobs container">
-      <h3>Your jobs</h3>
-      <% @jobs.each do |job| %>
-        <%= render 'jobs/job_list', job: job %>
-      <% end %>
+    <div class="d-flex flex-column job-stats">
+      <h3>Your job stats</h3>
+      <div class="p-2 align-items-center">
+        <div class="row d-flex justify-content-center">
+          <div class="col-sm-2">
+            <div class="stats pending pt-2 pb-3 px-2">
+              <div class="stats-body">
+                <i class="fa-solid fa-hourglass-start"></i>
+                <h5 class="stats-title text-center"><strong>Jobs Pending</strong></h5>
+                <p class="stats-count text-center">0</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="stats applied pt-2 pb-3 px-1">
+              <div class="stats-body">
+                <i class="fa-solid fa-paper-plane"></i>
+                <h5 class="stats-title text-center"><strong>Jobs Applied</strong></h5>
+                <p class="stats-count text-center">1</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="stats interviews pt-2 pb-3 px-2">
+              <div class="stats-body">
+                <i class="fa-solid fa-people-arrows"></i>
+                <h5 class="stats-title text-center"><strong>Interviews</strong></h5>
+                <p class="stats-count text-center">2</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="stats rejected pt-2 pb-3 px-2">
+              <div class="stats-body">
+                <i class="fa-solid fa-ban"></i>
+                <h5 class="stats-title text-center"><strong>Rejected</strong></h5>
+                <p class="stats-count text-center">3</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="stats offers pt-2 pb-3 px-2">
+              <div class="stats-body">
+                <i class="fa-solid fa-trophy"></i>
+                <h5 class="stats-title text-center"><strong>Offers</strong></h5>
+                <p class="stats-count text-center">4</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="p-2 align-items-center">
+        <%= column_chart Job.group(:status).count %>
+      </div>
     </div>
+  </div>
+  <div id="jobs" class="jobs container my-3">
+    <h3>Your jobs</h3>
+    <% @jobs.each do |job| %>
+      <%= render 'jobs/job_list', job: job %>
+    <% end %>
   </div>
 </div>

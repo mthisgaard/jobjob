@@ -1,0 +1,11 @@
+<div data-add-task-target="tasks">
+  <p><strong>Tasks</strong></p>
+  <% tasks.each do |task| %>
+    <div class="d-flex">
+      <div data-controller="done-task">
+        <%= render 'jobs/task_done', task: task %>
+      </div>
+      <%= task.title %>
+    </div>
+  <% end %>
+</div>
