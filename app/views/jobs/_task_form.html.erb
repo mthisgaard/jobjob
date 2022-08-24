@@ -1,3 +1,3 @@
 <%= simple_form_for([job, task], remote: true, data: {add_task_target: "form", action: "submit->add-task#add"}) do |f| %>
-  <%= f.input :title, label: false, :placeholder => '+ Add a task...', input_html: { style: "width: 90%; border: none; background-color: transparent;" } %>
+  <%= f.input :title, label: false, :placeholder => '+ Add a task...', input_html: { style: "width: 90%; border: none; background-color: transparent;", data: {add_task_target: "input"} } %>
 <% end %>
