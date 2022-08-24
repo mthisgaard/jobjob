@@ -4,7 +4,7 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["tasks", "form"]
 
-  create(event) {
+  add(event) {
     event.preventDefault()
   
     fetch(this.formTarget.action, {
@@ -14,8 +14,7 @@ export default class extends Controller {
     })
       .then(response => response.text())
       .then((data) => {
-          console.log(data);
-          // this.tasksTarget.outerHTML = data;
+        this.tasksTarget.outerHTML = data;
       })
   }
 }
