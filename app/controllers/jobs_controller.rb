@@ -18,6 +18,16 @@ class JobsController < ApplicationController
     end
   end
 
+  def update
+    @job = Job.find(params[:id])
+    authorize @job
+    if @job.update(job_params)
+      redirect_to jobs_path
+    else
+      redirect_to jobs_path, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def job_params
