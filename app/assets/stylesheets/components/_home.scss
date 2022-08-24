@@ -1,0 +1,38 @@
+.card {
+  border: none;
+}
+.card body{
+  text-align: end;
+  padding-top: 100px;
+  padding-left: 24px;
+}
+
+.card-title {
+  font-size: xx-large;
+  font-weight: 700;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+.card-text {
+  font-size: large;
+  font-weight: 400;
+}
+
+.container-call-to-action {
+  text-align: center;
+  background-color: #D3F3EE;
+  padding: 100px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+.btn {
+  transition-duration: 0.4s;
+  background-color: #fafa37;
+  border: none;
+}
+
+.btn:hover {
+  background-color: #68E1FD;
+  color: black;
+  border: none;
+}
