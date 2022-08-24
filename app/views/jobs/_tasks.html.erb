@@ -2,7 +2,9 @@
   <p><strong>Tasks</strong></p>
   <% tasks.each do |task| %>
     <div class="d-flex">
-      <%= render 'jobs/task_done', task: task %>
+      <div data-controller="done-task">
+        <%= render 'jobs/task_done', task: task %>
+      </div>
       <%= task.title %>
     </div>
   <% end %>

@@ -17,14 +17,17 @@ class TasksController < ApplicationController
     end
   end
 
-  # def update
-  #   authorize @task
-  #   if @task.update(task_params)
-  #     redirect_to jobs_path
-  #   else
-  #     render render partial: "jobs/tasks", status: :unprocessable_entity
-  #   end
-  # end
+  def update
+    authorize @task
+    if @task.update(task_params)
+      respond_to do |format|
+        format.html
+        format.text { render partial: "jobs/tasks", locals: { tasks: @job.tasks.order(:done, :created_at) }, formats: [:html] }
+      end
+    else
+      render render partial: "jobs/tasks", status: :unprocessable_entity
+    end
+  end
 
   # def destroy
   #   @task.destroy
