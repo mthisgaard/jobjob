@@ -1,4 +1,6 @@
 class JobsController < ApplicationController
+  before_action :set_job, only: [:update, :destroy]
+
   def index
     @jobs = policy_scope(Job)
     @new_job = Job.new
@@ -18,7 +20,6 @@ class JobsController < ApplicationController
   end
 
   def update
-    @job = Job.find(params[:id])
     authorize @job
     if @job.update(job_params)
       respond_to do |format|
@@ -30,7 +31,17 @@ class JobsController < ApplicationController
     end
   end
 
+  def destroy
+    authorize @job
+    @job.destroy
+    redirect_to jobs_path
+  end
+
   private
+
+  def set_job
+    @job = Job.find(params[:id])
+  end
 
   def job_params
     params.require(:job).permit(:title, :company, :deadline, :url, :notes, :cv, :cover_letter)
