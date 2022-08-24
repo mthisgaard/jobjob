@@ -18,6 +18,7 @@ User.all.each do |user|
       company: Faker::Company.name,
       deadline: Date.today + rand(20),
       url: 'https://www.linkedin.com/jobs/',
+      status: rand(0..4),
       notes: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
       molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
       numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
