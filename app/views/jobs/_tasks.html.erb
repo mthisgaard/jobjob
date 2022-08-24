@@ -1,4 +1,5 @@
-<div class="to-do" data-add-task-target="tasks"><strong>Tasks</strong>
+<div data-add-task-target="tasks">
+  <p><strong>Tasks</strong></p>
   <% tasks.each do |task| %>
     <div class="d-flex">
       <%= render 'jobs/task_done', task: task %>
