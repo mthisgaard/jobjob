@@ -5,8 +5,6 @@ export default class extends Controller {
   static targets = ["form", "input"]
 
   connect() {
-    // console.log("edit notes controller")
-    // console.log(this.noteTarget.innerHTML)
 
   }
 
@@ -18,9 +16,5 @@ export default class extends Controller {
       headers: { "Accept": "text/plain" },
       body: new FormData(this.formTarget)
     })
-      .then(response => response.text())
-      .then((data) => {
-          console.log(data)
-      })
   }
 }

@@ -15,17 +15,10 @@
         </div>
         <div class="center-border"></div>
         <div class="notes" data-controller="edit-notes" >
-          <strong>Notes:</strong>
           <%= simple_form_for job, html: {data: {edit_notes_target: "form", action: "submit->edit-notes#updateNote"}} do |form| %>
-            <%= form.input :notes, input_html: {data: {edit_notes_target: "input"}}%>
+            <%= form.input :notes, input_html: {data: {edit_notes_target: "input"}, :class => 'note-text'}%>
             <%= form.submit "Save" %>
           <% end %>
-          <%# data-action="keyup->edit-notes#updateNote" %>
-          <%# <script>
-            document.getElementById('content').addEventListener('input', function(ev){
-              document.getElementById('job_note').value = ev.target.innerHTML;
-            })
-          </script> %>
         </div>
       </div>
       <div class="appointments d-flex justify-content-between">
