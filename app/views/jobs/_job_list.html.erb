@@ -16,7 +16,7 @@
         <div class="center-border"></div>
         <div class="notes" data-controller="edit-notes" >
           <%= simple_form_for job, html: {data: {edit_notes_target: "form", action: "submit->edit-notes#updateNote"}} do |form| %>
-            <%= form.input :notes, input_html: {data: {edit_notes_target: "input"}, :class => 'note-text'}%>
+            <%= form.input :notes, input_html: {data: {edit_notes_target: "input"}, :class => 'note-text', onfocus: 'this.style.height = "";this.style.height = this.scrollHeight + "px"', :rows => "10"}%>
             <%= form.submit "Save" %>
           <% end %>
         </div>

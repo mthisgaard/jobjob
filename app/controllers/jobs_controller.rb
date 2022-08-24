@@ -23,7 +23,7 @@ class JobsController < ApplicationController
     if @job.update(job_params)
       respond_to do |format|
         format.html { redirect_to jobs_path }
-        format.text { render partial: "jobs/note", locals: {job: @job}, formats: [:html] }
+        format.text { render partial: "jobs/note", locals: { job: @job }, formats: [:html] }
       end
     else
       redirect_to jobs_path, status: :unprocessable_entity
