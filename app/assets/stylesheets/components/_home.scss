@@ -25,13 +25,14 @@
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
 
-.sign-up {
+.btn {
   transition-duration: 0.4s;
+  color: black;
   background-color: #fafa37;
   border: none;
 }
 
-.sign-up:hover {
+.btn:hover {
   background-color: #68E1FD;
   color: black;
   border: none;
