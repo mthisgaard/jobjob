@@ -21,22 +21,22 @@
         <div class="notes" data-controller="edit-notes" >
           <%= simple_form_for job, html: {data: {edit_notes_target: "form", action: "submit->edit-notes#updateNote"}} do |form| %>
             <%= form.input :notes, input_html: {data: {edit_notes_target: "input"}, :class => 'note-text', onfocus: 'this.style.height = "";this.style.height = this.scrollHeight + "px"', :rows => "10"}%>
-            <%= form.submit "Save" %>
+            <%= form.submit "Save", class: 'btn btn-sm' %>
           <% end %>
         </div>
       </div>
-      <div class="appointments d-flex justify-content-between">
+      <div class="appointments d-flex justify-content-between align-items-end pb-3">
         <div>
-          <strong>Appointments:</strong>
+          <strong>Appointments</strong>
           <p class="appointment">no appointments</p>
         </div>
         <div>
           <!-- Button trigger modal -->
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target= "#jobs<%= job.id %>" >
-            Edit this job
+          <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target= "#jobs<%= job.id %>" >
+            Edit
           </button>
           <%= render "modal", job: job %>
-          <%= link_to 'Delete job', job_path(job), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this job?" }, class: "btn btn-primary" %>
+          <%= link_to 'Delete', job_path(job), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this job?" }, class: "btn btn-sm btn-primary" %>
         </div>
       </div>
     </div>
