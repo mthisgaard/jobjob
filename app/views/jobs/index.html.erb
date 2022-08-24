@@ -69,7 +69,9 @@
   <div id="jobs" class="jobs container my-3">
     <h3>Your jobs</h3>
     <% @jobs.each do |job| %>
-      <%= render 'jobs/job_list', job: job %>
+      <div>
+        <%= render 'jobs/job_list', job: job %>
+      </div>
     <% end %>
   </div>
 </div>
