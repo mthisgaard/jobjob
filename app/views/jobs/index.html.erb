@@ -71,7 +71,9 @@
       </div>
     </div>
     <% @jobs.each do |job| %>
-      <%= render 'jobs/job_list', job: job %>
+      <div>
+        <%= render 'jobs/job_list', job: job %>
+      </div>
     <% end %>
   </div>
 </div>
