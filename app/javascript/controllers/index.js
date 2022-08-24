@@ -7,6 +7,9 @@ import Chart from 'stimulus-chartjs'
 
 application.register('chart', Chart)
 
+import EditNotesController from "./edit_notes_controller"
+application.register("edit-notes", EditNotesController)
+
 import AddTaskController from "./add_task_controller"
 application.register("add-task", AddTaskController)
 

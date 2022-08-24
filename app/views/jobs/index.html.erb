@@ -1,13 +1,6 @@
 <div class="container my-5">
   <div class="d-flex justify-content-between">
     <h2>Welcome back, <%= current_user.first_name.capitalize %>!</h2>
-    <div>
-      <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#jobs<%= @new_job.id %>">
-        Add new job
-      </button>
-      <%= render 'modal', job: @new_job %>
-    </div>
   </div>
   <div id="job-stats" class="my-3">
     <div class="d-flex flex-column job-stats">
@@ -67,9 +60,20 @@
     </div>
   </div>
   <div id="jobs" class="jobs container my-3">
-    <h3>Your jobs</h3>
+    <div class="d-flex justify-content-between align-items-center my-4">
+      <h3>Your jobs</h3>
+      <div>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#jobs<%= @new_job.id %>">
+          Add new job
+        </button>
+        <%= render 'modal', job: @new_job %>
+      </div>
+    </div>
     <% @jobs.each do |job| %>
-      <%= render 'jobs/job_list', job: job %>
+      <div>
+        <%= render 'jobs/job_list', job: job %>
+      </div>
     <% end %>
   </div>
 </div>
