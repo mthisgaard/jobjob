@@ -7,3 +7,12 @@ import Chart from 'stimulus-chartjs'
 
 const application = Application.start()
 application.register('chart', Chart)
+
+import AddTaskController from "./add_task_controller"
+application.register("add-task", AddTaskController)
+
+import DoneTaskController from "./done_task_controller"
+application.register("done-task", DoneTaskController)
+
+import HelloController from "./hello_controller"
+application.register("hello", HelloController)

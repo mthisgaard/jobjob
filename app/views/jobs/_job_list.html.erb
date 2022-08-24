@@ -8,19 +8,27 @@
     </h2>
     <div id="flush-collapse<%= job.id %>" class="accordion-collapse collapse job-card-content" aria-labelledby="flush-heading<%= job.id %>" data-bs-parent="#accordionFlushExample">
       <div class="d-flex job-body justify-content-between">
-        <div class="to-do"><strong>To Do:</strong>
-          <% job.tasks.each do |task| %>
-            <p class="job-task"> <%= task.title %> </p>
-          <% end %>
+        <div class="to-do" data-controller="add-task">
+          <%= render 'tasks', tasks: job.tasks.order(:done, :created_at) %>
+          <%= render 'jobs/task_form', job: job, task: @new_task %>
         </div>
         <div class="center-border"></div>
         <div class="notes"><strong>Notes:</strong>
           <p><%= job.notes %></p>
         </div>
       </div>
-      <div class="appointments">
-        <strong>Appointments:</strong>
-        <p class="appointment">no appointments</p>
+      <div class="appointments d-flex justify-content-between">
+        <div>
+          <strong>Appointments:</strong>
+          <p class="appointment">no appointments</p>
+        </div>
+        <div>
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target= "#jobs<%= job.id %>" >
+            Edit this job
+          </button>
+          <%= render "modal", job: job %>
+        </div>
       </div>
     </div>
   </div>
