@@ -5,7 +5,6 @@
 import { application } from "./application"
 import Chart from 'stimulus-chartjs'
 
-const application = Application.start()
 application.register('chart', Chart)
 
 import AddTaskController from "./add_task_controller"
