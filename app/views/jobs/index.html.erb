@@ -3,10 +3,10 @@
     <h2>Welcome back, <%= current_user.first_name.capitalize %>!</h2>
     <div>
       <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#jobs<%= @job.id %>">
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#jobs<%= @new_job.id %>">
         Add new job
       </button>
-      <%= render 'modal', job: @job %>
+      <%= render 'modal', job: @new_job %>
     </div>
   </div>
   <div id="job-stats" class="my-3">
