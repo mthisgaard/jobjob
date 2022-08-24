@@ -65,7 +65,10 @@
 .job-status {
   padding: 3px 6px;
   border-radius: 6px;
-  border: 0.2px solid lightgray;
+  // border: 0.2px solid lightgray;
+  // color: rgb(60, 60, 60);
+  width: 88px;
+  text-align: center;
 }
 .pending {
   background-color: #D3F3EE;
@@ -80,7 +83,7 @@
 }
 
 .rejected {
-  background-color: rgba(255, 0, 0, 0.799);
+  background-color: #ef959c;
 }
 
 .offer {
