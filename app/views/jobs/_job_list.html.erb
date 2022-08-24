@@ -14,8 +14,8 @@
           <% end %>
         </div>
         <div class="center-border"></div>
-        <div class="notes"><strong>Notes:</strong>
-          <p contenteditable="true"><%= job.notes %></p>
+        <div class="notes" data-controller="edit-notes" ><strong>Notes:</strong>
+          <p contenteditable="true" data-edit-notes-target="note" data-action="keyup->edit-notes#updateNote" data-jobId="<%= job.id %>"><%= job.notes %></p>
         </div>
       </div>
       <div class="appointments">
