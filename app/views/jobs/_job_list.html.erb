@@ -16,12 +16,16 @@
         <div class="center-border"></div>
         <div class="notes" data-controller="edit-notes" >
           <strong>Notes:</strong>
-          <%= form_for job, data: {action: "submit->edit-notest#updateNote"} do |form| %>
-            <%= form.hidden_field :notes %>
-            <p contenteditable="true" data-edit-notes-target="note"  data-jobId="<%= job.id %>"><%= job.notes %></p>
+          <%= simple_form_for job, html: {data: {edit_notes_target: "form", action: "submit->edit-notes#updateNote"}} do |form| %>
+            <%= form.input :notes, input_html: {data: {edit_notes_target: "input"}}%>
             <%= form.submit "Save" %>
           <% end %>
           <%# data-action="keyup->edit-notes#updateNote" %>
+          <%# <script>
+            document.getElementById('content').addEventListener('input', function(ev){
+              document.getElementById('job_note').value = ev.target.innerHTML;
+            })
+          </script> %>
         </div>
       </div>
       <div class="appointments d-flex justify-content-between">

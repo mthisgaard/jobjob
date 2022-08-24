@@ -21,7 +21,10 @@ class JobsController < ApplicationController
     @job = Job.find(params[:id])
     authorize @job
     if @job.update(job_params)
-      redirect_to jobs_path
+      respond_to do |format|
+        format.html { redirect_to jobs_path }
+        format.text { render partial: "jobs/note", locals: {job: @job}, formats: [:html] }
+      end
     else
       redirect_to jobs_path, status: :unprocessable_entity
     end
