@@ -1,5 +1,4 @@
 class JobsController < ApplicationController
-
   def index
     @jobs = policy_scope(Job)
     @new_job = Job.new
