@@ -9,7 +9,7 @@
     <div id="flush-collapse<%= job.id %>" class="accordion-collapse collapse job-card-content" aria-labelledby="flush-heading<%= job.id %>" data-bs-parent="#accordionFlushExample">
       <div class="d-flex job-body justify-content-between">
         <div data-controller="add-task">
-          <%= render 'tasks', job: job %>
+          <%= render 'tasks', tasks: job.tasks.order(:done, :created_at) %>
           <%= render 'jobs/task_form', job: job, task: @new_task %>
         </div>
         <div class="center-border"></div>

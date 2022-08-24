@@ -14,7 +14,8 @@ export default class extends Controller {
     })
       .then(response => response.text())
       .then((data) => {
-        this.tasksTarget.outerHTML = data;
+          console.log(this.tasksTarget)
+          this.tasksTarget.outerHTML = data;
       })
   }
 }
