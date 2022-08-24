@@ -10,6 +10,7 @@
       <div class="d-flex job-body justify-content-between">
         <div data-controller="add-task">
           <%= render 'tasks', tasks: job.tasks.order(:done, :created_at) %>
+          <br>
           <%= render 'jobs/task_form', job: job, task: @new_task %>
         </div>
         <div class="center-border"></div>
