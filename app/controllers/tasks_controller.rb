@@ -24,10 +24,14 @@ class TasksController < ApplicationController
     end
   end
 
-  # def destroy
-  #   @task.destroy
-  #   redirect_to tasks_path, status: :see_other
-  # end
+  def destroy
+    authorize @task
+    @task.destroy
+    respond_to do |format|
+      format.html
+      format.text { render partial: "jobs/tasks", locals: { tasks: @job.tasks.order(:done, :created_at) }, formats: [:html] }
+    end
+  end
 
   private
 
