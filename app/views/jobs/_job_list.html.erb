@@ -3,7 +3,12 @@
     <h2 class="accordion-header" id="flush-heading<%= job.id %>">
       <div class="d-flex justify-content-between align-items-start" style="width: 100%;">
         <div class="w-50 fs-6">
-          <p class="m-0"><strong><%= job.title %></strong></p>
+          <div class="d-flex gap-2 align-items-center">
+            <p class="m-0"><strong><%= job.title %></strong></p>
+            <%= link_to job.url, class: 'url-link', target: :_blank do %>
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            <% end %>
+          </div>
           <p class="opacity-50"><%= job.company %></p>
         </div>
         <div>

@@ -13,6 +13,20 @@
 
 }
 
+.job .url-link {
+  color: black;
+  text-decoration: none;
+  opacity: 0.7;
+  margin: 0;
+  font-size: 12px;
+
+  &:hover {
+    color: black;
+    opacity: 1;
+  }
+
+}
+
 .job-body {
   border-top: 1px solid lightgray;
   border-bottom: 1px solid lightgray;
