@@ -92,4 +92,15 @@
 .note-text {
 border: none;
 background-color: transparent;
+background-image: none !important;
+}
+
+.note-text:focus {
+  border: none;
+background-color: transparent;
+background-image: none;
+}
+
+.hide {
+  display: none;
 }
