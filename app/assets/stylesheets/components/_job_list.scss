@@ -7,7 +7,22 @@
   background-color: white;
 }
 
-.job-card-content {
+.job .delete-link {
+  color: black;
+  font-size: 14px;
+  margin-right: 16px;
+  opacity: 0.7;
+  visibility: visible;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.task-title:hover {
+  .delete-link {
+    visibility: visible;
+  }
 }
 
 .center-border {

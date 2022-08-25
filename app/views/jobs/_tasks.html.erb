@@ -1,11 +1,14 @@
 <div data-add-task-target="tasks">
   <p><strong>Tasks</strong></p>
   <% tasks.each do |task| %>
-    <div class="d-flex">
+    <div class="d-flex justify-content-between">
       <div data-controller="done-task">
         <%= render 'jobs/task_done', task: task %>
       </div>
-      <%= task.title %>
+      <p class="flex-grow-1 m-0 task-title"><%= task.title %></p>
+      <%= link_to task_path(task), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this task?" }, class: "delete-link" do %>
+        <i class="fa-solid fa-x"></i>
+      <% end %>
     </div>
   <% end %>
 </div>
