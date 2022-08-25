@@ -36,6 +36,9 @@
             <% if job.cover_letter.attached? %>
               <%= link_to "Cover Letter", cl_image_path(job.cover_letter.key), target: :_blank, class: "btn btn-sm" %>
             <% end %>
+            <% if job.job_posting.attached? %>
+              <%= link_to "Job posting", cl_image_path(job.job_posting.key), target: :_blank, class: "btn btn-sm" %>
+            <% end %>
           </div>
         </div>
         <div class="center-border"></div>
