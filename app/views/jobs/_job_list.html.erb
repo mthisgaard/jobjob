@@ -10,6 +10,8 @@
             <% end %>
           </div>
           <p class="opacity-50"><%= job.company %></p>
+          <%= "This job have #{job.tasks.count} tasks" %>
+          <%= "Deadline: #{job.deadline}" %>
         </div>
         <div>
           <button class="job-status <%= job.status %>" data-bs-toggle="modal" data-bs-target= "#job-status<%= job.id %>" >
