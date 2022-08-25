@@ -17,9 +17,14 @@
             <%= job.status %>
           </button>
           <%= render "edit_status_modal", job: job %>
-          <% if job.deadline.present? && job.status == 'pending' %>
+          <% if job.deadline.present? && job.status == 'pending' && job.deadline > Date.today %>
             <div class="job-deadline">
               <p class="m-0">Apply before</p>
+              <p><strong><%= job.deadline.strftime('%b %d %Y') %></strong></p>
+            </div>
+          <% elsif job.deadline.present? && job.status == 'pending'%>
+            <div class="job-deadline passed">
+              <p class="m-0">Deadline passed</p>
               <p><strong><%= job.deadline.strftime('%b %d %Y') %></strong></p>
             </div>
           <% end %>
