@@ -6,5 +6,9 @@
   <%= f.input :notes %>
   <%= f.input :cv, as: :file %>
   <%= f.input :cover_letter, as: :file %>
-  <%= f.submit 'Add job', class: 'btn btn-primary' %>
+  <% if job.persisted? %>
+    <%= f.submit 'Save changes', class: 'btn btn-primary' %>
+  <% else %>
+    <%= f.submit 'Add job', class: 'btn btn-primary' %>
+  <% end %>
 <% end %>
