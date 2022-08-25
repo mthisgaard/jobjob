@@ -5,7 +5,6 @@ export default class extends Controller {
   static targets = ["form", "input", "save"]
 
   connect() {
-console.log("hello")
   }
 
   updateNote(event) {
@@ -20,5 +19,9 @@ console.log("hello")
 
   showButton() {
     this.saveTarget.classList.remove('hide');
+  }
+
+  hideButton() {
+    this.saveTarget.classList.add('hide');
   }
 }

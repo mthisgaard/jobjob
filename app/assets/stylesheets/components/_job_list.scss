@@ -110,8 +110,26 @@
 .note-text {
 border: none;
 background-color: transparent;
+background-image: none;
+}
+
+.note-text:focus {
+  border: none;
+background-color: transparent;
+background-image: none;
 }
 
 .hide {
   display: none;
+}
+
+.no-bs-validation {
+  .is-valid, .is-invalid {
+    border-color: $gray-400;
+    background-image: inherit;
+    &:focus {
+      border-color: inherit;
+      box-shadow: 0 0 0 .2rem $gray-400;
+    }
+  }
 }
