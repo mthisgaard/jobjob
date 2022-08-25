@@ -1,0 +1,16 @@
+.footer {
+  bottom: 0;
+  width: 100%;
+  margin-top: 10px;
+  flex: 1 0 auto;
+  background: #68E1FD;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 50px;
+  color: rgba(0,0,0,0.3);
+}
+
+.footer-copyright{
+  margin-left: 70px;
+}
