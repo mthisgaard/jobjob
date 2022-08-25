@@ -19,7 +19,7 @@
         </div>
         <div class="center-border"></div>
         <div class="notes d-flex flex-column justify-content-end" data-controller="edit-notes" >
-          <%= simple_form_for job, html: {data: {edit_notes_target: "form", action: "submit->edit-notes#updateNote", novalidate: true, class: "no-bs-validation"}} do |form| %>
+          <%= simple_form_for job, html: {data: {edit_notes_target: "form", action: "submit->edit-notes#updateNote", novalidate: true}} do |form| %>
             <strong> <%= form.input :notes, input_html: {data: {edit_notes_target: "input", action: "focus->edit-notes#showButton blur->edit-notes#hideButton", novalidate: true}, :class => 'note-text no-bs-validation', onfocus: 'this.style.height = "";this.style.height = this.scrollHeight + "px"', :rows => "10"}%> </strong>
             <%= form.submit "Save", data: {edit_notes_target: "save"}, class: 'btn btn-sm hide ml-auto', style: "float: right;"  %>
           <% end %>
