@@ -1,6 +1,7 @@
 # custom gems
 gem "pundit"
 gem "chartkick"
+gem 'chartjs-ror'
 
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
