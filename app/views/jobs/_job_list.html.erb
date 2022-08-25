@@ -23,9 +23,9 @@
               <p><strong><%= job.deadline.strftime('%b %d %Y') %></strong></p>
             </div>
           <% elsif job.deadline.present? && job.status == 'pending'%>
-            <div class="job-deadline passed">
+            <div class="job-deadline">
               <p class="m-0">Deadline passed</p>
-              <p><strong><%= job.deadline.strftime('%b %d %Y') %></strong></p>
+              <p id="job-deadline-passed"><strong><%= job.deadline.strftime('%b %d %Y') %></strong></p>
             </div>
           <% end %>
         </div>
