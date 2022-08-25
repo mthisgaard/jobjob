@@ -1,8 +1,8 @@
 <div class="job">
   <div class="accordion-item whole-job">
     <h2 class="accordion-header" id="flush-heading<%= job.id %>">
-      <div class="d-flex justify-content-between align-items-start" style="width: 100%;">
-        <div class="w-50 fs-6">
+      <div class="d-flex justify-content-between align-items-start gap-3" style="width: 100%;">
+        <div class="flex-grow-1 fs-6">
           <div class="d-flex gap-2 align-items-center">
             <p class="m-0"><strong><%= job.title %></strong></p>
             <%= link_to job.url, class: 'url-link', target: :_blank do %>
@@ -10,14 +10,19 @@
             <% end %>
           </div>
           <p class="opacity-50"><%= job.company %></p>
-          <%= "This job have #{job.tasks.count} tasks" %>
-          <%= "Deadline: #{job.deadline}" %>
+          <% if job.deadline.present? %>
+            <div class="d-flex gap-2 opacity-75">
+              <i class="fa-solid fa-clock-rotate-left"></i>
+              <p><%= job.deadline.strftime('%b %d %Y') %></p>
+            </div>
+          <% end %>
         </div>
         <div>
           <button class="job-status <%= job.status %>" data-bs-toggle="modal" data-bs-target= "#job-status<%= job.id %>" >
             <%= job.status %>
           </button>
           <%= render "edit_status_modal", job: job %>
+          <p class="job-card-task-count">Tasks <%= job.tasks.where(done: true).count %> / <%= job.tasks.count %></p>
         </div>
       </div>
       <button class="accordion-button collapsed w-100" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse<%= job.id %>" aria-expanded="false" aria-controls="flush-collapse<%= job.id %>">
