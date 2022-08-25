@@ -7,7 +7,11 @@
             <p class="m-0"><strong><%= job.title %></strong></p>
             <p class="opacity-50"><%= job.company %></p>
           </div>
-          <p class="job-status <%= job.status %>"><%= job.status %></p>
+          <p class="job-status <%= job.status %>" data-bs-toggle="modal"><%= job.status %></p>
+          <button class="btn " data-bs-toggle="modal" data-bs-target="#job-status">
+            <p class="job-status <%= job.status %>"><%= job.status %></p>
+          </button>
+          <%= render 'edit_status_modal', job: job %>
         </div>
       </button>
     </h2>
