@@ -31,13 +31,16 @@ $position-values: (
   100: 100%
 );
 
+$form-feedback-valid-color: #1edd88;
+$form-feedback-icon-valid: none;
+
 $form-validation-states: (
-  // "valid": (
-  //   "color": $form-feedback-valid-color,
-  //   "icon": $form-feedback-icon-valid
-  // ),
-  // "invalid": (
-  //   "color": $form-feedback-invalid-color,
-  //   "icon": $form-feedback-icon-invalid
-  // )
-) !default;
+  "valid": (
+      "color": $form-feedback-valid-color,
+      "icon": $form-feedback-icon-valid
+    )
+    // "invalid": (
+      //   "color": $form-feedback-invalid-color,
+      //   "icon": $form-feedback-icon-invalid
+      // )
+      ) !default;
