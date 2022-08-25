@@ -60,17 +60,20 @@
 }
 
 .job-status {
-  padding: 3px 6px;
+  padding: 4px 8px;
   border-radius: 6px;
   width: 88px;
   text-align: center;
+  border: none;
+  font-size: 16px;
 }
+
 .pending {
-  background-color: #D3F3EE;
+  background-color: #F4F4F4;
 }
 
 .applied {
-  background-color: #68E1FD;
+  background-color: #D3F3EE;
 }
 
 .interview {
