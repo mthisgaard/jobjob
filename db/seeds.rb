@@ -56,4 +56,130 @@ puts "created #{Task.count} tasks"
 
 puts "creating account for demo"
 
-User.create!(email: 'malene@me.com', first_name: 'malene', last_name: '928', password: '123123', avatar: 'https://avatars.githubusercontent.com/u/107089457?v=4')
+###################################################################
+
+demo = User.create!(email: 'malene@me.com', first_name: 'malene', last_name: '928', password: '123123', avatar: 'https://avatars.githubusercontent.com/u/107089457?v=4')
+
+puts "creating realistic jobs"
+
+############ JOB 1 #############
+
+job = Job.new(
+  title: "Front-end Developer",
+  company: 'TableCheck',
+  deadline: Date.today + rand(20),
+  url: 'https://jp.linkedin.com/jobs/view/front-end-developer-at-tablecheck-3217604304?refId=z1Iig2xD6Cpt2YnYZn2JtA%3D%3D&trackingId=eJ3OAeFdbDfzCbzua1raug%3D%3D&position=1&pageNum=0&trk=public_jobs_jserp-result_search-card',
+  status: 2,
+  notes: 'Fully remote, front-end position for online reservation business.
+
+Japanese not required. (they got language exchange program for practicing my Japanese)
+
+Pays for commuter pass.
+
+First interview went really well!!!',
+  user: demo
+)
+job.save!
+
+task = Task.new(
+  title: 'Research the company',
+  done: true,
+  job:
+)
+task.save!
+
+task = Task.new(
+  title: 'Write cover letter',
+  done: true,
+  job:
+)
+task.save!
+
+task = Task.new(
+  title: 'Call contact person at the company (William)',
+  done: true,
+  job:
+)
+task.save!
+
+
+task = Task.new(
+  title: 'First interview Aug 26th 3pm (zoom)',
+  done: true,
+  job:
+)
+task.save!
+
+task = Task.new(
+  title: 'Review datasets before interview!!!',
+  done: true,
+  job:
+)
+task.save!
+
+task = Task.new(
+  title: 'Send thank you for interview email to William',
+  job:
+)
+task.save!
+
+task = Task.new(
+  title: 'Follow up email if no news by Sep 1st',
+  job:
+)
+task.save!
+
+############ JOB 2 #############
+
+job = Job.new(
+  title: "Back End Engineer (Go)",
+  company: 'Computer Futures',
+  deadline: Date.today + rand(20),
+  url: 'https://jp.linkedin.com/jobs/view/back-end-engineer-go-at-computer-futures-3226955401?refId=d0f%2FRQKnp0cXAJAfAUEG0w%3D%3D&trackingId=URE%2Bmrl9OrBMEHorBQoq2g%3D%3D&trk=public_jobs_similar-jobs',
+  status: 0,
+  notes: 'Mainly Go
+
+remote with home office setup support
+
+international environment (english)',
+  user: demo
+)
+job.save!
+
+task = Task.new(
+  title: 'Research the company',
+  done: true,
+  job:
+)
+task.save!
+
+task = Task.new(
+  title: 'Write cover letter',
+  job:
+)
+task.save!
+
+task = Task.new(
+  title: 'Send cover letter to company (Sheldon)',
+  job:
+)
+task.save!
+
+task = Task.new(
+  title: 'Review Go',
+  job:,
+  done: true
+)
+task.save!
+
+task = Task.new(
+  title: 'Call contact person at the company (Sheldon)',
+  job:
+)
+task.save!
+
+task = Task.new(
+  title: 'Review Go even more!',
+  job:
+)
+task.save!
