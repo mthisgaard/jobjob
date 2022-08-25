@@ -7,54 +7,59 @@
       <div class="p-2 align-items-center">
         <div class="row d-flex justify-content-center">
           <div class="col-sm-2">
-            <div class="stats pending pt-2 pb-3 px-2">
+            <div class="stats stats-pending pt-2 pb-3 px-2">
               <div class="stats-body">
                 <i class="fa-solid fa-hourglass-start"></i>
                 <h5 class="stats-title text-center"><strong>Jobs Pending</strong></h5>
-                <p class="stats-count text-center">0</p>
+                <p class="stats-count text-center"><%= @pending %></p>
               </div>
             </div>
           </div>
           <div class="col-sm-2">
-            <div class="stats applied pt-2 pb-3 px-1">
+            <div class="stats stats-applied pt-2 pb-3 px-1">
               <div class="stats-body">
                 <i class="fa-solid fa-paper-plane"></i>
                 <h5 class="stats-title text-center"><strong>Jobs Applied</strong></h5>
-                <p class="stats-count text-center">1</p>
+                <p class="stats-count text-center"><%= @applied %></p>
               </div>
             </div>
           </div>
           <div class="col-sm-2">
-            <div class="stats interviews pt-2 pb-3 px-2">
+            <div class="stats stats-interviews pt-2 pb-3 px-2">
               <div class="stats-body">
                 <i class="fa-solid fa-people-arrows"></i>
                 <h5 class="stats-title text-center"><strong>Interviews</strong></h5>
-                <p class="stats-count text-center">2</p>
+                <p class="stats-count text-center"><%= @interviews %></p>
               </div>
             </div>
           </div>
           <div class="col-sm-2">
-            <div class="stats rejected pt-2 pb-3 px-2">
+            <div class="stats stats-rejected pt-2 pb-3 px-2">
               <div class="stats-body">
                 <i class="fa-solid fa-ban"></i>
                 <h5 class="stats-title text-center"><strong>Rejected</strong></h5>
-                <p class="stats-count text-center">3</p>
+                <p class="stats-count text-center"><%= @rejected %></p>
               </div>
             </div>
           </div>
           <div class="col-sm-2">
-            <div class="stats offers pt-2 pb-3 px-2">
+            <div class="stats stats-offers pt-2 pb-3 px-2">
               <div class="stats-body">
                 <i class="fa-solid fa-trophy"></i>
                 <h5 class="stats-title text-center"><strong>Offers</strong></h5>
-                <p class="stats-count text-center">4</p>
+                <p class="stats-count text-center"><%= @offers %></p>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="p-2 align-items-center">
-        <%= column_chart Job.group(:status).count %>
+      <div
+        data-controller="chart"
+        data-chart-data-value="<%= @data_value %>"
+        class="p-2 align-items-center"
+      >
+        <canvas data-chart-target="canvas" id="myChart" width="200" height="200"></canvas>
+
       </div>
     </div>
   </div>

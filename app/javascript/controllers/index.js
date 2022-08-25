@@ -18,3 +18,6 @@ application.register("done-task", DoneTaskController)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import ChartController from "./chart_controller"
+application.register("chart", ChartController)
