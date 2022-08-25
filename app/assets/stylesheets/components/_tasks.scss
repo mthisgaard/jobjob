@@ -1,14 +1,20 @@
+.task-div {
+  display: flex;
+  justify-content: space-between;
+}
+
 .delete-link {
   color: black;
   font-size: 14px;
-  margin-right: 16px;
+  margin: 2px 16px 0px 0px;
   opacity: 0.7;
-  // display: none;
+  display: none;
 }
 
 .task-div:hover {
   .delete-link {
     display: block;
+    color: black;
     opacity: 1;
   }
 }
