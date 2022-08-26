@@ -30,3 +30,11 @@
 .stats {
   box-shadow: 0 0 6px rgba(0,0,0,0.2);
 }
+
+.stats-body {
+  padding: 16px;
+
+  h5 {
+    margin: 0px;
+  }
+}

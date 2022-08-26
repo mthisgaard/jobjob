@@ -1,77 +1,59 @@
-<div class="row container mx-4">
-  <div class="col-sm-12 col-md-8 col-lg-12">
-    <h2>Welcome back, <%= current_user.first_name.capitalize %>!</h2>
-    <div id="job-stats" class="d-flex my-3">
-      <div class="d-flex">
-        <div class="d-flex flex-column job-stats">
-          <h3>Your job stats</h3>
-          <div class="p-2 align-items-center">
-            <div class="d-flex-column justify-content-center">
-              <div>
-                <div class="stats stats-pending m-2 px-1 py-1">
-                  <div class="stats-body">
-                    <i class="fa-solid fa-hourglass-start"></i>
-                    <h5 class="stats-title text-center"><strong>Jobs Pending</strong></h5>
-                    <p class="stats-count text-center"><%= @pending %></p>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <div class="stats stats-applied m-2 px-1 py-1">
-                  <div class="stats-body">
-                    <i class="fa-solid fa-paper-plane"></i>
-                    <h5 class="stats-title text-center"><strong>Jobs Applied</strong></h5>
-                    <p class="stats-count text-center"><%= @applied %></p>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <div class="stats stats-interviews m-2 px-1 py-1">
-                  <div class="stats-body">
-                    <i class="fa-solid fa-people-arrows"></i>
-                    <h5 class="stats-title text-center"><strong>Interviews</strong></h5>
-                    <p class="stats-count text-center"><%= @interviews %></p>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <div class="stats stats-offers m-2 px-1 py-1">
-                  <div class="stats-body">
-                    <i class="fa-solid fa-trophy"></i>
-                    <h5 class="stats-title text-center"><strong>Offers</strong></h5>
-                    <p class="stats-count text-center"><%= @offers %></p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <h4>Job search funnel</h4>
-          <div
-          data-controller="chart"
-          data-chart-data-value="<%= @data_value %>"
-          class="p-2 align-items-center"
-        >
-            <canvas data-chart-target="canvas" id="myChart" width="500" height="500"></canvas>
-          </div>
+<div class="container" style="margin-bottom: 100px;">
+  <h2>Welcome back, <%= current_user.first_name.capitalize %>!</h2>
+  <br>
+  <div class="row">
+    <div class="col-lg-3 job-stats my-2">
+      <h3 style="margin-bottom: 16px;">Your job stats</h3>
+      <div class="stats stats-pending m-2">
+        <div class="d-flex gap-2 justify-content-between align-items-center stats-body">
+          <i class="fa-solid fa-hourglass-start"></i>
+          <h5 class="flex-grow-1"><strong>Pending</strong></h5>
+          <h5><strong><%= @pending %></strong></h5>
         </div>
       </div>
-      <div class="flex-grow-1 mx-5">
-        <div class="d-flex justify-content-between align-items-center my-2">
-          <h3>Your jobs</h3>
-          <div>
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#jobs<%= @new_job.id %>">
-              Add new job
-            </button>
-            <%= render 'modal', job: @new_job %>
-          </div>
+      <div class="stats stats-applied m-2">
+        <div class="d-flex gap-2 justify-content-between align-items-center stats-body">
+          <i class="fa-solid fa-paper-plane"></i>
+          <h5 class="flex-grow-1"><strong>Applied</strong></h5>
+          <h5><strong><%= @applied %></strong></h5>
         </div>
-        <% @jobs.each do |job| %>
-          <div>
-            <%= render 'jobs/job_list', job: job %>
-          </div>
-        <% end %>
       </div>
+      <div class="stats stats-interviews m-2">
+        <div class="d-flex gap-2 justify-content-between align-items-center stats-body">
+          <i class="fa-solid fa-people-arrows"></i>
+          <h5 class="flex-grow-1"><strong>Interviews</strong></h5>
+          <h5><strong><%= @interviews %></strong></h5>
+        </div>
+      </div>
+      <div class="stats stats-offers m-2">
+        <div class="d-flex gap-2 justify-content-between align-items-center stats-body">
+          <i class="fa-solid fa-trophy"></i>
+          <h5 class="flex-grow-1"><strong>Offers</strong></h5>
+          <h5><strong><%= @offers %></strong></h5>
+        </div>
+      </div>
+      <br>
+      <h4>Job search funnel</h4>
+      <div data-controller="chart" data-chart-data-value="<%= @data_value %>" class="p-2 align-items-center">
+          <canvas data-chart-target="canvas" id="myChart" width="500" height="500"></canvas>
+      </div>
+    </div>
+    <div class="col-lg-9">
+      <div class="d-flex justify-content-between align-items-center my-2">
+        <h3>Your jobs</h3>
+        <div>
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#jobs<%= @new_job.id %>">
+            Add new job
+          </button>
+          <%= render 'modal', job: @new_job %>
+        </div>
+      </div>
+      <% @jobs.each do |job| %>
+        <div>
+          <%= render 'jobs/job_list', job: job %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
