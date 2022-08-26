@@ -3,6 +3,41 @@ class JobsController < ApplicationController
 
   def index
     @jobs = policy_scope(Job)
+    @pending = @jobs.filter { |job| job.pending? }.count
+    @applied = @jobs.filter { |job| job.applied? }.count
+    @interviews = @jobs.filter { |job| job.interview? }.count
+    @rejected = @jobs.filter { |job| job.rejected? }.count
+    @offers = @jobs.filter { |job| job.offer? }.count
+
+    # Job funnel data
+    @all_jobs = @jobs.count
+    @applied_jobs = @all_jobs - @pending
+    @interview_jobs = @interviews + @offers + @rejected
+
+    @status = ["All jobs", "Applied", "Interview", "Offer"]
+    @values = [@all_jobs, @applied_jobs, @interview_jobs, @offers]
+
+    @data_value = {
+      "labels": @status,
+      "datasets": [{
+        "label": "Total",
+        "backgroundColor": [
+          'rgba(211, 243, 238, 0.8)',
+          'rgba(104, 225, 253, 0.8)',
+          'rgba(250, 250, 55, 0.8)',
+          'rgba(172, 255, 89, 0.8)'
+        ],
+        "borderColor": [
+          'rgba(211, 243, 238, 1)',
+          'rgba(104, 225, 253, 1)',
+          'rgba(250, 250, 55, 1)',
+          'rgb(172, 255, 89, 1)'
+        ],
+        'borderWidth': 1,
+        "data": @values }]
+        
+    }.to_json
+
     @new_job = Job.new
     @new_task = Task.new
     authorize @jobs

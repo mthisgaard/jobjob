@@ -1,8 +1,8 @@
 <div class="job">
   <div class="accordion-item whole-job">
     <h2 class="accordion-header" id="flush-heading<%= job.id %>">
-      <div class="d-flex justify-content-between align-items-start" style="width: 100%;">
-        <div class="w-50 fs-6">
+      <div class="d-flex justify-content-between align-items-start gap-3" style="width: 100%;">
+        <div class="flex-grow-1 fs-6">
           <div class="d-flex gap-2 align-items-center">
             <p class="m-0"><strong><%= job.title %></strong></p>
             <%= link_to job.url, class: 'url-link', target: :_blank do %>
@@ -10,10 +10,20 @@
             <% end %>
           </div>
           <p class="opacity-50"><%= job.company %></p>
-          <%= "This job have #{job.tasks.count} tasks" %>
-          <%= "Deadline: #{job.deadline}" %>
+          <%# <p class="job-card-task-count">Tasks <%= job.tasks.where(done: true).count %> <%# / <%= job.tasks.count %>
         </div>
-        <div>
+        <% if job.deadline.present? && job.status == 'pending' && job.deadline > Date.today %>
+          <div class="job-deadline m-0">
+            <p class="m-0">Apply before</p>
+            <p><strong><%= job.deadline.strftime('%b %d %Y') %></strong></p>
+          </div>
+        <% elsif job.deadline.present? && job.status == 'pending'%>
+          <div class="job-deadline m-0">
+            <p class="m-0">Deadline passed</p>
+            <p id="job-deadline-passed"><strong><%= job.deadline.strftime('%b %d %Y') %></strong></p>
+          </div>
+        <% end %>
+        <div class="d-flex flex-column align-items-end">
           <button class="job-status <%= job.status %>" data-bs-toggle="modal" data-bs-target= "#job-status<%= job.id %>" >
             <%= job.status %>
           </button>
@@ -29,12 +39,19 @@
         <div data-controller="add-task" class="to-do position-relative">
           <%= render 'tasks', tasks: job.tasks.order(:done, :created_at) %>
           <%= render 'jobs/task_form', job: job, task: @new_task %>
-          <div class="position-absolute bottom-0">
+          <br>
+          <br>
+          <br>
+          <div class="position-absolute bottom-0 d-flex gap-2">
             <% if job.cv.attached? %>
-              <%= link_to "CV", cl_image_path(job.cv.key), target: :_blank, class: "btn btn-sm" %>
+              <%= link_to cl_image_path(job.cv.key), target: :_blank, class: "job-doc-btn" do %>
+                <i class="fa-solid fa-file"></i><span> CV</span>
+              <% end %>
             <% end %>
             <% if job.cover_letter.attached? %>
-              <%= link_to "Cover Letter", cl_image_path(job.cover_letter.key), target: :_blank, class: "btn btn-sm" %>
+              <%= link_to cl_image_path(job.cover_letter.key), target: :_blank, class: "job-doc-btn" do %>
+                <i class="fa-solid fa-file"></i><span> Cover Letter</span>
+              <% end %>
             <% end %>
             <% if job.job_posting.attached? %>
               <%= link_to "Job posting", cl_image_path(job.job_posting.key), target: :_blank, class: "btn btn-sm" %>
@@ -51,8 +68,8 @@
       </div>
       <div class="appointments d-flex justify-content-between align-items-end pb-3">
         <div>
-          <strong>Appointments</strong>
-          <p class="appointment">no appointments</p>
+          <%# <strong>Appointments</strong>
+          <p class="appointment">no appointments</p> %>
         </div>
         <div>
           <!-- Button trigger modal -->

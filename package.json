@@ -7,8 +7,13 @@
     "@popperjs/core": "^2.11.6",
     "bootstrap": "^5.2.0",
     "chart.js": "^3.9.1",
+    "chartjs-funnel": "^1.0.5",
+    "chartjs-gauge": "^0.3.0",
+    "chartjs-plugin-datalabels": "^2.1.0",
+    "chartjs-plugin-funnel": "^1.1.5",
     "chartkick": "^4.2.0",
     "puppeteer": "^16.2.0",
+    "ng2-charts": "^4.0.0",
     "stimulus-chartjs": "^4.0.0",
     "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0"
