@@ -13,11 +13,9 @@ class JobsController < ApplicationController
     @all_jobs = @jobs.count
     @applied_jobs = @all_jobs - @pending
     @interview_jobs = @interviews + @offers + @rejected
-    @offer_jobs = @all_jobs - @interview_jobs - @rejected
-
 
     @status = ["All jobs", "Applied", "Interview", "Offer"]
-    @values = [@all_jobs, @applied_jobs, @interview_jobs, @offer_jobs]
+    @values = [@all_jobs, @applied_jobs, @interview_jobs, @offers]
 
     @data_value = {
       "labels": @status,
