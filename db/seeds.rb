@@ -505,7 +505,7 @@ job = Job.new(
   company: 'Computer Futures',
   deadline: Date.today + 7,
   url: 'https://jp.linkedin.com/jobs/view/back-end-engineer-go-at-computer-futures-3226955401?refId=d0f%2FRQKnp0cXAJAfAUEG0w%3D%3D&trackingId=URE%2Bmrl9OrBMEHorBQoq2g%3D%3D&trk=public_jobs_similar-jobs',
-  status: 4,
+  status: 3,
   notes: 'Mainly Go
 
 remote with home office setup support
@@ -745,7 +745,11 @@ job = Job.new(
 
 Part of Toyota Research Institute
 
-Vehicle Software and automatic driving',
+Vehicle Software and automatic driving
+
+virtual vehicle E/E architecture
+
+mostly C/C++ & Python',
   user: demo2
 )
 job.save!
@@ -781,6 +785,19 @@ task.save!
 task = Task.new(
   title: 'Call contact person at the company (Morgan)',
   done: true,
+  job:
+)
+task.save!
+
+task = Task.new(
+  title: 'Spend some time on Python syntax',
+  done: true,
+  job:
+)
+task.save!
+
+task = Task.new(
+  title: 'Get better with Japanese vehicle vocabulary',
   job:
 )
 task.save!
