@@ -39,12 +39,16 @@
         <div data-controller="add-task" class="to-do position-relative">
           <%= render 'tasks', tasks: job.tasks.order(:done, :created_at) %>
           <%= render 'jobs/task_form', job: job, task: @new_task %>
-          <div class="position-absolute bottom-0">
+          <div class="position-absolute bottom-0 d-flex gap-2">
             <% if job.cv.attached? %>
-              <%= link_to "CV", cl_image_path(job.cv.key), target: :_blank, class: "btn btn-sm" %>
+              <%= link_to cl_image_path(job.cv.key), target: :_blank, class: "job-doc-btn" do %>
+                <i class="fa-solid fa-file"></i><span> CV</span>
+              <% end %>
             <% end %>
             <% if job.cover_letter.attached? %>
-              <%= link_to "Cover Letter", cl_image_path(job.cover_letter.key), target: :_blank, class: "btn btn-sm" %>
+              <%= link_to cl_image_path(job.cover_letter.key), target: :_blank, class: "job-doc-btn" do %>
+                <i class="fa-solid fa-file"></i><span> Cover Letter</span>
+              <% end %>
             <% end %>
           </div>
         </div>
