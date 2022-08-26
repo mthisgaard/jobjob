@@ -12,9 +12,11 @@ class JobsController < ApplicationController
     @job = Job.new(job_params)
     @job.user = current_user
     authorize @job
-    grover = Grover.new(job_params[:url], format: 'A4')
-    pdf = grover.to_pdf
-    @job.job_posting.attach(io: StringIO.new(pdf), filename: job_params[:company], content_type: "application/pdf")
+    if job_params[:url].present?
+      grover = Grover.new(job_params[:url], format: 'A4')
+      pdf = grover.to_pdf
+      @job.job_posting.attach(io: StringIO.new(pdf), filename: job_params[:company], content_type: "application/pdf")
+    end
     if @job.save
       redirect_to jobs_path
     else
@@ -24,9 +26,11 @@ class JobsController < ApplicationController
 
   def update
     authorize @job
-    grover = Grover.new(job_params[:url], format: 'A4')
-    pdf = grover.to_pdf
-    @job.job_posting.attach(io: StringIO.new(pdf), filename: job_params[:company], content_type: "application/pdf")
+    if job_params[:url].present?
+      grover = Grover.new(job_params[:url], format: 'A4')
+      pdf = grover.to_pdf
+      @job.job_posting.attach(io: StringIO.new(pdf), filename: job_params[:company], content_type: "application/pdf")
+    end
     if @job.update(job_params)
       respond_to do |format|
         format.html { redirect_to jobs_path }
