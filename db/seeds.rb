@@ -397,7 +397,7 @@ task = Task.new(
 )
 task.save!
 
-puts "created real jobs for demo"
+puts "created #{demo1.jobs.count} jobs for demo"
 
 puts "travelling 2 weeks in the future"
 
@@ -405,7 +405,7 @@ puts "travelling 2 weeks in the future"
 
 demo2 = User.create!(email: 'malene2@me.com', first_name: 'malene', last_name: '928', password: '123123', avatar: 'https://avatars.githubusercontent.com/u/107089457?v=4')
 
-puts "creating realistic jobs"
+puts "Updating demo jobs and adding some more"
 
 ############ JOB 1 #############
 
@@ -798,6 +798,108 @@ task.save!
 
 task = Task.new(
   title: 'Get better with Japanese vehicle vocabulary',
+  job:
+)
+task.save!
+
+###########################3 77777777777777777 ###################33
+
+job = Job.new(
+  title: "Fullstack Software Engineer",
+  company: 'Ascent Robotics, Inc.',
+  deadline: Date.today + 22,
+  url: 'https://jp.linkedin.com/jobs/view/full-stack-software-engineer-no-japanese-required-at-ascent-robotics-inc-3231268709?refId=vnAA%2BFZzs7fM5XdxeX9GKw%3D%3D&trackingId=IzsO6sqV4020fH6UhNS2oQ%3D%3D&trk=public_jobs_similar-jobs',
+  status: 0,
+  notes: 'several different areas such as webservices, front-end visualization, mobile applications, and more both on internal software and customer products
+
+Good Linux knowledge required',
+  user: demo2
+)
+job.save!
+
+task = Task.new(
+  title: 'Research the company',
+  done: true,
+  job:
+)
+task.save!
+
+task = Task.new(
+  title: 'Write cover letter',
+  job:
+)
+task.save!
+
+task = Task.new(
+  title: 'Send cover letter to company (Gawain)',
+  job:
+)
+task.save!
+
+task = Task.new(
+  title: 'Get more practice with linux',
+  job:
+)
+task.save!
+
+task = Task.new(
+  title: 'Call contact person at the company (Gawain)',
+  job:
+)
+task.save!
+
+###########################3 8888888888888888888888888 ###################33
+
+job = Job.new(
+  title: "Web Devloper",
+  company: 'A Computer Futures Client',
+  deadline: Date.today + 22,
+  url: 'https://jp.linkedin.com/jobs/view/web-developer-at-computer-futures-3192880999?refId=ygRveIXSGpar9ZmmIQ8szA%3D%3D&trackingId=sxz5EcHK%2BRL2KHgFSZWT%2BQ%3D%3D&trk=public_jobs_topcard-title',
+  status: 0,
+  notes: 'Recruiting done through a third party company
+
+part of payments team
+
+JS + frameworks',
+  user: demo2
+)
+job.save!
+
+task = Task.new(
+  title: 'Find out about company',
+  done: true,
+  job:
+)
+task.save!
+
+task = Task.new(
+  title: 'Write cover letter',
+  done: true,
+  job:
+)
+task.save!
+
+task = Task.new(
+  title: 'Send cover letter to company (Leon)',
+  done: true,
+  job:
+)
+task.save!
+
+task = Task.new(
+  title: 'Go back to learning React',
+  job:
+)
+task.save!
+
+task = Task.new(
+  title: 'Call contact person at the company (Leon)',
+  job:
+)
+task.save!
+
+task = Task.new(
+  title: 'Go back to learning React',
   job:
 )
 task.save!
