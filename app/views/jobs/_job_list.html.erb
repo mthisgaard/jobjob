@@ -39,6 +39,9 @@
         <div data-controller="add-task" class="to-do position-relative">
           <%= render 'tasks', tasks: job.tasks.order(:done, :created_at) %>
           <%= render 'jobs/task_form', job: job, task: @new_task %>
+          <br>
+          <br>
+          <br>
           <div class="position-absolute bottom-0 d-flex gap-2">
             <% if job.cv.attached? %>
               <%= link_to cl_image_path(job.cv.key), target: :_blank, class: "job-doc-btn" do %>
