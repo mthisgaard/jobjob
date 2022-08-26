@@ -1,6 +1,7 @@
 # custom gems
 gem "pundit"
 gem "chartkick"
+gem "grover"
 gem 'chartjs-ror'
 
 source "https://rubygems.org"

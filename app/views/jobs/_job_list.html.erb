@@ -53,6 +53,9 @@
                 <i class="fa-solid fa-file"></i><span> Cover Letter</span>
               <% end %>
             <% end %>
+            <% if job.job_posting.attached? %>
+              <%= link_to "Job posting", cl_image_path(job.job_posting.key), target: :_blank, class: "btn btn-sm" %>
+            <% end %>
           </div>
         </div>
         <div class="center-border"></div>
