@@ -414,7 +414,7 @@ job = Job.new(
   company: 'TableCheck',
   deadline: Date.today + 5,
   url: 'https://jp.linkedin.com/jobs/view/front-end-developer-at-tablecheck-3217604304?refId=z1Iig2xD6Cpt2YnYZn2JtA%3D%3D&trackingId=eJ3OAeFdbDfzCbzua1raug%3D%3D&position=1&pageNum=0&trk=public_jobs_jserp-result_search-card',
-  status: 4,
+  status: 3,
   notes: 'Fully remote or in office, front-end position for online reservation business.
 
 Japanese not required. (they got language exchange program for practicing my Japanese)
@@ -505,7 +505,7 @@ job = Job.new(
   company: 'Computer Futures',
   deadline: Date.today + 7,
   url: 'https://jp.linkedin.com/jobs/view/back-end-engineer-go-at-computer-futures-3226955401?refId=d0f%2FRQKnp0cXAJAfAUEG0w%3D%3D&trackingId=URE%2Bmrl9OrBMEHorBQoq2g%3D%3D&trk=public_jobs_similar-jobs',
-  status: 3,
+  status: 4,
   notes: 'Mainly Go
 
 remote with home office setup support
@@ -684,7 +684,7 @@ job = Job.new(
   company: 'Mercari',
   deadline: Date.today + 2,
   url: 'https://jp.linkedin.com/jobs/view/software-engineer-frontend-mercari-at-mercari-inc-2884177585?refId=LMaXwM7cEa5I3yLlaGTRPQ%3D%3D&trackingId=%2FkQD%2FW2e7APwYBrD7hVu0Q%3D%3D&trk=public_jobs_people-also-viewed',
-  status: 3,
+  status: 4,
   notes: 'Frontend
 
 iOS and Android
@@ -888,6 +888,7 @@ task.save!
 
 task = Task.new(
   title: 'Go back to learning React',
+  done: true,
   job:
 )
 task.save!
@@ -899,7 +900,62 @@ task = Task.new(
 task.save!
 
 task = Task.new(
+  title: 'Become Redu master',
+  job:
+)
+task.save!
+
+###########################3 9999999999999999999999999 ###################33
+
+job = Job.new(
+  title: "DevRel Engineer",
+  company: 'Amazon Web Services (AWS)',
+  deadline: Date.today + 25,
+  url: 'https://jp.linkedin.com/jobs/view/devrel-engineer-mobile-web-at-amazon-web-services-aws-3030801294?refId=%2BElJ6hYz5qT6YtyAxsBskA%3D%3D&trackingId=EDuQ%2Buz27hcHLAglyIUAxA%3D%3D&trk=public_jobs_people-also-viewed',
+  status: 0,
+  notes: 'Mobile and web position
+
+',
+  user: demo2
+)
+job.save!
+
+task = Task.new(
+  title: 'Find out about company',
+  done: true,
+  job:
+)
+task.save!
+
+task = Task.new(
+  title: 'Write cover letter',
+  done: true,
+  job:
+)
+task.save!
+
+task = Task.new(
+  title: 'Send cover letter to company (Leon)',
+  done: true,
+  job:
+)
+task.save!
+
+task = Task.new(
   title: 'Go back to learning React',
+  done: true,
+  job:
+)
+task.save!
+
+task = Task.new(
+  title: 'Call contact person at the company (Leon)',
+  job:
+)
+task.save!
+
+task = Task.new(
+  title: 'Become Redu master',
   job:
 )
 task.save!
