@@ -104,7 +104,7 @@
 }
 
 .applied {
-  background-color: #D3F3EE;
+  background-color: #68E1FD;
 }
 
 .interview {
@@ -140,5 +140,20 @@ background-image: none;
 }
 
 .no-tick {
-background-image: none !important;
+  background-image: none !important;
+}
+
+.job-doc-btn {
+  background-color: $light-gray;
+  padding: 8px 16px;
+  margin-bottom: 8px;
+  text-decoration: none;
+  color: black;
+  border-radius: 2px;
+
+  &:hover {
+    text-decoration: none;
+    color: black;
+    background-color: #e1e1e1;
+  }
 }
