@@ -49,10 +49,10 @@
           <%= render 'modal', job: @new_job %>
         </div>
       </div>
-      <%= @jobs.count %>
+      <%= @jobs_p.count %>
       /
-      <%= Job.count %>
-      <% @jobs.each do |job| %>
+      <%= @jobs.count %>
+      <% @jobs_p.each do |job| %>
         <div>
           <%= render 'jobs/job_list', job: job %>
         </div>
