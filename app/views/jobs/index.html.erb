@@ -35,7 +35,7 @@
       <br>
       <h4>Job search funnel</h4>
       <div data-controller="chart" data-chart-data-value="<%= @data_value %>" class="p-2 align-items-center">
-          <canvas data-chart-target="canvas" id="myChart" width="500" height="500"></canvas>
+        <canvas data-chart-target="canvas" id="myChart" width="500" height="500"></canvas>
       </div>
     </div>
     <div class="col-lg-9">
@@ -49,11 +49,15 @@
           <%= render 'modal', job: @new_job %>
         </div>
       </div>
+      <%= @jobs.count %>
+      /
+      <%= Job.count %>
       <% @jobs.each do |job| %>
         <div>
           <%= render 'jobs/job_list', job: job %>
         </div>
       <% end %>
+      <%== pagy_nav(@pagy) %>
     </div>
   </div>
 </div>
