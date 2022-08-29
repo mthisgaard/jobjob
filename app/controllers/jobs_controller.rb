@@ -2,7 +2,6 @@ class JobsController < ApplicationController
   before_action :set_job, only: [:update, :destroy]
 
   def index
-    @pagy, @jobs_p = pagy(policy_scope(Job), items: 5)
     @jobs = policy_scope(Job) #getting from all pages
     @pending = @jobs.filter { |job| job.pending? }.count
     @applied = @jobs.filter { |job| job.applied? }.count
@@ -40,11 +39,11 @@ class JobsController < ApplicationController
     }.to_json
 
     if params[:status].present?
-      @jobs_p = policy_scope(Job.where(status: params[:status]))
-      # raise
-      # Job.where(status: params[:status])
+      @pagy, @jobs_p = pagy(policy_scope(Job.where(status: params[:status])), items: 5)
+      # @jobs_p = policy_scope(Job.where(status: params[:status]))
     else
-      @jobs = policy_scope(Job)
+      @pagy, @jobs_p = pagy(policy_scope(Job), items: 5)
+      # @jobs = policy_scope(Job)
     end
 
     @new_job = Job.new
