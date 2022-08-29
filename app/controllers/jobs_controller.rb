@@ -1,3 +1,5 @@
+require_relative '../services/scrape_jobs_service'
+
 class JobsController < ApplicationController
   before_action :set_job, only: [:update, :destroy]
 
@@ -48,6 +50,7 @@ class JobsController < ApplicationController
 
     @new_job = Job.new
     @new_task = Task.new
+    @job_suggestions = ScrapeJobsService.new.call
     authorize @jobs
   end
 
