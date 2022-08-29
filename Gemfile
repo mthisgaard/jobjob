@@ -1,9 +1,3 @@
-# custom gems
-gem "pundit"
-gem "chartkick"
-gem "grover"
-gem 'chartjs-ror'
-gem 'pagy'
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -83,3 +77,11 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+# custom gems
+gem "pundit"
+gem "chartkick"
+gem "grover"
+gem 'chartjs-ror'
+gem 'pagy'
+gem 'devise_token_auth', git: "https://github.com/lynndylanhurley/devise_token_auth"

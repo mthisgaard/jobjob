@@ -14,6 +14,15 @@ GIT
       actionpack (>= 5.2)
       activemodel (>= 5.2)
 
+GIT
+  remote: https://github.com/lynndylanhurley/devise_token_auth
+  revision: 027022c07c95a39d10b9734f1f2755b77236ffea
+  specs:
+    devise_token_auth (1.2.0)
+      bcrypt (~> 3.0)
+      devise (> 3.5.2, < 5)
+      rails (>= 4.2.0, < 7.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -310,6 +319,7 @@ DEPENDENCIES
   cloudinary
   debug
   devise
+  devise_token_auth!
   dotenv-rails
   faker!
   font-awesome-sass (~> 6.1)
