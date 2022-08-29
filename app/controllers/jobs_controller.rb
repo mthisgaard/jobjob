@@ -36,7 +36,8 @@ class JobsController < ApplicationController
           'rgb(172, 255, 89, 1)'
         ],
         'borderWidth': 1,
-        "data": @values }]
+        "data": @values
+      }]
 
     }.to_json
 
