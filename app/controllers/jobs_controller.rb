@@ -1,5 +1,4 @@
-require "open-uri"
-require "nokogiri"
+require_relative '../services/scrape_jobs_service'
 
 class JobsController < ApplicationController
   before_action :set_job, only: [:update, :destroy]
@@ -43,7 +42,7 @@ class JobsController < ApplicationController
 
     @new_job = Job.new
     @new_task = Task.new
-    @suggested_jobs = scrape_jobs()
+    @job_suggestions = ScrapeJobsService.new.call
     authorize @jobs
   end
 
@@ -87,19 +86,6 @@ class JobsController < ApplicationController
   end
 
   private
-
-  def scrape_jobs
-    search = "web+developer"
-    url = "https://japan-dev.com/jobs?query=#{search}"
-
-    html_file = URI.open(url).read
-    html_doc = Nokogiri::HTML(html_file)
-
-    html_doc.search(".job-item__main-data").each do |element|
-      puts element.text.strip
-      puts element.attribute("href").value
-    end
-  end
 
   def set_job
     @job = Job.find(params[:id])

@@ -1,0 +1,17 @@
+<div class="row">
+  <% job_suggestions.each do |job| %>
+    <div class="col-md-3">
+      <div class="card-suggested-job">
+        <div class="card-suggested-job-infos">
+          <div class="d-flex gap-2 justify-content-between align-items-start">
+            <p class="m-0"><strong><%= job[:title].length > 30 ? "#{job[:title][0..30]...}" : job[:title] %></strong></p>
+            <%= link_to job[:url], class: 'url-link', target: :_blank do %>
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            <% end %>
+          </div>
+          <p><%= job[:company] %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

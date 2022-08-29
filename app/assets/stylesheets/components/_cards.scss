@@ -1,0 +1,11 @@
+.card-suggested-job {
+  overflow: hidden;
+  height: 120px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+}
+
+.card-suggested-job .card-suggested-job-infos {
+  padding: 16px;
+}
