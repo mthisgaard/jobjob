@@ -4,10 +4,14 @@ class Api::V1::JobsController < Api::V1::BaseController
   end
 
   def create
+    puts params
     @job = Job.new(job_params)
-    @job.user = current_user
+    # todo hard coding first user for now
+    # @job.user = User.first
     authorize @job
-    unless @job.save
+    if @job.save
+      render json: @job
+    else
       render_error
     end
   end
@@ -15,7 +19,7 @@ class Api::V1::JobsController < Api::V1::BaseController
   private
 
   def job_params
-    params.require(:job).permit(:title, :company, :url)
+    params.require(:job).permit(:title, :company, :url, :user_id)
   end
 
   def render_error

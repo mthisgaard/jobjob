@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-        include DeviseTokenAuth::Concerns::SetUserByToken
+
   include Pagy::Backend
   before_action :authenticate_user!
 

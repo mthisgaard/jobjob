@@ -1,6 +1,4 @@
 class User < ApplicationRecord
-            # Include default devise modules.
-            include DeviseTokenAuth::Concerns::User
   has_many :jobs, dependent: :destroy
   has_many :tasks, through: :jobs
 

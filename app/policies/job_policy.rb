@@ -11,13 +11,14 @@ class JobPolicy < ApplicationPolicy
   end
 
   def create?
-    record.user == user
+    # record.user == user
+    true
   end
 
   def update?
     record.user == user
   end
-  
+
   def destroy?
     true
   end

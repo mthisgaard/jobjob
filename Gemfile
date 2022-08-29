@@ -84,4 +84,17 @@ gem "chartkick"
 gem "grover"
 gem 'chartjs-ror'
 gem 'pagy'
-gem 'devise_token_auth', git: "https://github.com/lynndylanhurley/devise_token_auth"
+
+
+# # Gemfile
+# gem 'simple_token_authentication', '~> 1.0' # see semver.org
+
+appraise 'rails_7_devise_4' do
+  gem "actionmailer", "~> 7"
+  gem "actionpack", "~> 7"
+  gem "activerecord", "~> 7"
+  gem "devise", git: 'https://github.com/heartcombo/devise'
+  gem "activemodel-serializers-xml"
+  gem "active_model_serializers"
+  # gem "mongoid", "7.3.3"
+end
