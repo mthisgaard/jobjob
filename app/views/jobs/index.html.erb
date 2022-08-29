@@ -55,11 +55,11 @@
           /
           <%= @jobs.count %>
           <li>
-            <%= link_to 'All', jobs_path, class: "tab-underlined" %>
+            <%= link_to "All (#{@jobs.count})", jobs_path, class: "tab-underlined" %>
           </li>
           <% Job.statuses.keys.each do |status| %>
             <li>
-              <%= link_to status.capitalize, jobs_path(:status => status), class: "tab-underlined" %>
+              <%= link_to "#{status.capitalize} (#{@jobs.where(status: status).count})", jobs_path(:status => status), class: "tab-underlined" %>
             </li>
           <% end %>
         </ul>
