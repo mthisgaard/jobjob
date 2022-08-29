@@ -67,8 +67,8 @@
         <% end %>
       </div>
       <div class='d-flex justify-content-center'>
-        <% if @status_count > 5 %>
-          <%== pagy_bootstrap_nav(@pagy) %>
+        <% if @jobs_p.count > 5 %>
+          <%== render partial: 'pagy/bootstrap_nav', locals: {pagy: @pagy} %>
         <% end %>
       </div>
     </div>

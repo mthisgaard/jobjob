@@ -316,6 +316,7 @@ DEPENDENCIES
   grover
   jbuilder
   jsbundling-rails
+  nokogiri (~> 1.13, >= 1.13.8)
   pagy
   pg (~> 1.1)
   puma (~> 5.0)
