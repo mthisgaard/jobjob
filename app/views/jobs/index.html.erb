@@ -30,8 +30,8 @@
           <%= render 'modal', job: @new_job %>
         </div>
       </div>
-      <div>
-        <ul class="list-inline tabs-underlined">
+      <div class="container">
+        <ul class="list-inline tabs-underlined" ">
           <li>
             <%= link_to "All (#{@jobs.count})", jobs_path, class: "tab-underlined" %>
           </li>
@@ -48,7 +48,9 @@
         <% end %>
       </div>
       <div class='d-flex justify-content-center'>
-        <%== pagy_bootstrap_nav(@pagy) %>
+        <% if @status_count > 5 %>
+          <%== render partial: 'pagy/bootstrap_nav', locals: {pagy: @pagy} %>
+        <% end %>
       </div>
     </div>
   </div>
