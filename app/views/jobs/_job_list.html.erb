@@ -43,6 +43,11 @@
           <br>
           <br>
           <div class="position-absolute bottom-0 d-flex gap-2">
+            <% if job.job_posting.attached? %>
+              <%= link_to cl_image_path(job.job_posting.key), target: :_blank, class: "job-doc-btn" do %>
+                <i class="fa-solid fa-file"></i><span> Listing </span>
+              <% end %>
+            <% end %>
             <% if job.cv.attached? %>
               <%= link_to cl_image_path(job.cv.key), target: :_blank, class: "job-doc-btn" do %>
                 <i class="fa-solid fa-file"></i><span> CV</span>
@@ -52,9 +57,6 @@
               <%= link_to cl_image_path(job.cover_letter.key), target: :_blank, class: "job-doc-btn" do %>
                 <i class="fa-solid fa-file"></i><span> Cover Letter</span>
               <% end %>
-            <% end %>
-            <% if job.job_posting.attached? %>
-              <%= link_to "Job posting", cl_image_path(job.job_posting.key), target: :_blank, class: "btn btn-sm" %>
             <% end %>
           </div>
         </div>

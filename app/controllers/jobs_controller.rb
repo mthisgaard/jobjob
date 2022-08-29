@@ -2,7 +2,8 @@ class JobsController < ApplicationController
   before_action :set_job, only: [:update, :destroy]
 
   def index
-    @jobs = policy_scope(Job)
+    @pagy, @jobs_p = pagy(policy_scope(Job), items: 5)
+    @jobs = policy_scope(Job) #getting from all pages
     @pending = @jobs.filter { |job| job.pending? }.count
     @applied = @jobs.filter { |job| job.applied? }.count
     @interviews = @jobs.filter { |job| job.interview? }.count
@@ -35,7 +36,7 @@ class JobsController < ApplicationController
         ],
         'borderWidth': 1,
         "data": @values }]
-        
+
     }.to_json
 
     @new_job = Job.new
