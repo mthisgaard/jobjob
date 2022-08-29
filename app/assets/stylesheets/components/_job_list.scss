@@ -190,13 +190,9 @@ background-image: none;
   border-bottom: 3px solid #555555;
 }
 
-.pagination {
-  color: black !important;
-}
-
-.page-link.active, .active > .page-link {
-  z-index: 3;
-  color: grey;
-  background-color: white;
-  border-color: var(--bs-pagination-active-border-color);
-}
+// .page-link.active, .active > .page-link {
+//   z-index: 3;
+//   color: var(--bs-pagination-active-color);
+//   background-color: var(--bs-pagination-active-bg);
+//   border-color: var(--bs-pagination-active-border-color);
+// }
