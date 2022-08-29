@@ -7,7 +7,8 @@ class JobPolicy < ApplicationPolicy
   end
 
   def index?
-    record.first.user == user
+    # record.first.user == user
+    true
   end
 
   def create?
@@ -17,7 +18,7 @@ class JobPolicy < ApplicationPolicy
   def update?
     record.user == user
   end
-  
+
   def destroy?
     true
   end

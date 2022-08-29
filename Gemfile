@@ -3,7 +3,7 @@ gem "pundit"
 gem "chartkick"
 gem "grover"
 gem 'chartjs-ror'
-
+gem 'pagy'
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
