@@ -55,20 +55,13 @@
           /
           <%= @jobs.count %>
           <li>
-            <a href="#" class="tab-underlined active">All</a>
+            <%= link_to 'All', jobs_path, class: "tab-underlined" %>
           </li>
-          <li>
-            <a href="#" class="tab-underlined">Pending</a>
-          </li>
-          <li>
-            <a href="#" class="tab-underlined">Apllied</a>
-          </li>
-          <li>
-            <a href="#" class="tab-underlined">Interview</a>
-          </li>
-          <li>
-            <a href="#" class="tab-underlined">Offer</a>
-          </li>
+          <% Job.statuses.keys.each do |status| %>
+            <li>
+              <%= link_to status.capitalize, jobs_path(:status => status), class: "tab-underlined" %>
+            </li>
+          <% end %>
         </ul>
         <% @jobs_p.each do |job| %>
           <div>
