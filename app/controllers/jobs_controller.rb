@@ -39,6 +39,14 @@ class JobsController < ApplicationController
 
     }.to_json
 
+    if params[:status].present?
+      @jobs_p = policy_scope(Job.where(status: params[:status]))
+      # raise
+      # Job.where(status: params[:status])
+    else
+      @jobs = policy_scope(Job)
+    end
+
     @new_job = Job.new
     @new_task = Task.new
     authorize @jobs
