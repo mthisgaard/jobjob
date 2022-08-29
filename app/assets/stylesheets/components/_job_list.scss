@@ -171,9 +171,16 @@ background-image: none;
   cursor: pointer;
   text-decoration: none;
   border-bottom: 4px solid transparent;
+  transition-duration: 1s;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
 }
 
 .tabs-underlined .tab-underlined.active {
+  opacity: 1;
+  border-bottom: 3px solid #555555;
+}
+
+.tab-underlined:hover {
   opacity: 1;
   border-bottom: 3px solid #555555;
 }
