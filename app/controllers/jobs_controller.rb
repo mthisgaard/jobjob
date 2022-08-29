@@ -39,10 +39,12 @@ class JobsController < ApplicationController
     }.to_json
 
     if params[:status].present?
+      @status_count = policy_scope(Job.where(status: params[:status])).count
       @pagy, @jobs_p = pagy(policy_scope(Job.where(status: params[:status]).order(created_at: :desc)), items: 5)
       # @jobs_p = policy_scope(Job.where(status: params[:status]))
     else
       @pagy, @jobs_p = pagy(policy_scope(Job), items: 5)
+      @status_count = @jobs.count
       # @jobs = policy_scope(Job)
     end
 
