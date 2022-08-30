@@ -7,7 +7,7 @@ class Api::V1::JobsController < Api::V1::BaseController
     puts params
     @job = Job.new(job_params)
     # todo hard coding first user for now
-    # @job.user = User.first
+    @job.user = current_user
     authorize @job
     if @job.save
       render json: @job
@@ -19,7 +19,7 @@ class Api::V1::JobsController < Api::V1::BaseController
   private
 
   def job_params
-    params.require(:job).permit(:title, :company, :url, :user_id)
+    params.require(:job).permit(:title, :company, :url)
   end
 
   def render_error
