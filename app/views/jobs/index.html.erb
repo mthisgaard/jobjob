@@ -1,8 +1,17 @@
-<div class="container" style="margin-bottom: 100px; margin-top: 60px;">
-  <div class="row gx-5">
+<div class="container" style="margin-bottom: 100px;">
+  <div class="col-lg-3 job-stats my-2">
+    <h3>Hello, <%= current_user.first_name.capitalize %>!</h3>
+  </div>
+  <!-- display badges -->
+  <ul>
+    <% current_user.badges.each do |badge| %>
+      <li><%= badge.name %></li>
+    <% end %>
+  </ul>
+  <br>
+  <div class="row">
     <div class="col-lg-3 job-stats my-2">
       <div>
-        <h3>Hello, <%= current_user.first_name.capitalize %>!</h3>
       </div>
       <br>
       <h3>Your progress</h3>
@@ -24,7 +33,7 @@
         <h3>Your jobs</h3>
         <div>
           <!-- Button trigger modal -->
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#jobs<%= @new_job.id %>">
+          <button type="button" class="btn btn-primary" style="margin-bottom: 8px;" data-bs-toggle="modal" data-bs-target="#jobs<%= @new_job.id %>">
             Add new job
           </button>
           <%= render 'modal', job: @new_job %>
