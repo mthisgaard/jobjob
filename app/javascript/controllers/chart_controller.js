@@ -7,7 +7,7 @@ export default class extends Controller {
   static values = {data: String}
 
   connect() {
-      console.log(JSON.parse(this.dataValue))
+      // console.log(JSON.parse(this.dataValue))
       const myChart = new Chart(this.canvasTarget, {
       type: 'bar', data: JSON.parse(this.dataValue)
       // data: {
