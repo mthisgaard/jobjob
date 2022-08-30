@@ -319,11 +319,8 @@ DEPENDENCIES
   grover
   jbuilder
   jsbundling-rails
-<<<<<<< HEAD
   merit
-=======
   nokogiri (~> 1.13, >= 1.13.8)
->>>>>>> master
   pagy
   pg (~> 1.1)
   puma (~> 5.0)
