@@ -61,7 +61,7 @@ class JobsController < ApplicationController
     @job = Job.new(job_params)
     @job.user = current_user
 
-    ['Research the company', 'Write cover letter', 'Call/email contact person at the company'].each do |task|
+    ['Research the company', 'Write cover letter'].each do |task|
       Task.create(
         job: @job,
         title: task
