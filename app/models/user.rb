@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_merit
+
   has_many :jobs, dependent: :destroy
   has_many :tasks, through: :jobs
   # Include default devise modules. Others available are:

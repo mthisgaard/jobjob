@@ -1,5 +1,11 @@
 <div class="container" style="margin-bottom: 100px;">
   <h2>Welcome back, <%= current_user.first_name.capitalize %>!</h2>
+   <!-- display badges -->
+  <ul>
+  <% current_user.badges.each do |badge| %>
+    <li><%= badge.name %></li>
+  <% end %>
+</ul>
   <br>
   <div class="row">
     <div class="col-lg-3 job-stats my-2">
