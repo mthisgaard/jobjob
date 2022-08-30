@@ -1,8 +1,9 @@
+require_relative '../services/scrape_jobs_service'
+
 class JobsController < ApplicationController
   before_action :set_job, only: [:update, :destroy]
 
   def index
-    @pagy, @jobs_p = pagy(policy_scope(Job), items: 5)
     @jobs = policy_scope(Job) #getting from all pages
     @pending = @jobs.filter { |job| job.pending? }.count
     @applied = @jobs.filter { |job| job.applied? }.count
@@ -35,28 +36,50 @@ class JobsController < ApplicationController
           'rgb(172, 255, 89, 1)'
         ],
         'borderWidth': 1,
-        "data": @values }]
+        "data": @values
+      }]
 
     }.to_json
 
+    if params[:status].present?
+      @status_count = policy_scope(Job.where(status: params[:status])).count
+      @pagy, @jobs_p = pagy(policy_scope(Job.where(status: params[:status]).order(created_at: :desc)), items: 5)
+      # @jobs_p = policy_scope(Job.where(status: params[:status]))
+    else
+      @pagy, @jobs_p = pagy(policy_scope(Job), items: 5)
+      @status_count = @jobs.count
+      # @jobs = policy_scope(Job)
+    end
+
     @new_job = Job.new
     @new_task = Task.new
+    @job_suggestions = ScrapeJobsService.new.call
     authorize @jobs
   end
 
   def create
     @job = Job.new(job_params)
     @job.user = current_user
-    authorize @job
-    if job_params[:url].present?
-      grover = Grover.new(job_params[:url], format: 'A4')
-      pdf = grover.to_pdf
-      @job.job_posting.attach(io: StringIO.new(pdf), filename: job_params[:company], content_type: "application/pdf")
-    end
-    if @job.save
+
+
+  authorize @job
+  if job_params[:url].present?
+    grover = Grover.new(job_params[:url], format: 'A4')
+    pdf = grover.to_pdf
+    @job.job_posting.attach(io: StringIO.new(pdf), filename: job_params[:company], content_type: "application/pdf")
+  end
+  if @job.save
+    ['Research the company', 'Write cover letter'].each do |task|
+      Task.create(
+        job: @job,
+        title: task
+      )
+  end
       redirect_to jobs_path
     else
-      render "/jobs", status: :unprocessable_entity
+      # render "/jobs", status: :unprocessable_entity
+      redirect_to jobs_path
+      # render :index, status: :unprocessable_entity
     end
   end
 

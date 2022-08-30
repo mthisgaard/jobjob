@@ -1,64 +1,61 @@
 <div class="container" style="margin-bottom: 100px;">
-  <h2>Welcome back, <%= current_user.first_name.capitalize %>!</h2>
   <br>
-  <div class="row">
+  <div class="row gx-4">
     <div class="col-lg-3 job-stats my-2">
-      <h3 style="margin-bottom: 16px;">Your job stats</h3>
-      <div class="stats stats-pending m-2">
-        <div class="d-flex gap-2 justify-content-between align-items-center stats-body">
-          <i class="fa-solid fa-hourglass-start"></i>
-          <h5 class="flex-grow-1"><strong>Pending</strong></h5>
-          <h5><strong><%= @pending %></strong></h5>
-        </div>
-      </div>
-      <div class="stats stats-applied m-2">
-        <div class="d-flex gap-2 justify-content-between align-items-center stats-body">
-          <i class="fa-solid fa-paper-plane"></i>
-          <h5 class="flex-grow-1"><strong>Applied</strong></h5>
-          <h5><strong><%= @applied %></strong></h5>
-        </div>
-      </div>
-      <div class="stats stats-interviews m-2">
-        <div class="d-flex gap-2 justify-content-between align-items-center stats-body">
-          <i class="fa-solid fa-people-arrows"></i>
-          <h5 class="flex-grow-1"><strong>Interviews</strong></h5>
-          <h5><strong><%= @interviews %></strong></h5>
-        </div>
-      </div>
-      <div class="stats stats-offers m-2">
-        <div class="d-flex gap-2 justify-content-between align-items-center stats-body">
-          <i class="fa-solid fa-trophy"></i>
-          <h5 class="flex-grow-1"><strong>Offers</strong></h5>
-          <h5><strong><%= @offers %></strong></h5>
-        </div>
-      </div>
+      <h4>Hello, <%= current_user.first_name.capitalize %>!</h4>
+      <!-- display badges -->
+      <ul>
+        <% current_user.badges.each do |badge| %>
+          <li><%= badge.name %></li>
+        <% end %>
+      </ul>
       <br>
-      <h4>Job search funnel</h4>
+      <h4>Your progress</h4>
       <div data-controller="chart" data-chart-data-value="<%= @data_value %>" class="p-2 align-items-center">
         <canvas data-chart-target="canvas" id="myChart" width="500" height="500"></canvas>
       </div>
     </div>
     <div class="col-lg-9">
+      <div class="job-suggestions my-2">
+        <div class="d-flex align-items-center gap-2">
+          <h4>Job suggestions</h4>
+          <p class="m-0 opacity-50">from TokyoDev</p>
+        </div>
+        <br>
+        <%= render 'job_suggestions', job_suggestions: @job_suggestions, jobs: @jobs %>
+      </div>
+      <br>
       <div class="d-flex justify-content-between align-items-center my-2">
-        <h3>Your jobs</h3>
+        <h4>Your jobs</h4>
         <div>
           <!-- Button trigger modal -->
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#jobs<%= @new_job.id %>">
+          <button type="button" class="btn btn-primary" style="margin-bottom: 8px;" data-bs-toggle="modal" data-bs-target="#jobs<%= @new_job.id %>">
             Add new job
           </button>
           <%= render 'modal', job: @new_job %>
         </div>
       </div>
-      <%= @jobs_p.count %>
-      /
-      <%= @jobs.count %>
-      <% @jobs_p.each do |job| %>
-        <div>
-          <%= render 'jobs/job_list', job: job %>
-        </div>
-      <% end %>
+      <div>
+        <ul class="list-inline tabs-underlined" ">
+          <li>
+            <%= link_to "All (#{@jobs.count})", jobs_path, class: "tab-underlined #{"active" unless params[:status]}" %>
+          </li>
+          <% Job.statuses.keys.each do |status| %>
+            <li>
+              <%= link_to "#{status.capitalize} (#{@jobs.where(status: status).count})", jobs_path(:status => status), class: "tab-underlined #{"active" if params[:status] == status}" %>
+            </li>
+          <% end %>
+        </ul>
+        <% @jobs_p.each do |job| %>
+          <div>
+            <%= render 'jobs/job_list', job: job %>
+          </div>
+        <% end %>
+      </div>
       <div class='d-flex justify-content-center'>
-        <%== pagy_bootstrap_nav(@pagy) %>
+        <% if @status_count > 5 %>
+          <%== render partial: 'pagy/bootstrap_nav', locals: {pagy: @pagy} %>
+        <% end %>
       </div>
     </div>
   </div>

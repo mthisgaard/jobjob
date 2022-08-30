@@ -13,15 +13,19 @@ class TasksController < ApplicationController
         format.text { render partial: "jobs/tasks", locals: { tasks: @job.tasks.order(:done, :created_at) }, formats: [:html] }
       end
     else
-      render partial: "jobs/tasks", status: :unprocessable_entity
+      # render partial: "jobs/tasks", status: :unprocessable_entity
+      render :index, status: :unprocessable_entity
+
     end
   end
 
   def update
     authorize @task
+    @user = current_user
     unless @task.update(task_params)
       render partial: "jobs/tasks", status: :unprocessable_entity
     end
+    check_badges(@task)
   end
 
   def destroy
@@ -34,6 +38,10 @@ class TasksController < ApplicationController
   end
 
   private
+
+  def check_badges(task)
+    current_user.add_badge(1) if task.job.user.tasks.where(done: true).count >= 3 && current_user.badges.where(id: 1).empty?
+  end
 
   def set_task
     @task = Task.find(params[:id])

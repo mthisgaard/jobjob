@@ -1,0 +1,25 @@
+.card-suggested-job {
+  overflow: hidden;
+  height: 150px;
+  background: white;
+  box-shadow: 0 0 6px rgba(0,0,0,0.2);
+  display: flex;
+  position: relative;
+
+  .suggestion-link {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+  }
+}
+
+.add-job-btn {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+}
+
+.card-suggested-job .card-suggested-job-infos {
+  padding: 16px;
+  margin-right: 32px;
+}

@@ -7,7 +7,8 @@ class JobPolicy < ApplicationPolicy
   end
 
   def index?
-    record.first.user == user
+    # record.first.user == user
+    true
   end
 
   def create?
