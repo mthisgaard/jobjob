@@ -1,5 +1,5 @@
 <div class="row">
-  <% job_suggestions.first(8).each do |job| %>
+  <% job_suggestions.first(4).each do |job| %>
     <% unless jobs.where(company: job[:company]).any? && jobs.where(title: job[:title]).any? %>
       <div class="col-md-3 my-2">
         <div class="card-suggested-job">
