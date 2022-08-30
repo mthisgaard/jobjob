@@ -78,7 +78,8 @@ class JobsController < ApplicationController
       redirect_to jobs_path
     else
       # render "/jobs", status: :unprocessable_entity
-      render :index, status: :unprocessable_entity
+      redirect_to jobs_path
+      # render :index, status: :unprocessable_entity
     end
   end
 
