@@ -30,8 +30,8 @@
           <%= render "edit_status_modal", job: job %>
         </div>
       </div>
-      <button class="accordion-button collapsed w-100" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse<%= job.id %>" aria-expanded="false" aria-controls="flush-collapse<%= job.id %>">
-        <p class="text-center" style="font-size: 12px; opacity: 0.7;">Show more <i class="fa-solid fa-angle-down"></i></p>
+      <button class="accordion-button collapsed w-100" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse<%= job.id %>" aria-expanded="false" aria-controls="flush-collapse<%= job.id %>" data-controller="show-arrow" data-action="click->show-arrow#show">
+        <p class="text-center" style="font-size: 12px; opacity: 0.7;" data-show-arrow-target="text">Show more <i class="fa-solid fa-angle-down"></i></p>
       </button>
     </h2>
     <div id="flush-collapse<%= job.id %>" class="accordion-collapse collapse job-card-content" aria-labelledby="flush-heading<%= job.id %>" data-bs-parent="#accordionFlushExample">

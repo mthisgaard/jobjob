@@ -21,3 +21,6 @@ application.register("hello", HelloController)
 
 import ChartController from "./chart_controller"
 application.register("chart", ChartController)
+
+import ShowArrowController from "./show_arrow_controller"
+application.register("show-arrow", ShowArrowController)
