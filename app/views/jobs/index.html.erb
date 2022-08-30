@@ -26,7 +26,7 @@
           <p class="m-0 opacity-50">from TokyoDev</p>
         </div>
         <br>
-        <%= render 'job_suggestions', job_suggestions: @job_suggestions %>
+        <%= render 'job_suggestions', job_suggestions: @job_suggestions, jobs: @jobs %>
       </div>
       <br>
       <div class="d-flex justify-content-between align-items-center my-2">
@@ -39,7 +39,7 @@
           <%= render 'modal', job: @new_job %>
         </div>
       </div>
-      <div class="container">
+      <div>
         <ul class="list-inline tabs-underlined" ">
           <li>
             <%= link_to "All (#{@jobs.count})", jobs_path, class: "tab-underlined #{"active" unless params[:status]}" %>

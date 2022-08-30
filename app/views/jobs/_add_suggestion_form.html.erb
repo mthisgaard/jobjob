@@ -1,0 +1,9 @@
+<%= simple_form_for(new_job) do |f| %>
+  <%= f.hidden_field :title, value: job[:title] %>
+  <%= f.hidden_field :company, value: job[:company] %>
+  <%= f.hidden_field :url, value: job[:url] %>
+  <% if job[:deadline].present? %>
+    <%= f.hidden_field :deadline, deadline: job[:deadline] %>
+  <% end %>
+  <%= f.submit 'Add to jobs', class: 'btn btn-sm btn-primary add-job-btn' %>
+<% end %>
