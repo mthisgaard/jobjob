@@ -13,7 +13,9 @@ class TasksController < ApplicationController
         format.text { render partial: "jobs/tasks", locals: { tasks: @job.tasks.order(:done, :created_at) }, formats: [:html] }
       end
     else
-      render partial: "jobs/tasks", status: :unprocessable_entity
+      # render partial: "jobs/tasks", status: :unprocessable_entity
+      render :index, status: :unprocessable_entity
+
     end
   end
 

@@ -6,7 +6,7 @@ export default class extends Controller {
 
   add(event) {
     event.preventDefault()
-
+    if (this.inputTarget.value.trim() !== '') {
     fetch(this.formTarget.action, {
       method: "POST",
       headers: { "Accept": "text/plain" },
@@ -17,5 +17,6 @@ export default class extends Controller {
           this.tasksTarget.outerHTML = data;
           this.inputTarget.value = "";
       })
+    }
   }
 }
