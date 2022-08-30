@@ -60,6 +60,14 @@ class JobsController < ApplicationController
   def create
     @job = Job.new(job_params)
     @job.user = current_user
+
+    ['Research the company', 'Write cover letter'].each do |task|
+      Task.create(
+        job: @job,
+        title: task
+      )
+    end
+
     authorize @job
     if job_params[:url].present?
       grover = Grover.new(job_params[:url], format: 'A4')
@@ -69,7 +77,9 @@ class JobsController < ApplicationController
     if @job.save
       redirect_to jobs_path
     else
-      render "/jobs", status: :unprocessable_entity
+      # render "/jobs", status: :unprocessable_entity
+      render :index, status: :unprocessable_entity
+
     end
   end
 
