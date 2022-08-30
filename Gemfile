@@ -85,6 +85,7 @@ gem "chartkick"
 gem "grover"
 gem 'chartjs-ror'
 gem 'pagy'
+gem 'merit'
 
 gem 'jwt'
 gem 'bcrypt'
