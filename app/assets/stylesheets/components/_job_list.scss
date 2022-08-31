@@ -190,12 +190,12 @@ background-image: none;
   border-bottom: 3px solid #555555;
 }
 
-// .page-link.active, .active > .page-link {
+.page-link.active, .active > .page-link {
 //   z-index: 3;
-//   color: var(--bs-pagination-active-color);
-//   background-color: var(--bs-pagination-active-bg);
-//   border-color: var(--bs-pagination-active-border-color);
-// }
+  color: $gray;
+  background-color: #D3F3EE;
+  border-color: #D3F3EE;
+}
 
 .edit-and-delete-button {
   border: none;
