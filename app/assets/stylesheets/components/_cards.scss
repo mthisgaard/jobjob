@@ -11,6 +11,13 @@
     top: 16px;
     right: 16px;
   }
+
+  .suggestion-logo {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border: 1px solid $gray
+  }
 }
 
 .add-job-btn {

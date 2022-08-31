@@ -196,3 +196,15 @@ background-image: none;
 //   background-color: var(--bs-pagination-active-bg);
 //   border-color: var(--bs-pagination-active-border-color);
 // }
+
+.edit-and-delete-button {
+  border: none;
+  background: transparent;
+  opacity: 0.7;
+  color: $gray;
+
+  &:hover {
+    opacity: 1;
+    color: $gray;
+  }
+}
