@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_29_012533) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_31_010302) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -58,10 +58,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_29_012533) do
     t.date "deadline"
     t.text "notes"
     t.string "url"
-    t.integer "status"
+    t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
+    t.string "logo_url", default: "company.svg"
     t.index ["user_id"], name: "index_jobs_on_user_id"
   end
 
@@ -109,7 +110,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_29_012533) do
   create_table "tasks", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.boolean "done"
+    t.boolean "done", default: false
     t.bigint "job_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -10,7 +10,6 @@
             <% end %>
           </div>
           <p class="opacity-75"><%= job.title %></p>
-          <%# <p class="job-card-task-count">Tasks <%= job.tasks.where(done: true).count %> <%# / <%= job.tasks.count %>
         </div>
         <% if job.deadline.present? && job.status == 'pending' && job.deadline > Date.today %>
           <div class="job-deadline m-0">
