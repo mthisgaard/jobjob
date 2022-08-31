@@ -1,11 +1,3 @@
-# custom gems
-gem "pundit"
-gem "chartkick"
-gem "grover"
-gem 'chartjs-ror'
-gem 'pagy'
-gem 'merit'
-
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -86,3 +78,26 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+# custom gems
+gem "pundit"
+gem "chartkick"
+gem "grover"
+gem 'chartjs-ror'
+gem 'pagy'
+
+gem 'jwt'
+gem 'bcrypt'
+
+# # Gemfile
+# gem 'simple_token_authentication', '~> 1.0' # see semver.org
+
+# appraise 'rails_7_devise_4' do
+#   gem "actionmailer", "~> 7"
+#   gem "actionpack", "~> 7"
+#   gem "activerecord", "~> 7"
+#   gem "devise", git: 'https://github.com/heartcombo/devise'
+#   gem "activemodel-serializers-xml"
+#   gem "active_model_serializers"
+#   # gem "mongoid", "7.3.3"
+# end
