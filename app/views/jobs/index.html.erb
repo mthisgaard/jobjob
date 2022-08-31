@@ -28,8 +28,8 @@
           <%= render 'modal', job: @new_job %>
         </div>
       </div>
-      <div class="container">
-        <ul class="list-inline tabs-underlined" >
+      <div>
+        <ul class="list-inline tabs-underlined mb-4" >
           <li>
             <%= link_to "All (#{@jobs.count})", jobs_path, class: "tab-underlined #{"active" unless params[:status]}" %>
           </li>
@@ -52,7 +52,7 @@
       </div>
     </div>
   </div>
-  <div class="job-suggestions my-2">
+  <div class="job-suggestions my-2" id="suggested-jobs">
     <h4>Job suggestions</h4>
     <br>
     <%= render 'job_suggestions', job_suggestions: @job_suggestions, jobs: @jobs %>
