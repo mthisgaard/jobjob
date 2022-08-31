@@ -1,16 +1,16 @@
-<div class="job">
-  <div class="accordion-item whole-job">
+<div class="job list-group-item">
+  <div class="accordion-item whole-job" >
     <h2 class="accordion-header" id="flush-heading<%= job.id %>">
       <div class="d-flex justify-content-between align-items-start gap-3" style="width: 100%;">
+        <%= image_tag job[:logo_url], class: 'company-logo' %>
         <div class="flex-grow-1 fs-6">
           <div class="d-flex gap-2 align-items-center">
-            <p class="m-0"><strong><%= job.title %></strong></p>
+            <p class="m-0"><strong><%= job.company %></strong></p>
             <%= link_to job.url, class: 'url-link', target: :_blank do %>
               <i class="fa-solid fa-arrow-up-right-from-square"></i>
             <% end %>
           </div>
-          <p class="opacity-50"><%= job.company %></p>
-          <%# <p class="job-card-task-count">Tasks <%= job.tasks.where(done: true).count %> <%# / <%= job.tasks.count %>
+          <p class="opacity-75"><%= job.title %></p>
         </div>
         <% if job.deadline.present? && job.status == 'pending' && job.deadline > Date.today %>
           <div class="job-deadline m-0">
@@ -31,11 +31,11 @@
         </div>
       </div>
       <button class="accordion-button collapsed w-100" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse<%= job.id %>" aria-expanded="false" aria-controls="flush-collapse<%= job.id %>" data-controller="show-arrow" data-action="click->show-arrow#show">
-        <p class="text-center" style="font-size: 12px; opacity: 0.7;" data-show-arrow-target="text">Show more <i class="fa-solid fa-angle-down"></i></p>
+        <p class="text-center" style="font-size: 12px; opacity: 0.7; margin-top: 16px;" data-show-arrow-target="text">Show more <i class="fa-solid fa-angle-down"></i></p>
       </button>
     </h2>
-    <div id="flush-collapse<%= job.id %>" class="accordion-collapse collapse job-card-content" aria-labelledby="flush-heading<%= job.id %>" data-bs-parent="#accordionFlushExample">
-      <div class="d-flex job-body justify-content-between">
+    <div id="flush-collapse<%= job.id %>" class="accordion-collapse collapse job-card-content" aria-labelledby="flush-heading<%= job.id %>" data-bs-parent="#accordionFlushExample" >
+      <div class="d-flex job-body justify-content-between" id="scrollspyHeading<%= job.id %>">
         <div data-controller="add-task" class="to-do position-relative">
           <%= render 'tasks', tasks: job.tasks.order(:done, :created_at) %>
           <%= render 'jobs/task_form', job: job, task: @new_task %>
@@ -75,11 +75,13 @@
         </div>
         <div>
           <!-- Button trigger modal -->
-          <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target= "#jobs<%= job.id %>" >
-            Edit
+          <button type="button" class="edit-and-delete-button" data-bs-toggle="modal" data-bs-target= "#jobs<%= job.id %>" >
+            <i class="fa-solid fa-pen-to-square"></i>
           </button>
           <%= render "modal", job: job %>
-          <%= link_to 'Delete', job_path(job), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this job?" }, class: "btn btn-sm btn-primary" %>
+          <%= link_to job_path(job), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this job?" }, class: 'edit-and-delete-button' do %>
+            <i class="fa-solid fa-trash-can"></i>
+          <% end %>
         </div>
       </div>
     </div>

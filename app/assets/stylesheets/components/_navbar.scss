@@ -1,6 +1,7 @@
 .navbar-lewagon {
   justify-content: space-between;
   background-color: #D3F3EE;
+  height: 60px;
   h1 {
     font-family: 'M PLUS Rounded 1c', sans-serif;
     font-weight: bold;
@@ -13,5 +14,6 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 30px;
+  height: 50px;
+  width: 50px;
 }

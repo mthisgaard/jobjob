@@ -1,16 +1,10 @@
-<div class="container" style="margin-bottom: 100px;">
-  <div class="col-lg-3 job-stats my-2">
-    <h3>Hello, <%= current_user.first_name.capitalize %>!</h3>
-  </div>
-  <br>
+<div class="container" style="margin-bottom: 100px; margin-top: 50px;">
   <div class="row gx-4">
     <div class="col-lg-3 job-stats my-2">
+      <h4>Hello, <%= current_user.first_name.capitalize %>!</h4>
       <br>
-      <h4>Your progress</h4>
-      <div data-controller="chart" data-chart-data-value="<%= @data_value %>" class="p-2 align-items-center">
-        <canvas data-chart-target="canvas" id="myChart" width="500" height="500"></canvas>
-      </div>
-      <!-- display badges -->
+      <h4>Achievements</h4>
+    <!-- display badges -->
       <div class="col-lg-3 job-stats my-2">
         <h3>Achievements</h3>
         <div data-controller="badges">
@@ -22,17 +16,13 @@
           </div>
         </div>
       </div>
+      <br>
+      <h4>Application progress</h4>
+      <div data-controller="chart" data-chart-data-value="<%= @data_value %>" class="p-2 align-items-center">
+        <canvas data-chart-target="canvas" id="myChart" width="500" height="500"></canvas>
+      </div>
     </div>
     <div class="col-lg-9">
-      <div class="job-suggestions my-2">
-        <div class="d-flex align-items-center gap-2">
-          <h4>Job suggestions</h4>
-          <p class="m-0 opacity-50">from TokyoDev</p>
-        </div>
-        <br>
-        <%= render 'job_suggestions', job_suggestions: @job_suggestions, jobs: @jobs %>
-      </div>
-      <br>
       <div class="d-flex justify-content-between align-items-center my-2">
         <h4>Your jobs</h4>
         <div>
@@ -43,8 +33,8 @@
           <%= render 'modal', job: @new_job %>
         </div>
       </div>
-      <div class="container">
-        <ul class="list-inline tabs-underlined" >
+      <div class="container jobs list-group" >
+        <ul class="list-inline tabs-underlined mb-4" >
           <li>
             <%= link_to "All (#{@jobs.count})", jobs_path, class: "tab-underlined #{"active" unless params[:status]}" %>
           </li>
@@ -55,16 +45,19 @@
           <% end %>
         </ul>
         <% @jobs_p.each do |job| %>
-          <div>
-            <%= render 'jobs/job_list', job: job %>
-          </div>
+          <%= render 'jobs/job_list', job: job %>
         <% end %>
       </div>
       <div class='d-flex justify-content-center'>
-        <% if @status_count > 5 %>
+        <% if @status_count > 4 %>
           <%== render partial: 'pagy/bootstrap_nav', locals: {pagy: @pagy} %>
         <% end %>
       </div>
     </div>
+  </div>
+  <div class="job-suggestions my-2" id="suggested-jobs">
+    <h4>Job suggestions</h4>
+    <br>
+    <%= render 'job_suggestions', job_suggestions: @job_suggestions, jobs: @jobs %>
   </div>
 </div>

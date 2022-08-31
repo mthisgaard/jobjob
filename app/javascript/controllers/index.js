@@ -4,7 +4,9 @@
 
 import { application } from "./application"
 import Chart from 'stimulus-chartjs'
+import Notification from 'stimulus-notification'
 
+application.register('notification', Notification)
 application.register('chart', Chart)
 
 import EditNotesController from "./edit_notes_controller"

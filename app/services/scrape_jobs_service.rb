@@ -10,7 +10,8 @@ class ScrapeJobsService
       {
         title: job_card.search(".job-title .link-reset").first.text.strip,
         company: job_card.search(".company-title").text.strip,
-        url: "https://www.tokyodev.com#{job_card.search(".job-title .link-reset").attribute("href").value}"
+        url: "https://www.tokyodev.com#{job_card.search(".job-title .link-reset").attribute("href").value}",
+        logo_url: "https://www.tokyodev.com#{job_card.search(".company-logo").attribute("src").value}"
       }
     end
   end

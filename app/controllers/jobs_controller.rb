@@ -1,4 +1,5 @@
 require_relative '../services/scrape_jobs_service'
+require "open-uri"
 
 class JobsController < ApplicationController
   before_action :set_job, only: [:update, :destroy]
@@ -46,9 +47,8 @@ class JobsController < ApplicationController
       @pagy, @jobs_p = pagy(policy_scope(Job.where(status: params[:status]).order(created_at: :desc)), items: 5)
       # @jobs_p = policy_scope(Job.where(status: params[:status]))
     else
-      @pagy, @jobs_p = pagy(policy_scope(Job), items: 5)
+      @pagy, @jobs_p = pagy(policy_scope(Job).order(created_at: :desc), items: 5)
       @status_count = @jobs.count
-      # @jobs = policy_scope(Job)
     end
 
     @new_job = Job.new
@@ -61,20 +61,23 @@ class JobsController < ApplicationController
     @job = Job.new(job_params)
     @job.user = current_user
 
+    authorize @job
 
-  authorize @job
-  if job_params[:url].present?
-    grover = Grover.new(job_params[:url], format: 'A4')
-    pdf = grover.to_pdf
-    @job.job_posting.attach(io: StringIO.new(pdf), filename: job_params[:company], content_type: "application/pdf")
-  end
-  if @job.save
-    ['Research the company', 'Write cover letter'].each do |task|
+    # file = URI.open(@job.logo_url)              #possibble to save logos on cloudinary
+    # @job.company_logo.attach(io: file, filename: "nes.png", content_type: "image/png")
+
+   if job_params[:url].present?
+     grover = Grover.new(job_params[:url], format: 'A4')
+     pdf = grover.to_pdf
+     @job.job_posting.attach(io: StringIO.new(pdf), filename: job_params[:company], content_type: "application/pdf")
+   end
+    if @job.save
+      ['Research the company', 'Write cover letter'].each do |task|
       Task.create(
         job: @job,
         title: task
-      )
-  end
+        )
+    end
       redirect_to jobs_path
     else
       # render "/jobs", status: :unprocessable_entity
@@ -119,6 +122,6 @@ class JobsController < ApplicationController
   end
 
   def job_params
-    params.require(:job).permit(:title, :company, :deadline, :url, :notes, :cv, :cover_letter, :status)
+    params.require(:job).permit(:title, :company, :deadline, :url, :notes, :cv, :cover_letter, :status, :logo_url)
   end
 end

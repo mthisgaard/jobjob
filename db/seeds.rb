@@ -403,9 +403,11 @@ puts "travelling 2 weeks in the future"
 
 ###################################################################
 
-demo2 = User.create!(email: 'malene2@me.com', first_name: 'malene', last_name: '928', password: '123123', avatar: 'https://avatars.githubusercontent.com/u/107089457?v=4')
+demo2 = User.create!(email: 'malene@me.com', first_name: 'malene', last_name: '928', password: '123123', avatar: 'https://avatars.githubusercontent.com/u/107089457?v=4')
 
 puts "Updating demo jobs and adding some more"
+
+
 
 ############ JOB 1 #############
 
@@ -415,6 +417,7 @@ job = Job.new(
   deadline: Date.today + 5,
   url: 'https://jp.linkedin.com/jobs/view/front-end-developer-at-tablecheck-3217604304?refId=z1Iig2xD6Cpt2YnYZn2JtA%3D%3D&trackingId=eJ3OAeFdbDfzCbzua1raug%3D%3D&position=1&pageNum=0&trk=public_jobs_jserp-result_search-card',
   status: 3,
+  logo_url: 'https://media-exp1.licdn.com/dms/image/C560BAQGJLM97eHnD3Q/company-logo_200_200/0/1642072893590?e=1669852800&v=beta&t=AwXvl9uzJ2ouS2BZls4UN39_fRSP4r-dYdimNRzXIxs',
   notes: 'Fully remote or in office, front-end position for online reservation business.
 
 Japanese not required. (they got language exchange program for practicing my Japanese)
@@ -448,14 +451,6 @@ task = Task.new(
   job:
 )
 task.save!
-
-
-# task = Task.new(
-#   title: 'First interview Aug 26th 3pm (zoom)',
-#   done: true,
-#   job:
-# )
-# task.save!
 
 task = Task.new(
   title: 'Review datasets before interview!!!',
@@ -506,6 +501,7 @@ job = Job.new(
   deadline: Date.today + 7,
   url: 'https://jp.linkedin.com/jobs/view/back-end-engineer-go-at-computer-futures-3226955401?refId=d0f%2FRQKnp0cXAJAfAUEG0w%3D%3D&trackingId=URE%2Bmrl9OrBMEHorBQoq2g%3D%3D&trk=public_jobs_similar-jobs',
   status: 4,
+  logo_url: 'https://media-exp1.licdn.com/dms/image/C4D0BAQGXzDswjXmJ8A/company-logo_200_200/0/1627463837466?e=1669852800&v=beta&t=xFKiOl3L4lD9rFdya7itrn6Uw_vZD2EkTVln_3lMVfc',
   notes: 'Mainly Go
 
 remote with home office setup support
@@ -568,6 +564,7 @@ job = Job.new(
   deadline: Date.today + 12,
   url: 'https://jp.linkedin.com/jobs/view/sales-engineer-japan-at-radware-3119583865?refId=ThJ5RpPpXD0eY3NLXJQfJg%3D%3D&trackingId=zt%2F5CXq5GwqKdVAa55Ds3A%3D%3D&trk=public_jobs_people-also-viewed',
   status: 1,
+  logo_url: 'https://media-exp1.licdn.com/dms/image/C4D0BAQGAIb_cHyq7vw/company-logo_200_200/0/1520441298068?e=1669852800&v=beta&t=VdEgGMI-KZzixH6skiGNQgnYySk31oOg3yvE4tSjXaY',
   notes: 'cybersecurity company
 
 Sales team system engineer
@@ -626,6 +623,7 @@ job = Job.new(
   deadline: Date.today + 12,
   url: 'https://jp.linkedin.com/jobs/view/platform-engineer-techlead-senior-software-engineer-at-%E6%A0%AA%E5%BC%8F%E4%BC%9A%E7%A4%BE%E3%82%A8%E3%82%AF%E3%82%B5%E3%82%A6%E3%82%A3%E3%82%B6%E3%83%BC%E3%82%BA-exawizards-inc-3040632081?refId=ThJ5RpPpXD0eY3NLXJQfJg%3D%3D&trackingId=WVaaKvKI9ooqCwQ%2BPfgWJQ%3D%3D&trk=public_jobs_people-also-viewed',
   status: 1,
+  logo_url: 'https://media-exp1.licdn.com/dms/image/C510BAQF5pE2c-WuqMg/company-logo_200_200/0/1554128607290?e=1669852800&v=beta&t=t_fvgTYC6sPMWDTAcOw_Sk-OB75lQAQ1qvQoGmuuby8',
   notes: 'Need conversational Japanese
 
 focused on machine learning technologies for the sake of solving social issues
@@ -683,17 +681,11 @@ job = Job.new(
   title: "Software Engineer",
   company: 'Mercari',
   deadline: Date.today + 2,
-  url: 'https://jp.linkedin.com/jobs/view/software-engineer-frontend-mercari-at-mercari-inc-2884177585?refId=LMaXwM7cEa5I3yLlaGTRPQ%3D%3D&trackingId=%2FkQD%2FW2e7APwYBrD7hVu0Q%3D%3D&trk=public_jobs_people-also-viewed',
-  status: 4,
-  notes: 'Frontend
-
-iOS and Android
-
-fully remote OR Office - Roppongi (gonna be good working here on Fridays)
-
-International environment
-
-Rejection Reason: Good but other applications more preferable',
+  url: 'https://apply.workable.com/mercari/j/EBE51B237C/',
+  status: 0,
+  logo_url: 'https://workablehr.s3.amazonaws.com/uploads/account/logo/292085/logo',
+  notes: 'Fully remote OR Office
+International environment',
   user: demo2
 )
 job.save!
@@ -712,27 +704,6 @@ task = Task.new(
 )
 task.save!
 
-task = Task.new(
-  title: 'Send cover letter to company (Vivian)',
-  done: true,
-  job:
-)
-task.save!
-
-task = Task.new(
-  title: 'ask about Incentive program',
-  done: true,
-  job:
-)
-task.save!
-
-task = Task.new(
-  title: 'Call contact person at the company (Vivian)',
-  done: true,
-  job:
-)
-task.save!
-
 ###########################3 66666666666 ###################33
 
 job = Job.new(
@@ -741,6 +712,7 @@ job = Job.new(
   deadline: Date.today + 2,
   url: 'https://jp.linkedin.com/jobs/view/software-engineer-hardware-emulation-at-woven-planet-3207664207?refId=9hwKS2RjjF0YhKcP9AB1kg%3D%3D&trackingId=woxdkKOw8Oy%2FeMgjAOfUhA%3D%3D&trk=public_jobs_people-also-viewed',
   status: 2,
+  logo_url: 'https://media-exp1.licdn.com/dms/image/C560BAQFKQPQFNQrIVg/company-logo_200_200/0/1608545550416?e=1669852800&v=beta&t=3aAn-NVAIQzK53t4DfcEApzbWt2Y8UQ-y9fha6-Jiig',
   notes: 'Hardware Emulation
 
 Part of Toyota Research Institute
@@ -810,6 +782,7 @@ job = Job.new(
   deadline: Date.today + 22,
   url: 'https://jp.linkedin.com/jobs/view/full-stack-software-engineer-no-japanese-required-at-ascent-robotics-inc-3231268709?refId=vnAA%2BFZzs7fM5XdxeX9GKw%3D%3D&trackingId=IzsO6sqV4020fH6UhNS2oQ%3D%3D&trk=public_jobs_similar-jobs',
   status: 0,
+  logo_url: 'https://media-exp1.licdn.com/dms/image/C560BAQG09R2SkesYeg/company-logo_200_200/0/1614826499474?e=1669852800&v=beta&t=Z7wX5tBmw2wqwoQnGhR0MZxrIVxi1j7YGFPrQvCaLNY',
   notes: 'several different areas such as webservices, front-end visualization, mobile applications, and more both on internal software and customer products
 
 Good Linux knowledge required',
@@ -852,10 +825,11 @@ task.save!
 
 job = Job.new(
   title: "Web Devloper",
-  company: 'A Computer Futures Client',
+  company: 'Computer Futures',
   deadline: Date.today + 22,
   url: 'https://jp.linkedin.com/jobs/view/web-developer-at-computer-futures-3192880999?refId=ygRveIXSGpar9ZmmIQ8szA%3D%3D&trackingId=sxz5EcHK%2BRL2KHgFSZWT%2BQ%3D%3D&trk=public_jobs_topcard-title',
   status: 2,
+  logo_url: 'https://media-exp1.licdn.com/dms/image/C4D0BAQGXzDswjXmJ8A/company-logo_200_200/0/1627463837466?e=1669852800&v=beta&t=xFKiOl3L4lD9rFdya7itrn6Uw_vZD2EkTVln_3lMVfc',
   notes: 'Recruiting done through a third party company
 
 part of payments team
@@ -905,129 +879,19 @@ task = Task.new(
 )
 task.save!
 
-###########################3 9999999999999999999999999 ###################33
+###########################3 11 ###################33
 
 job = Job.new(
-  title: "DevRel Engineer",
-  company: 'Amazon Web Services (AWS)',
-  deadline: Date.today + 15,
-  url: 'https://jp.linkedin.com/jobs/view/devrel-engineer-mobile-web-at-amazon-web-services-aws-3030801294?refId=%2BElJ6hYz5qT6YtyAxsBskA%3D%3D&trackingId=EDuQ%2Buz27hcHLAglyIUAxA%3D%3D&trk=public_jobs_people-also-viewed',
-  status: 2,
-  notes: 'Mobile and web position
-
-Business level Japanese required
-
-Android / iOS、React Native、Xamarin、Ionic、HTML/JS (Vue, React, Angular)',
-  user: demo2
-)
-job.save!
-
-task = Task.new(
-  title: 'Find out about company',
-  done: true,
-  job:
-)
-task.save!
-
-task = Task.new(
-  title: 'Write cover letter',
-  done: true,
-  job:
-)
-task.save!
-
-task = Task.new(
-  title: 'Send cover letter to company (Leon)',
-  done: true,
-  job:
-)
-task.save!
-
-task = Task.new(
-  title: 'Brush up on that Japanese grammar you keep forgetting',
-  job:
-)
-task.save!
-
-task = Task.new(
-  title: 'Call contact person at the company (Leon)',
-  done: true,
-  job:
-)
-task.save!
-
-###########################3 10101010101011010 ###################33
-
-job = Job.new(
-  title: "Flutter Engineer",
-  company: 'Chappelow Sound Waves',
-  deadline: Date.today + 33,
-  url: 'https://jp.linkedin.com/jobs/view/flutter-engineer-at-computer-futures-3227508715?refId=lZerKPtjPpuA%2FNc5PNuIKg%3D%3D&trackingId=7kwEs7lCZU9Qjjaxnptm%2BA%3D%3D&trk=public_jobs_people-also-viewed',
-  status: 0,
-  notes: 'Converting current product from WebView to Flutter
-
-20 person company
-
-also want swift ',
-  user: demo2
-)
-job.save!
-
-task = Task.new(
-  title: 'Find out about company',
-  done: true,
-  job:
-)
-task.save!
-
-task = Task.new(
-  title: 'Write cover letter',
-  job:
-)
-task.save!
-
-task = Task.new(
-  title: 'Send cover letter to company (Catrina)',
-  job:
-)
-task.save!
-
-task = Task.new(
-  title: 'Finish that Flutter project and add to protfolio',
-  job:
-)
-task.save!
-
-task = Task.new(
-  title: 'Call contact person at the company (Catrina)',
-  job:
-)
-task.save!
-
-###########################3 11111111111111111111111111 ###################33
-
-job = Job.new(
-  title: "Hardware Engineer",
-  company: 'L&T Technology Services',
-  deadline: Date.today + 35,
-  url: 'https://jp.linkedin.com/jobs/view/hardware-engineer-at-l-t-technology-services-3170316735?refId=KOcY6lW8yE32oCgF5Ncoaw%3D%3D&trackingId=QNaiu7CTTanx2vUQsYMFqg%3D%3D&trk=public_jobs_people-also-viewed',
+  title: "Front-end Engineer",
+  company: 'Line',
+  deadline: Date.today + 3,
+  url: 'https://www.tokyodev.com/companies/line-fukuoka/jobs/front-end-engineer/',
   status: 1,
-  notes: 'Driving assistance hardware engineer
-
-CAD
-
-Ensures smooth communication between the core Hardware R&D Team and customer in regards to Hardware related topics at communication level.',
+  logo_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQU2MQZNVwCjygcF-aI4uyBPxBL_3w_icvz4rK6tjWgRw&s',
+  notes: 'Expertise knowledge of HTML/CSS/JavaScript',
   user: demo2
 )
 job.save!
-
-task = Task.new(
-  title: 'Find out about company',
-  done: true,
-  job:
-)
-task.save!
-
 task = Task.new(
   title: 'Write cover letter',
   done: true,
@@ -1036,90 +900,35 @@ task = Task.new(
 task.save!
 
 task = Task.new(
-  title: 'Send cover letter to company (Mordred)',
+  title: 'Research company',
   done: true,
   job:
 )
 task.save!
 
 task = Task.new(
-  title: 'Review DRBFM writing guidelines',
+  title: 'Practice JavaScript',
   done: true,
   job:
 )
 task.save!
 
-task = Task.new(
-  title: 'Call contact person at the company (Mordred)',
-  done: true,
-  job:
-)
-task.save!
-
-
-###########################3 1212121212121212 ###################33
+##################################
 
 job = Job.new(
-  title: "World Engineer",
-  company: Faker::Company.name,
-  deadline: Date.today + 35,
-  url: 'https://jp.linkedin.com/jobs/view/hardware-engineer-at-l-t-technology-services-3170316735?refId=KOcY6lW8yE32oCgF5Ncoaw%3D%3D&trackingId=QNaiu7CTTanx2vUQsYMFqg%3D%3D&trk=public_jobs_people-also-viewed',
-  status: 1,
-  notes: Faker::Company.catch_phrase,
-  user: demo2
-)
-job.save!
-
-task = Task.new(
-  title: 'Find out about company',
-  done: true,
-  job:
-)
-task.save!
-
-task = Task.new(
-  title: 'Write cover letter',
-  done: true,
-  job:
-)
-task.save!
-
-task = Task.new(
-  title: 'Send cover letter to company (Mordred)',
-  done: true,
-  job:
-)
-task.save!
-
-task = Task.new(
-  title: 'Review DRBFM writing guidelines',
-  done: true,
-  job:
-)
-task.save!
-
-task = Task.new(
-  title: 'Call contact person at the company (Mordred)',
-  done: true,
-  job:
-)
-task.save!
-
-###########################3 131313131313 ###################33
-
-job = Job.new(
-  title: "Warp Designer",
-  company: Faker::Company.name,
-  deadline: Date.today + 33,
-  url: 'https://jp.linkedin.com/jobs/view/hardware-engineer-at-l-t-technology-services-3170316735?refId=KOcY6lW8yE32oCgF5Ncoaw%3D%3D&trackingId=QNaiu7CTTanx2vUQsYMFqg%3D%3D&trk=public_jobs_people-also-viewed',
+  title: "Web Application Developer",
+  company: 'Small World',
+  deadline: Date.today + 12,
+  url: 'https://www.linkedin.com/jobs/search/?currentJobId=3212630909&distance=25&geoId=101355337&keywords=web%20developer',
   status: 0,
-  notes: Faker::Company.catch_phrase,
+  logo_url: 'https://media-exp1.licdn.com/dms/image/C560BAQE7JirsfHnfBw/company-logo_200_200/0/1631613876470?e=1669852800&v=beta&t=YXdCwyklg8Gf1bzoxHYiuS62zkmfd4BLy23OpEFmdOY',
+  notes: '',
   user: demo2
 )
 job.save!
+
 task = Task.new(
-  title: 'Find out about company',
-  done: true,
+  title: 'Research the company',
   job:
 )
 task.save!
@@ -1130,113 +939,29 @@ task = Task.new(
 )
 task.save!
 
-task = Task.new(
-  title: 'Send cover letter to company (Catrina)',
-  job:
-)
-task.save!
 
-task = Task.new(
-  title: 'Finish that Flutter project and add to protfolio',
-  job:
-)
-task.save!
-
-task = Task.new(
-  title: 'Call contact person at the company (Catrina)',
-  job:
-)
-task.save!
-
-###########################3 14141414 ###################33
+###################################
 
 job = Job.new(
-  title: "Web Engineer",
-  company: Faker::Company.name,
-  deadline: Date.today + 32,
-  url: 'https://jp.linkedin.com/jobs/view/hardware-engineer-at-l-t-technology-services-3170316735?refId=KOcY6lW8yE32oCgF5Ncoaw%3D%3D&trackingId=QNaiu7CTTanx2vUQsYMFqg%3D%3D&trk=public_jobs_people-also-viewed',
-  status: 0,
-  notes: Faker::Company.catch_phrase,
-  user: demo2
-)
-job.save!
-task = Task.new(
-  title: 'Find out about company',
-  done: true,
-  job:
-)
-task.save!
-
-task = Task.new(
-  title: 'Write cover letter',
-  job:
-)
-task.save!
-
-task = Task.new(
-  title: 'Send cover letter to company (Catrina)',
-  job:
-)
-task.save!
-
-task = Task.new(
-  title: 'Finish that Flutter project and add to protfolio',
-  job:
-)
-task.save!
-
-task = Task.new(
-  title: 'Call contact person at the company (Catrina)',
-  job:
-)
-task.save!
-
-################## 15 #########################
-
-job = Job.new(
-  title: "Windows Desinger",
-  company: "Microsoft",
-  deadline: Date.today + 35,
-  url: 'https://jp.linkedin.com/jobs/view/hardware-engineer-at-l-t-technology-services-3170316735?refId=KOcY6lW8yE32oCgF5Ncoaw%3D%3D&trackingId=QNaiu7CTTanx2vUQsYMFqg%3D%3D&trk=public_jobs_people-also-viewed',
+  title: "Web Full Stack Engineer",
+  company: 'Ringi',
+  deadline: Date.today + 4,
+  url: 'https://www.linkedin.com/jobs/view/3246273628/?alternateChannel=search&refId=uUtK5bdTtwcdFX5v8dca3g%3D%3D&trackingId=EDiewP5X0eQebN%2F4mqcVqw%3D%3D',
   status: 1,
-  notes: Faker::Company.catch_phrase,
+  logo_url: 'https://media-exp1.licdn.com/dms/image/C4D0BAQECl-IAxbKSJA/company-logo_200_200/0/1655639019512?e=1669852800&v=beta&t=oV62chT4ZzW5NHYq6jgfb5Y7h9vlsYq5zrExRyj4aJk',
+  notes: '',
   user: demo2
 )
 job.save!
 
 task = Task.new(
-  title: 'Find out about company',
-  done: true,
+  title: 'Research the company',
   job:
 )
 task.save!
 
 task = Task.new(
   title: 'Write cover letter',
-  done: true,
   job:
 )
 task.save!
-
-task = Task.new(
-  title: 'Send cover letter to company (Mordred)',
-  done: true,
-  job:
-)
-task.save!
-
-task = Task.new(
-  title: 'Review DRBFM writing guidelines',
-  done: true,
-  job:
-)
-task.save!
-
-task = Task.new(
-  title: 'Call contact person at the company (Mordred)',
-  done: true,
-  job:
-)
-task.save!
-
-puts "Time travel successful, now have #{demo2.jobs.count} jobs"
