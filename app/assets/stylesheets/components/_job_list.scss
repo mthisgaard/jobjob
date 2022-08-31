@@ -1,3 +1,6 @@
+.jobs {
+}
+
 .job {
   box-shadow: 0 0 6px rgba(0,0,0,0.2);
   padding: 16px;
@@ -189,10 +192,3 @@ background-image: none;
   opacity: 1;
   border-bottom: 3px solid #555555;
 }
-
-// .page-link.active, .active > .page-link {
-//   z-index: 3;
-//   color: var(--bs-pagination-active-color);
-//   background-color: var(--bs-pagination-active-bg);
-//   border-color: var(--bs-pagination-active-border-color);
-// }

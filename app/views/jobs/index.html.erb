@@ -49,7 +49,7 @@
           <%= render 'modal', job: @new_job %>
         </div>
       </div>
-      <div class="container">
+      <div class="container jobs list-group">
         <ul class="list-inline tabs-underlined" >
           <li>
             <%= link_to "All (#{@jobs.count})", jobs_path, class: "tab-underlined #{"active" unless params[:status]}" %>
