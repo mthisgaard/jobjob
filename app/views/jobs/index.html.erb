@@ -4,7 +4,7 @@
   <div class="row gx-4">
     <div class="col-lg-3 job-stats my-2">
       <div class="row">
-        <div class="col-6 col-sm-6 col-md-6 col-lg-12">
+        <div class="col-12 col-sm-6 col-lg-12">
           <h4>Achievements</h4>
           <ul>
             <% current_user.badges.each do |badge| %>
@@ -15,11 +15,12 @@
           </ul>
           <br>
         </div>
-        <div class="col-6 col-sm-6 col-md-6 col-lg-12">
+        <div class="col-12 col-sm-6 col-lg-12">
           <h4>Application progress</h4>
           <div data-controller="chart" data-chart-data-value="<%= @data_value %>" class="p-2 align-items-center">
             <canvas data-chart-target="canvas" id="myChart" width="500" height="500"></canvas>
           </div>
+          <br>
         </div>
       </div>
     </div>
