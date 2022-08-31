@@ -48,7 +48,6 @@ class JobsController < ApplicationController
     else
       @pagy, @jobs_p = pagy(policy_scope(Job).order(created_at: :desc), items: 5)
       @status_count = @jobs.count
-      # @jobs = policy_scope(Job)
     end
 
     @new_job = Job.new
