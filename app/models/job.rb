@@ -6,4 +6,5 @@ class Job < ApplicationRecord
   has_one_attached :cv
   has_one_attached :cover_letter
   has_one_attached :job_posting
+  has_one_attached :company_logo
 end
