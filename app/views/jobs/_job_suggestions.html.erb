@@ -2,7 +2,7 @@
   <% job_suggestions.first(4).each do |job| %>
     <% unless jobs.where(company: job[:company]).any? && jobs.where(title: job[:title]).any? %>
       <div class="card-suggested-job">
-        <div class="card-suggested-job-infos d-flex align-items-center gap-2">
+        <div class="card-suggested-job-infos gap-2">
           <%= image_tag job[:logo_url], class: 'suggestion-logo' %>
           <div class="m-0">
             <p class="m-0"><strong><%= job[:company] %></strong></p>
