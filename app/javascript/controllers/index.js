@@ -4,7 +4,10 @@
 
 import { application } from "./application"
 import Chart from 'stimulus-chartjs'
+import Notification from 'stimulus-notification'
 
+const application = Application.start()
+application.register('notification', Notification)
 application.register('chart', Chart)
 
 import EditNotesController from "./edit_notes_controller"
@@ -24,6 +27,3 @@ application.register("chart", ChartController)
 
 import ShowArrowController from "./show_arrow_controller"
 application.register("show-arrow", ShowArrowController)
-
-import FocusCardController from "./focus_card_controller"
-application.register("focus-card", FocusCardController)
