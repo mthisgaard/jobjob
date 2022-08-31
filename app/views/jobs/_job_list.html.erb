@@ -4,13 +4,12 @@
       <div class="d-flex justify-content-between align-items-start gap-3" style="width: 100%;">
         <div class="flex-grow-1 fs-6">
           <div class="d-flex gap-2 align-items-center">
-            <p class="m-0"><strong><%= job.title %></strong></p>
+            <p class="m-0"><strong><%= job.company %></strong></p>
             <%= link_to job.url, class: 'url-link', target: :_blank do %>
               <i class="fa-solid fa-arrow-up-right-from-square"></i>
             <% end %>
           </div>
-          <p class="opacity-50"><%= job.company %></p>
-          <%# <p class="job-card-task-count">Tasks <%= job.tasks.where(done: true).count %> <%# / <%= job.tasks.count %>
+          <p class="opacity-75"><%= job.title %></p>
         </div>
         <% if job.deadline.present? && job.status == 'pending' && job.deadline > Date.today %>
           <div class="job-deadline m-0">
@@ -75,11 +74,13 @@
         </div>
         <div>
           <!-- Button trigger modal -->
-          <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target= "#jobs<%= job.id %>" >
-            Edit
+          <button type="button" class="edit-and-delete-button" data-bs-toggle="modal" data-bs-target= "#jobs<%= job.id %>" >
+            <i class="fa-solid fa-pen-to-square"></i>
           </button>
           <%= render "modal", job: job %>
-          <%= link_to 'Delete', job_path(job), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this job?" }, class: "btn btn-sm btn-primary" %>
+          <%= link_to job_path(job), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this job?" }, class: 'edit-and-delete-button' do %>
+            <i class="fa-solid fa-trash-can"></i>
+          <% end %>
         </div>
       </div>
     </div>

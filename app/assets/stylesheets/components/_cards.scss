@@ -5,11 +5,21 @@
   box-shadow: 0 0 6px rgba(0,0,0,0.2);
   display: flex;
   position: relative;
+  border-radius: 4px;
 
   .suggestion-link {
     position: absolute;
     top: 16px;
     right: 16px;
+  }
+
+  .suggestion-logo {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border: 1px solid rgb(184, 184, 184);
+    border-radius: 4px;
+
   }
 }
 
@@ -22,4 +32,6 @@
 .card-suggested-job .card-suggested-job-infos {
   padding: 16px;
   margin-right: 32px;
+  display: flex;
+  align-items: start;
 }
