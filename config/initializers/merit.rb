@@ -17,23 +17,17 @@
 # end
 
 # Create application badges (uses https://github.com/norman/ambry)
-# Rails.application.reloader.to_prepare do
-#   badge_id = 0
-#   [{
-#     id: (badge_id = badge_id+1),
-#     name: 'just-registered'
-#   }, {
-#     id: (badge_id = badge_id+1),
-#     name: 'best-unicorn',
-#     custom_fields: { category: 'fantasy' }
-#   }].each do |attrs|
-#     Merit::Badge.create! attrs
-#   end
-# end
 Rails.application.reloader.to_prepare do
-  Merit::Badge.create!(
-    id: 1,
+  badge_id = 0
+  [{
+    id: (badge_id = badge_id+1),
     name: "JobJob Pro",
-    description: "Completed 3 tasks in one day"
-  )
+    description: "Completed 5 tasks in one day"
+  }, {
+    id: (badge_id = badge_id+1),
+    name: 'best-unicorn',
+    description: "Completed 10 tasks in one day",
+  }].each do |attrs|
+    Merit::Badge.create! attrs
+  end
 end
