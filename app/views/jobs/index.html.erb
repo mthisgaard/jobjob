@@ -1,4 +1,7 @@
 <div class="container" style="margin-bottom: 100px;">
+  <div class="col-lg-3 job-stats my-2">
+    <h3>Hello, <%= current_user.first_name.capitalize %>!</h3>
+  </div>
   <br>
   <div class="row gx-4">
     <div class="col-lg-3 job-stats my-2">
@@ -13,6 +16,17 @@
       <h4>Your progress</h4>
       <div data-controller="chart" data-chart-data-value="<%= @data_value %>" class="p-2 align-items-center">
         <canvas data-chart-target="canvas" id="myChart" width="500" height="500"></canvas>
+      </div>
+      <!-- display badges -->
+      <div class="col-lg-3 job-stats my-2">
+        <h3>Achievements</h3>
+        <ul>
+          <% current_user.badges.each do |badge| %>
+            <p><script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+              <lord-icon src="https://cdn.lordicon.com/clcopglh.json" trigger="hover" title="JobJob Pro" colors="primary:#121331,secondary:#ffc738" style="width:64px;height:64px"></lord-icon>
+            </p>
+          <% end %>
+        </ul>
       </div>
     </div>
     <div class="col-lg-9">
@@ -32,8 +46,8 @@
           <%= render 'modal', job: @new_job %>
         </div>
       </div>
-      <div>
-        <ul class="list-inline tabs-underlined" ">
+      <div class="container">
+        <ul class="list-inline tabs-underlined" >
           <li>
             <%= link_to "All (#{@jobs.count})", jobs_path, class: "tab-underlined #{"active" unless params[:status]}" %>
           </li>
