@@ -9,6 +9,11 @@ class Api::V1::JobsController < Api::V1::BaseController
     # todo hard coding first user for now
     @job.user = current_user
     authorize @job
+    if job_params[:url].present?
+      grover = Grover.new(job_params[:url], format: 'A4')
+      pdf = grover.to_pdf
+      @job.job_posting.attach(io: StringIO.new(pdf), filename: job_params[:company], content_type: "application/pdf")
+    end
     if @job.save
       render json: @job
     else
