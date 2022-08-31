@@ -39,11 +39,9 @@
             </li>
           <% end %>
         </ul>
-        <div data-controller="focus-card">
-          <% @jobs_p.each do |job| %>
-            <%= render 'jobs/job_list', job: job %>
-          <% end %>
-        </div>
+        <% @jobs_p.each do |job| %>
+          <%= render 'jobs/job_list', job: job %>
+        <% end %>
       </div>
       <div class='d-flex justify-content-center'>
         <% if @status_count > 4 %>
