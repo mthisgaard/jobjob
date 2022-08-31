@@ -6,7 +6,6 @@ import { application } from "./application"
 import Chart from 'stimulus-chartjs'
 import Notification from 'stimulus-notification'
 
-const application = Application.start()
 application.register('notification', Notification)
 application.register('chart', Chart)
 
