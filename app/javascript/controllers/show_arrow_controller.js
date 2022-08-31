@@ -6,9 +6,11 @@ export default class extends Controller {
   connect() {
   }
 
-  show() {
+  show(event) {
     if (this.textTarget.innerHTML == "Show more <i class=\"fa-solid fa-angle-down\"></i>") {
       this.textTarget.innerHTML = "Show less <i class=\"fa-solid fa-angle-up\"></i>"
+    event.currentTarget.parentNode.scrollIntoView({behavior: "smooth"})
+
     } else {
       this.textTarget.innerHTML = "Show more <i class=\"fa-solid fa-angle-down\"></i>"
     }
