@@ -58,7 +58,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_29_012533) do
     t.date "deadline"
     t.text "notes"
     t.string "url"
-    t.integer "status", default: 0
+    t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
@@ -109,7 +109,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_29_012533) do
   create_table "tasks", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.boolean "done", default: false
+    t.boolean "done"
     t.bigint "job_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -127,11 +127,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_29_012533) do
     t.string "first_name"
     t.string "last_name"
     t.string "avatar", default: "avatar.png"
-<<<<<<< HEAD
     t.integer "sash_id"
     t.integer "level", default: 0
-=======
->>>>>>> master
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

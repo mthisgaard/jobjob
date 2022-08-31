@@ -44,9 +44,9 @@ module Merit
       #
       #   user.name.length > 4
       # end
-      grant_on 'tasks#update', badge: 1, to: :user do |task|
-        task.job.user.tasks.where(done: true).count >= 3
-      end
+      # grant_on 'tasks#update', badge: 1, to: :user do |task|
+      #   task.job.user.tasks.where(done: true).count >= 3
+      # end
     end
   end
 end
