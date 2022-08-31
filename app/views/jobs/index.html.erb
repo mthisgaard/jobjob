@@ -1,44 +1,23 @@
-<div class="container" style="margin-bottom: 100px;">
-  <div class="col-lg-3 job-stats my-2">
-    <h3>Hello, <%= current_user.first_name.capitalize %>!</h3>
-  </div>
-  <br>
+<div class="container" style="margin-bottom: 100px; margin-top: 50px;">
   <div class="row gx-4">
     <div class="col-lg-3 job-stats my-2">
       <h4>Hello, <%= current_user.first_name.capitalize %>!</h4>
-      <!-- display badges -->
+      <br>
+      <h4>Achievements</h4>
       <ul>
         <% current_user.badges.each do |badge| %>
-          <li><%= badge.name %></li>
+          <p><script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+            <lord-icon src="https://cdn.lordicon.com/clcopglh.json" trigger="hover" title="JobJob Pro" colors="primary:#121331,secondary:#ffc738" style="width:64px;height:64px"></lord-icon>
+          </p>
         <% end %>
       </ul>
       <br>
-      <h4>Your progress</h4>
+      <h4>Application progress</h4>
       <div data-controller="chart" data-chart-data-value="<%= @data_value %>" class="p-2 align-items-center">
         <canvas data-chart-target="canvas" id="myChart" width="500" height="500"></canvas>
       </div>
-      <!-- display badges -->
-      <div class="col-lg-3 job-stats my-2">
-        <h3>Achievements</h3>
-        <ul>
-          <% current_user.badges.each do |badge| %>
-            <p><script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
-              <lord-icon src="https://cdn.lordicon.com/clcopglh.json" trigger="hover" title="JobJob Pro" colors="primary:#121331,secondary:#ffc738" style="width:64px;height:64px"></lord-icon>
-            </p>
-          <% end %>
-        </ul>
-      </div>
     </div>
     <div class="col-lg-9">
-      <div class="job-suggestions my-2">
-        <div class="d-flex align-items-center gap-2">
-          <h4>Job suggestions</h4>
-          <p class="m-0 opacity-50">from TokyoDev</p>
-        </div>
-        <br>
-        <%= render 'job_suggestions', job_suggestions: @job_suggestions, jobs: @jobs %>
-      </div>
-      <br>
       <div class="d-flex justify-content-between align-items-center my-2">
         <h4>Your jobs</h4>
         <div>
@@ -72,5 +51,10 @@
         <% end %>
       </div>
     </div>
+  </div>
+  <div class="job-suggestions my-2">
+    <h4>Job suggestions</h4>
+    <br>
+    <%= render 'job_suggestions', job_suggestions: @job_suggestions, jobs: @jobs %>
   </div>
 </div>

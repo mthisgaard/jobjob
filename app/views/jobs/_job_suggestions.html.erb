@@ -1,18 +1,20 @@
-<div class="row">
+<div class="d-flex gap-3">
   <% job_suggestions.first(4).each do |job| %>
     <% unless jobs.where(company: job[:company]).any? && jobs.where(title: job[:title]).any? %>
-      <div class="col-md-3 my-2">
-        <div class="card-suggested-job">
-          <div class="card-suggested-job-infos">
-            <p class="m-0"><strong><%= job[:title].length > 20 ? "#{job[:title][0..20]...}" : job[:title] %></strong></p>
-            <p style="opacity: 0.6;"><%= job[:company] %></p>
+      <div class="card-suggested-job">
+        <div class="card-suggested-job-infos d-flex align-items-center gap-2">
+          <%= image_tag job[:logo_url], class: 'suggestion-logo' %>
+          <div class="m-0">
+            <p class="m-0"><strong><%= job[:company] %></strong></p>
+            <p class="m-0" style="opacity: 0.75;"><%= job[:title].length > 20 ? "#{job[:title][0..20]...}" : job[:title] %></p>
           </div>
-          <%= render 'add_suggestion_form', new_job: @new_job, job: job %>
-          <%= link_to job[:url], class: 'url-link suggestion-link', target: :_blank do %>
-            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-          <% end %>
         </div>
+        <%= render 'add_suggestion_form', new_job: @new_job, job: job %>
+        <%= link_to job[:url], class: 'url-link suggestion-link', target: :_blank do %>
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        <% end %>
       </div>
     <% end %>
   <% end %>
 </div>
+
