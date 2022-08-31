@@ -5,14 +5,16 @@
     <div class="col-lg-3 job-stats my-2">
       <div class="row">
         <div class="col-12 col-sm-6 col-lg-12">
-          <h4>Achievements</h4>
-          <ul>
-            <% current_user.badges.each do |badge| %>
-              <p><script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
-                <lord-icon src="https://cdn.lordicon.com/clcopglh.json" trigger="hover" title="JobJob Pro" colors="primary:#121331,secondary:#ffc738" style="width:64px;height:64px"></lord-icon>
-              </p>
-            <% end %>
-          </ul>
+          <h3>Achievements</h3>
+          <div data-controller="badges">
+            <div class="d-flex flex-row mb-3">
+              <% current_user.badges.each do |badge| %>
+                <div data-action="mouseenter->badges#show mouseleave->badges#hide" data-badges-target="badgeImage" class="p-2"><%= image_tag badge.custom_fields, class: "badges", alt: "text" %></div>
+                <%= render "badges_description", badge: badge %>
+              <% end %>
+            </div>
+          </div> 
+        </div>
           <br>
         </div>
         <div class="col-12 col-sm-6 col-lg-12">
