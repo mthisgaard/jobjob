@@ -41,9 +41,7 @@
         </ul>
         <div data-controller="focus-card">
           <% @jobs_p.each do |job| %>
-            <div>
-              <%= render 'jobs/job_list', job: job %>
-            </div>
+            <%= render 'jobs/job_list', job: job %>
           <% end %>
         </div>
       </div>
