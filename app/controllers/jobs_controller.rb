@@ -98,6 +98,7 @@ class JobsController < ApplicationController
     else
       redirect_to jobs_path, status: :unprocessable_entity
     end
+    check_badges(@status)
   end
 
   def destroy
@@ -107,6 +108,11 @@ class JobsController < ApplicationController
   end
 
   private
+
+  def check_badges(status)
+    current_user.add_badge(4) if current_user.jobs.where(status: 1).count + current_user.jobs.where(status: 2).count + current_user.jobs.where(status: 3).count + current_user.jobs.where(status: 4).count >= 3 && !current_user.badges.find { |badge| badge.id == 4 }
+    current_user.add_badge(5) if current_user.jobs.where(status: 1).count + current_user.jobs.where(status: 2).count + current_user.jobs.where(status: 3).count + current_user.jobs.where(status: 4).count >= 5 && !current_user.badges.find { |badge| badge.id == 5 }
+  end
 
   def set_job
     @job = Job.find(params[:id])
