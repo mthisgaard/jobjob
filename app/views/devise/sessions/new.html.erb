@@ -1,4 +1,4 @@
-<div class="container row justify-content-center mw-100">
+<div class="container row justify-content-center mw-100" style="margin-top: 50px;">
   <div class="col-lg-3 col-sm-6">
     <h2>Log in</h2>
     <%= simple_form_for(User.new, as: resource_name, url: session_path(resource_name), data: { turbo: :false }) do |f| %>
@@ -16,6 +16,7 @@
         <%= f.button :submit, "Log in" %>
       </div>
     <% end %>
+    <br>
     <%= render "devise/shared/links" %>
   </div>
 </div>
