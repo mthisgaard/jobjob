@@ -3,6 +3,7 @@
   <%= f.input :company %>
   <%= f.input :deadline, as: :date, html5: true %>
   <%= f.input :url, :label => "Job url" %>
+  <%= f.input :url, :label => "Company logo url" %>
   <%= f.input :status, as: :select, collection: Job.statuses.keys, selected: job.status%>
   <%= f.input :notes %>
   <%= f.input :cv, as: :file %>
