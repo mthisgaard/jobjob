@@ -18,15 +18,46 @@
 
 # Create application badges (uses https://github.com/norman/ambry)
 Rails.application.reloader.to_prepare do
-  badge_id = 0
   [{
-    id: (badge_id = badge_id+1),
+    id: 1,
     name: "JobJob Pro",
-    description: "Completed 5 tasks in one day"
+    description: "Completed 3 tasks in one day",
+    custom_fields: "badge1_static.png"
   }, {
-    id: (badge_id = badge_id+1),
-    name: 'best-unicorn',
-    description: "Completed 10 tasks in one day",
+    id: 2,
+    name: 'Jobberwocky',
+    description: "Completed 5 tasks in one day",
+    custom_fields: "badge2_static.png"
+  }, {
+    id: 3,
+    name: 'Numero Jobbo',
+    description: "Applied to your first job",
+    custom_fields: "badge3_static.png"
+  }, {
+    id: 4,
+    name: 'Good JobJob',
+    description: "Applied to 3 jobs",
+    custom_fields: "badge4_static.png"
+  }, {
+    id: 5,
+    name: 'Steve Jobs',
+    description: "Applied to 5 jobs",
+    custom_fields: "badge5_static.png"
+  }, {
+    id: 6,
+    name: 'Job Magnet',
+    description: "Get 3 interviews",
+    custom_fields: "badge6_static.png"
+  }, {
+    id: 7,
+    name: 'Jobbapalooza',
+    description: "Get 5 interviews",
+    custom_fields: "badge7_static.png"
+  }, {
+    id: 8,
+    name: 'The Jobfather',
+    description: "Get a job offer",
+    custom_fields: "badge8_static.png"
   }].each do |attrs|
     Merit::Badge.create! attrs
   end
