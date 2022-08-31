@@ -10,7 +10,6 @@
 .card-title {
   font-size: xx-large;
   font-weight: 700;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
 
 .card-text {
@@ -22,7 +21,6 @@
   text-align: center;
   background-color: #D3F3EE;
   padding: 100px;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
 
 .btn {
@@ -57,4 +55,9 @@
 
 .body {
   position: relative;
+}
+
+.jobjob-title {
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-weight: bold;
 }
