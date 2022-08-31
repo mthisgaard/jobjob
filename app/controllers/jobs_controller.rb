@@ -74,7 +74,7 @@ class JobsController < ApplicationController
         title: task
       )
   end
-      redirect_to jobs_path
+      redirect_to jobs_path, notice: "Job added to your jobs list!"
     else
       # render "/jobs", status: :unprocessable_entity
       redirect_to jobs_path

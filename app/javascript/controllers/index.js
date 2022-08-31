@@ -26,6 +26,3 @@ application.register("chart", ChartController)
 
 import ShowArrowController from "./show_arrow_controller"
 application.register("show-arrow", ShowArrowController)
-
-import ShowNotificationController from "./show_notification_controller"
-application.register("show-notification", ShowNotificationController)
