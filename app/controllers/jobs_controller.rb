@@ -82,13 +82,15 @@ class JobsController < ApplicationController
       redirect_to jobs_path, notice: "Job added to your jobs list!"
     else
       # render "/jobs", status: :unprocessable_entity
-      redirect_to jobs_path
+      redirect_to jobs_path, alert: "Failed to add job, required info missing!"
       # render :index, status: :unprocessable_entity
     end
   end
 
   def update
     authorize @job
+    job_params[:status] = job_params[:status].to_i
+
     if job_params[:url].present?
       grover = Grover.new(job_params[:url], format: 'A4')
       pdf = grover.to_pdf
@@ -96,7 +98,7 @@ class JobsController < ApplicationController
     end
     if @job.update(job_params)
       respond_to do |format|
-        format.html { redirect_to jobs_path }
+        format.html { redirect_to jobs_path(status: @job.status),notice: "Job updated!" }
         format.text { render partial: "jobs/note", locals: { job: @job }, formats: [:html] }
       end
     else
