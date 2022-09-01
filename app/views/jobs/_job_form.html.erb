@@ -2,6 +2,7 @@
   <%= f.input :title %>
   <%= f.input :company %>
   <%= f.input :deadline, as: :date, html5: true %>
+  <%= f.input :contact_email, :label => "Contact email" %>
   <%= f.input :url, :label => "Job url" %>
   <%# <%= f.input :logo_url, :label => "Company logo url" %>
   <%= f.input :status, as: :select, collection: Job.statuses.keys, selected: job.status%>
