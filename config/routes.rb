@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :jobs, only: [ :index, :create ]
       post '/auth/login', to: 'authentication#login'
+      resources :emails, only: [ :create ]
     end
   end
 end
