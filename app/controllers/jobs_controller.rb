@@ -63,7 +63,7 @@ class JobsController < ApplicationController
 
     authorize @job
 
-    # file = URI.open(@job.logo_url)              #possibble to save logos on cloudinary
+    # file = URI.open(@job.logo_url)              #possible to save logos on cloudinary
     # @job.company_logo.attach(io: file, filename: "nes.png", content_type: "image/png")
 
    if job_params[:url].present?

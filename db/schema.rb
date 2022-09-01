@@ -128,6 +128,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_31_074036) do
     t.string "first_name"
     t.string "last_name"
     t.string "avatar", default: "avatar.png"
+    t.string "confirmation_token"
+    t.datetime "confirmation_sent_at"
+    t.datetime "confirmed_at"
     t.integer "sash_id"
     t.integer "level", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
