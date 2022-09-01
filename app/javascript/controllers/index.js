@@ -32,3 +32,9 @@ import Popover from 'stimulus-popover'
 import BadgesController from "./badges_controller"
 
 application.register('badges', BadgesController)
+
+import UpdateStatusController from "./update_status_controller"
+application.register("update-status", UpdateStatusController)
+
+import FilterController from "./filter_controller"
+application.register("filter", FilterController)

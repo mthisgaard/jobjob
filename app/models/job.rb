@@ -8,4 +8,9 @@ class Job < ApplicationRecord
   has_one_attached :cover_letter
   has_one_attached :job_posting
   has_one_attached :company_logo
+
+  def status_id
+   statuses = ["pending", "applied", "interview", "offer", "rejected"]
+   statuses[statuses.index(self.status) + 1]
+  end
 end
