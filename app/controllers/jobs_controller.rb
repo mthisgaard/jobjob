@@ -3,6 +3,7 @@ require "open-uri"
 
 class JobsController < ApplicationController
   before_action :set_job, only: [:update, :destroy]
+  before_action :check_badges, only: [:index]
 
   def index
     @jobs = policy_scope(Job) #getting from all pages
@@ -47,7 +48,7 @@ class JobsController < ApplicationController
       @pagy, @jobs_p = pagy(policy_scope(Job.where(status: params[:status]).order(created_at: :desc)), items: 5)
       # @jobs_p = policy_scope(Job.where(status: params[:status]))
     else
-      @pagy, @jobs_p = pagy(policy_scope(Job).order(created_at: :desc), items: 5)
+      @pagy, @jobs_p = pagy(policy_scope(Job).order(created_at: :desc), items: 3)
       @status_count = @jobs.count
     end
 
@@ -63,7 +64,7 @@ class JobsController < ApplicationController
 
     authorize @job
 
-    # file = URI.open(@job.logo_url)              #possibble to save logos on cloudinary
+    # file = URI.open(@job.logo_url)              #possible to save logos on cloudinary
     # @job.company_logo.attach(io: file, filename: "nes.png", content_type: "image/png")
 
    if job_params[:url].present?
@@ -73,11 +74,11 @@ class JobsController < ApplicationController
    end
     if @job.save
       ['Research the company', 'Write cover letter'].each do |task|
-      Task.create(
-        job: @job,
-        title: task
-      )
-  end
+        Task.create(
+          job: @job,
+          title: task
+        )
+      end
       redirect_to jobs_path, notice: "Job added to your jobs list!"
     else
       # render "/jobs", status: :unprocessable_entity
@@ -103,7 +104,7 @@ class JobsController < ApplicationController
     else
       redirect_to jobs_path, status: :unprocessable_entity
     end
-    check_badges(@status)
+    check_badges
   end
 
   def destroy
@@ -114,9 +115,13 @@ class JobsController < ApplicationController
 
   private
 
-  def check_badges(status)
+  def check_badges
     current_user.add_badge(4) if current_user.jobs.where(status: 1).count + current_user.jobs.where(status: 2).count + current_user.jobs.where(status: 3).count + current_user.jobs.where(status: 4).count >= 3 && !current_user.badges.find { |badge| badge.id == 4 }
-    current_user.add_badge(5) if current_user.jobs.where(status: 1).count + current_user.jobs.where(status: 2).count + current_user.jobs.where(status: 3).count + current_user.jobs.where(status: 4).count >= 5 && !current_user.badges.find { |badge| badge.id == 5 }
+    current_user.add_badge(5) if current_user.jobs.where(status: 1).count + current_user.jobs.where(status: 2).count + current_user.jobs.where(status: 3).count + current_user.jobs.where(status: 4).count >= 10 && !current_user.badges.find { |badge| badge.id == 5 }
+    current_user.add_badge(6) if current_user.jobs.where(status: 2).count + current_user.jobs.where(status: 2).count + current_user.jobs.where(status: 3).count + current_user.jobs.where(status: 4).count >= 3 && !current_user.badges.find { |badge| badge.id == 6 }
+    current_user.add_badge(7) if current_user.jobs.where(status: 2).count + current_user.jobs.where(status: 3).count + current_user.jobs.where(status: 4).count >= 5 && !current_user.badges.find { |badge| badge.id == 7 }
+    current_user.add_badge(8) if current_user.jobs.where(status: 3).count + current_user.jobs.where(status: 3).count >= 1 && !current_user.badges.find { |badge| badge.id == 8 }
+    current_user.save
   end
 
   def set_job

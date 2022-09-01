@@ -43,6 +43,7 @@ class TasksController < ApplicationController
     current_user.add_badge(1) if task.job.user.tasks.where(done: true).count >= 3 && !current_user.badges.find { |badge| badge.id == 1 }
     current_user.add_badge(2) if task.job.user.tasks.where(done: true).count >= 5 && !current_user.badges.find { |badge| badge.id == 2 }
     # current_user.add_badge(3) if task.job.user.jobs.where(status: 1).any? && !current_user.badges.find { |badge| badge.id == 3 }
+    current_user.save
   end
 
   def set_task
