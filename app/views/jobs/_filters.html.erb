@@ -1,0 +1,14 @@
+<ul class="list-inline tabs-underlined mb-4">
+  <li>
+    <%= link_to jobs_path, class: "tab-underlined #{"active" unless params[:status]}", data: {action: "click->filter#open", filter_target: "tab"} do  %>
+      <span>All</span><span>(<%= @jobs.count %>)</span>
+    <% end %>
+  </li>
+  <% Job.statuses.keys.each do |status| %>
+    <li>
+      <%= link_to jobs_path(:status => status), class: "tab-underlined #{"active" if params[:status] == status}", data: {action: "click->filter#open", filter_target: "tab"} do %>
+        <span><%= status.capitalize %></span> <span>(<%= @jobs.where(status: status).count %>)</span>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

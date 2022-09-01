@@ -7,11 +7,11 @@ class JobsController < ApplicationController
 
   def index
     @jobs = policy_scope(Job) #getting from all pages
-    @pending = @jobs.filter { |job| job.pending? }.count
-    @applied = @jobs.filter { |job| job.applied? }.count
-    @interviews = @jobs.filter { |job| job.interview? }.count
-    @rejected = @jobs.filter { |job| job.rejected? }.count
-    @offers = @jobs.filter { |job| job.offer? }.count
+    @pending = @jobs.pending.count
+    @applied = @jobs.applied.count
+    @interviews = @jobs.interview.count
+    @rejected = @jobs.rejected.count
+    @offers = @jobs.offer.count
 
     # Job funnel data
     @all_jobs = @jobs.count
@@ -54,8 +54,13 @@ class JobsController < ApplicationController
 
     @new_job = Job.new
     @new_task = Task.new
-    @job_suggestions = ScrapeJobsService.new.call
+    @job_suggestions = ScrapeJobsService.new.call unless request.format.symbol == :text
     authorize @jobs
+
+    respond_to do |format|
+      format.html # Follow regular flow of Rails
+      format.text { render partial: 'jobs/filter_jobs', locals: { jobs: @jobs_p }, formats: [:html] }
+    end
   end
 
   def create
