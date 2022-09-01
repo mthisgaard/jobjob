@@ -29,7 +29,7 @@
           </button>
           <div class="d-flex">
             <div>
-              <% if job.status == "applied"  %>
+              <% if job.status == "interview"  %>
                 <%= simple_form_for(job) do |f| %>
                   <%= f.hidden_field :status, value: "offer" %>
                   <button class="job-status offer"  data-bs-target= "#job-status<%= job.id %>" data-update-status-target="status" data-action="click->update-status#update">
