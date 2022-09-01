@@ -82,7 +82,7 @@ class JobsController < ApplicationController
       redirect_to jobs_path, notice: "Job added to your jobs list!"
     else
       # render "/jobs", status: :unprocessable_entity
-      redirect_to jobs_path
+      redirect_to jobs_path, alert: "Failed to add job, required info missing!"
       # render :index, status: :unprocessable_entity
     end
   end
