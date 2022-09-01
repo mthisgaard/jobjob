@@ -98,7 +98,7 @@ class JobsController < ApplicationController
     end
     if @job.update(job_params)
       respond_to do |format|
-        format.html { redirect_to jobs_path }
+        format.html { redirect_to jobs_path(status: @job.status),notice: "Job updated!" }
         format.text { render partial: "jobs/note", locals: { job: @job }, formats: [:html] }
       end
     else
