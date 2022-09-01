@@ -70,55 +70,51 @@
             <br>
             <br>
             <br>
-            <div class="position-absolute bottom-0 d-flex gap-2">
-              <% if job.job_posting.attached? %>
-                <%= link_to cl_image_path(job.job_posting.key), target: :_blank, class: "job-doc-btn" do %>
-                  <i class="fa-solid fa-file"></i><span> Listing </span>
+            <div class="position-absolute bottom-0 w-100 d-flex gap-2 justify-content-between align-items-end">
+              <div class="d-flex gap-2">
+                <% if job.job_posting.attached? %>
+                  <%= link_to cl_image_path(job.job_posting.key), target: :_blank, class: "job-doc-btn" do %>
+                    <i class="fa-solid fa-file"></i><span> Listing </span>
+                  <% end %>
                 <% end %>
-              <% end %>
-              <% if job.cv.attached? %>
-                <%= link_to cl_image_path(job.cv.key), target: :_blank, class: "job-doc-btn" do %>
-                  <i class="fa-solid fa-file"></i><span> CV</span>
+                <% if job.cv.attached? %>
+                  <%= link_to cl_image_path(job.cv.key), target: :_blank, class: "job-doc-btn" do %>
+                    <i class="fa-solid fa-file"></i><span> CV</span>
+                  <% end %>
                 <% end %>
-              <% end %>
-              <% if job.cover_letter.attached? %>
-                <%= link_to cl_image_path(job.cover_letter.key), target: :_blank, class: "job-doc-btn" do %>
-                  <i class="fa-solid fa-file"></i><span> Cover Letter</span>
+                <% if job.cover_letter.attached? %>
+                  <%= link_to cl_image_path(job.cover_letter.key), target: :_blank, class: "job-doc-btn" do %>
+                    <i class="fa-solid fa-file"></i><span> Cover Letter</span>
+                  <% end %>
                 <% end %>
-              <% end %>
+              </div>
             </div>
+            <% if !job.cv.attached? || !job.cover_letter.attached? %>
+              <div class="d-flex flex-column align-items-end">
+                <button class="job-add-doc-btn" data-bs-toggle="modal" data-bs-target= "#job-doc<%= job.id %>" >
+                  <i class="fa-solid fa-file-import"></i><span>&nbsp; Add doc</span>
+                </button>
+                <%= render "add_document_modal", job: job %>
+              </div>
+            <% end %>
           </div>
-          <div class="center-border"></div>
-          <div class="notes d-flex flex-column" data-controller="edit-notes" >
-            <%= simple_form_for job, html: {data: {edit_notes_target: "form", action: "submit->edit-notes#updateNote", novalidate: true}} do |form| %>
-              <strong> <%= form.input :notes, input_html: {data: {edit_notes_target: "input", action: "focus->edit-notes#showButton blur->edit-notes#hideButton", novalidate: true}, :class => 'note-text no-bs-validation', onfocus: 'this.style.height = "";this.style.height = this.scrollHeight + "px"', :rows => "10"}%> </strong>
-              <%= form.submit "Save", data: {edit_notes_target: "save"}, class: 'btn btn-sm hide ml-auto', style: "float: right;"  %>
-              <% if !job.cv.attached? || !job.cover_letter.attached? %>
-                <div class="d-flex flex-column align-items-end">
-                  <button class="job-add-doc-btn" data-bs-toggle="modal" data-bs-target= "#job-doc<%= job.id %>" >
-                    <i class="fa-solid fa-file-import"></i><span>&nbsp; Add doc</span>
-                  </button>
-                  <%= render "add_document_modal", job: job %>
-                </div>
-              <% end %>
-            </div>
-          </div>
-          <div class="appointments d-flex justify-content-between align-items-end pb-3">
-            <div>
-              <%# <strong>Appointments</strong>
+        </div>
+        <div class="appointments d-flex justify-content-between align-items-end pb-3">
+          <div>
+            <%# <strong>Appointments</strong>
           <p class="appointment">no appointments</p> %>
-            </div>
-            <div>
-              <!-- Button trigger modal -->
-              <button type="button" class="edit-and-delete-button" data-bs-toggle="modal" data-bs-target= "#jobs<%= job.id %>" >
-                <i class="fa-solid fa-pen-to-square"></i>
-              </button>
-              <%= render "modal", job: job %>
-              <%= link_to job_path(job), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this job?" }, class: 'edit-and-delete-button' do %>
-                <i class="fa-solid fa-trash-can"></i>
-              <% end %>
-            </div>
+          </div>
+          <div>
+            <!-- Button trigger modal -->
+            <button type="button" class="edit-and-delete-button" data-bs-toggle="modal" data-bs-target= "#jobs<%= job.id %>" >
+              <i class="fa-solid fa-pen-to-square"></i>
+            </button>
+            <%= render "modal", job: job %>
+            <%= link_to job_path(job), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this job?" }, class: 'edit-and-delete-button' do %>
+              <i class="fa-solid fa-trash-can"></i>
+            <% end %>
           </div>
         </div>
       </div>
     </div>
+  </div>
