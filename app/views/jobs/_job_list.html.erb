@@ -52,6 +52,13 @@
               <%= link_to cl_image_path(job.cv.key), target: :_blank, class: "job-doc-btn" do %>
                 <i class="fa-solid fa-file"></i><span> CV</span>
               <% end %>
+            <% else %>
+              <div class="d-flex flex-column align-items-end">
+                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target= "#job-doc<%= job.id %>" >
+                  <p>Add documents</p>
+                </button>
+                <%= render "add_document_modal", job: job %>
+              </div>
             <% end %>
             <% if job.cover_letter.attached? %>
               <%= link_to cl_image_path(job.cover_letter.key), target: :_blank, class: "job-doc-btn" do %>
