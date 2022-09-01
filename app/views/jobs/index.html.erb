@@ -1,29 +1,25 @@
 <div class="container" style="margin-bottom: 100px; margin-top: 50px;">
-  <h3>Hello, <%= current_user.first_name.capitalize %>!</h3>
-  <br>
-  <div class="row gx-4">
+  <div class="row gx-4" data-show-notification-target="page">
     <div class="col-lg-3 job-stats my-2">
-      <div class="row">
-        <div class="col-12 col-sm-6 col-lg-12">
-          <h3>Achievements</h3>
-          <div data-controller="badges">
-            <div class="d-flex flex-row mb-3">
-              <% current_user.badges.each do |badge| %>
-                <div data-action="mouseenter->badges#show mouseleave->badges#hide" data-badges-target="badgeImage" class="p-2"><%= image_tag badge.custom_fields, class: "badges", alt: "text" %></div>
-                <%= render "badges_description", badge: badge %>
-              <% end %>
-            </div>
-          </div> 
-        </div>
-          <br>
-        </div>
-        <div class="col-12 col-sm-6 col-lg-12">
-          <h4>Application progress</h4>
-          <div data-controller="chart" data-chart-data-value="<%= @data_value %>" class="p-2 align-items-center">
-            <canvas data-chart-target="canvas" id="myChart" width="500" height="500"></canvas>
+      <h4>Hello, <%= current_user.first_name.capitalize %>!</h4>
+      <br>
+      <h4>Achievements</h4>
+    <!-- display badges -->
+      <div class="col-lg-3 job-stats my-2">
+        <h3>Achievements</h3>
+        <div data-controller="badges">
+          <div class="d-flex flex-row mb-3">
+            <% current_user.badges.each do |badge| %>
+              <div data-action="mouseenter->badges#show mouseleave->badges#hide" data-badges-target="badgeImage" class="p-2"><%= image_tag badge.custom_fields, class: "badges", alt: "text" %></div>
+              <%= render "badges_description", badge: badge %>
+            <% end %>
           </div>
-          <br>
         </div>
+      </div>
+      <br>
+      <h4>Application progress</h4>
+      <div data-controller="chart" data-chart-data-value="<%= @data_value %>" class="p-2 align-items-center">
+        <canvas data-chart-target="canvas" id="myChart" width="500" height="500"></canvas>
       </div>
     </div>
     <div class="col-lg-9">
