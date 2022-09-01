@@ -58,7 +58,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_31_074036) do
     t.date "deadline"
     t.text "notes"
     t.string "url"
-    t.integer "status", default: 0
+    t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
@@ -110,7 +110,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_31_074036) do
   create_table "tasks", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.boolean "done", default: false
+    t.boolean "done"
     t.bigint "job_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
