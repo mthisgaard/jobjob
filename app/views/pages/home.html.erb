@@ -1,41 +1,41 @@
 <%= render "banner" %>
-<div class="card" style="max-width: 100%;">
-  <div class="row justify-content-center g-0">
+<div class="container">
+  <div class="row justify-content-center align-items-center gx-3">
     <div class="col-md-3">
       <%= image_tag "todo.png", alt: "to-do", class: "img-fluid rounded-start" %>
     </div>
     <div class="col-md-6">
-      <div class="card-body pt-5">
-        <h1 class="card-title mt-5 pt-5">Better than a spreadsheet.</h1>
-        <p class="card-text">Track all your job applications in one place.</p>
+      <div class="card-body">
+        <h1 class="card-title">Easily track all your applications</h1>
+        <p class="card-text">Sick of having to create and update elaborate spreadsheets? JobJob makes tracking all your applications easy!</p>
       </div>
     </div>
   </div>
-  <div class="row justify-content-center g-0">
+  <div class="row justify-content-center align-items-center gx-3">
     <div class="col-md-3">
-      <%= image_tag "interview.png", alt: "interview", class: "img-fluid rounded-start" %>
+      <%= image_tag "hero.png", alt: "interview", class: "img-fluid rounded-start" %>
     </div>
     <div class="col-md-6">
-      <div class="card-body pt-5">
-        <h1 class="card-title mt-5 pt-5">Set your goals and stay motivated.</h1>
-        <p class="card-text">Create notes and tasks for each application.</p>
+      <div class="card-body">
+        <h1 class="card-title">Add tasks and notes to each job</h1>
+        <p class="card-text">Create notes and tasks for each job application, and make sure you don't miss an important step on your job search journey.</p>
       </div>
     </div>
   </div>
-  <div class="row justify-content-center g-0">
+  <div class="row justify-content-center align-items-center gx-3">
     <div class="col-md-3">
       <%= image_tag "stats.png", alt: "stats", class: "img-fluid rounded-start" %>
     </div>
     <div class="col-md-6">
-      <div class="card-body pt-5">
-        <h1 class="card-title mt-5 pt-5">Set your goals and stay motivated.</h1>
-        <p class="card-text">Create notes and tasks for each application.</p>
+      <div class="card-body">
+        <h1 class="card-title">See your progress and stay motivated</h1>
+        <p class="card-text">Check your stats to see how your job search is going and stay on track by being rewarded when you reach a new achievement.</p>
       </div>
     </div>
   </div>
 </div>
-
-<div class="container-call-to-action">
-    <h1><strong>Try JobJob today</strong></h1>
-    <a class="btn btn-light sign-up" href="/dashboard">Sign up</a>
+<div class="container-call-to-action mt-5">
+    <h1><strong>Try <span class="jobjob-title">JOBJOB</span> today!</strong></h1>
+    <br>
+    <%= link_to 'Sign up', "/users/sign_up", class: 'btn btn-primary' %>
 </div>
