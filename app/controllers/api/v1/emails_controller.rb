@@ -10,7 +10,8 @@ class Api::V1::EmailsController < Api::V1::BaseController
       @email.job = @job
       @email.user = @user
       if @email.save
-        redirect_to jobs_path(status: @job.status), notice: "New email from #{@email.sender} added to #{@job.company}"
+        render json: @email
+        # notice: "New email from #{@email.sender} added to #{@job.company}"
       else
         render_error
       end
