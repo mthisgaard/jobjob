@@ -16,6 +16,13 @@ class Api::V1::JobsController < Api::V1::BaseController
     end
     if @job.save
       render json: @job
+      ['Research the company', 'Write cover letter'].each do |task|
+        Task.create(
+          job: @job,
+          title: task
+        )
+      end
+      redirect_to jobs_path
     else
       render_error
     end

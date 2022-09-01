@@ -1,17 +1,18 @@
 <div class="container" style="margin-bottom: 100px; margin-top: 50px;">
+  <h4><strong>Hello, <%= current_user.first_name.capitalize %>!</strong></h4>
+  <br>
   <div class="row gx-4" data-show-notification-target="page">
     <div class="col-lg-3 job-stats my-2">
-      <h4>Hello, <%= current_user.first_name.capitalize %>!</h4>
-      <br>
       <h4>Achievements</h4>
       <!-- display badges -->
-      <div class="col-lg-3 job-stats my-2">
-        <h3>Achievements</h3>
+      <div class="job-stats my-2">
         <div data-controller="badges">
-          <div class="d-flex flex-row mb-3">
+          <div class="d-flex flex-wrap">
             <% current_user.badges.each do |badge| %>
-              <div data-action="mouseenter->badges#show mouseleave->badges#hide" data-badges-target="badgeImage" class="p-2"><%= image_tag badge.custom_fields, class: "badges", alt: "text" %></div>
-              <%= render "badges_description", badge: badge %>
+              <div class="position-relative">
+                <div data-action="mouseenter->badges#show mouseleave->badges#hide" data-badges-target="badgeImage" class="flex-fill p-2"><%= image_tag badge.custom_fields[:icon], class: "badges", alt: "text" %></div>
+                <%= render "badges_description", badge: badge %>
+              </div>
             <% end %>
           </div>
         </div>
@@ -36,11 +37,15 @@
       <div class="container jobs list-group" >
         <ul class="list-inline tabs-underlined mb-4" >
           <li>
-            <%= link_to "All (#{@jobs.count})", jobs_path, class: "tab-underlined #{"active" unless params[:status]}" %>
+            <%= link_to jobs_path, class: "tab-underlined #{"active" unless params[:status]}" do  %>
+              <span>All</span><span><%= @jobs.count %></span>
+            <% end %>
           </li>
           <% Job.statuses.keys.each do |status| %>
             <li>
-              <%= link_to "#{status.capitalize} (#{@jobs.where(status: status).count})", jobs_path(:status => status), class: "tab-underlined #{"active" if params[:status] == status}" %>
+              <%= link_to jobs_path(:status => status), class: "tab-underlined #{"active" if params[:status] == status}" do %>
+                <span><%= status.capitalize %></span> <span><%= @jobs.where(status: status).count %></span>
+              <% end %>
             </li>
           <% end %>
         </ul>
