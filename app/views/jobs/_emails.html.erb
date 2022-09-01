@@ -1,5 +1,5 @@
 <% emails.each do |email| %>           
-  <%= link_to email.url, class: 'url-link', target: :_blank do %>
+  <%= link_to email.url, class: 'email-link', target: :_blank do %>
     <div class="px-3 email-info">
       <p class="m-0"><i class="fa-solid fa-angle-right"></i> <strong><%= email.sender %></strong> | <%= email.from %> | <%= email.date.strftime('%b %d %Y') %></p>
       <p class="m-0 opacity-75"><strong>Subject: <%= email.subject %></strong></p>
