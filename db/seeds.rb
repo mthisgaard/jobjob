@@ -403,7 +403,7 @@ puts "travelling 2 weeks in the future"
 
 ###################################################################
 
-demo2 = User.create!(email: 'malene@me.com', first_name: 'malene', last_name: '928', password: '123123', avatar: 'https://avatars.githubusercontent.com/u/107089457?v=4')
+demo2 = User.create!(email: 'malene.thisgaard@gmail.com', first_name: 'malene', last_name: '928', password: '123123', avatar: 'https://avatars.githubusercontent.com/u/107089457?v=4')
 
 puts "Updating demo jobs and adding some more"
 
@@ -889,6 +889,7 @@ job = Job.new(
   status: 1,
   logo_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQU2MQZNVwCjygcF-aI4uyBPxBL_3w_icvz4rK6tjWgRw&s',
   notes: 'Expertise knowledge of HTML/CSS/JavaScript',
+  contact_email: 'hemming.dev@gmail.com',
   user: demo2
 )
 job.save!
