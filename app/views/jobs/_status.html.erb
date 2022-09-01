@@ -1,0 +1,64 @@
+ <% if job.status == "interview" %>
+  <div class="d-flex flex-column align-items-end" data-controller="update-status">
+    <button class="job-status <%= job.status %> " data-bs-target= "#job-status<%= job.id %>"  data-action="click->update-status#show">
+      <%= job.status %>
+    </button>
+    <div class="d-flex d-none gap-1" data-update-status-target="status">
+      <div>
+        <%= simple_form_for(job) do |f| %>
+          <%= f.hidden_field :status, value: "offer" %>
+          <button class="job-status offer"  data-bs-target= "#job-status<%= job.id %>" >
+            Offer
+          </button>
+        <% end %>
+      </div>
+      <div>
+        <%= simple_form_for(job) do |f| %>
+          <%= f.hidden_field :status, value: "rejected" %>
+          <button class="job-status rejected"  data-bs-target= "#job-status<%= job.id %>" ">
+            Rejected
+          </button>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% elsif job.status == "applied" %>
+  <div class="d-flex flex-column align-items-end" data-controller="update-status">
+    <button class="job-status <%= job.status %> " data-bs-target= "#job-status<%= job.id %>"  data-action="click->update-status#show">
+      <%= job.status %>
+    </button>
+    <div class="d-flex d-none gap-1" data-update-status-target="status">
+      <div>
+        <%= simple_form_for(job) do |f| %>
+          <%= f.hidden_field :status, value: "interview" %>
+          <button class="job-status interview"  data-bs-target= "#job-status<%= job.id %>" >
+            Interview
+          </button>
+        <% end %>
+      </div>
+      <div>
+        <%= simple_form_for(job) do |f| %>
+          <%= f.hidden_field :status, value: "rejected" %>
+          <button class="job-status rejected"  data-bs-target= "#job-status<%= job.id %>" ">
+            Rejected
+          </button>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% elsif job.status == "offer" %>
+  <div class="d-flex flex-column align-items-end" disabled data-controller="update-status">
+    <button class="job-status <%= job.status %> " data-bs-target= "#job-status<%= job.id %>" >
+      <%= job.status %>
+    </button>
+  </div>
+<% else %>
+  <%= simple_form_for(job) do |f| %>
+    <%= f.hidden_field :status, value: job.status_id %>
+    <div class="d-flex flex-column align-items-end" data-controller="update-status">
+      <button class="job-status <%= job.status %> " data-bs-target= "#job-status<%= job.id %>" >
+        <%= job.status %>
+      </button>
+    <% end %>
+  </div>
+<% end %>
