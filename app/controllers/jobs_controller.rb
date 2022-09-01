@@ -96,11 +96,13 @@ class JobsController < ApplicationController
     end
     if @job.update(job_params)
       if @job.status == "interview"
+      ['Re-read job listing', 'Prepare questions to ask at interview'].each do |task|
         Task.create(
           job: @job,
-          title: "Prepare for interview"
+          title: task
         )
       end
+    end
       respond_to do |format|
         format.html { redirect_to jobs_path }
         format.text { render partial: "jobs/note", locals: { job: @job }, formats: [:html] }
