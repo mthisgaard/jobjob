@@ -27,6 +27,13 @@ application.register("chart", ChartController)
 import ShowArrowController from "./show_arrow_controller"
 application.register("show-arrow", ShowArrowController)
 
+// import UserSubscriptionController from "./user_subscription_controller"
+// application.register("user_subscription", UserSubscriptionController)
+
+import UserController from "./user_controller"
+application.register("user", UserController)
+
+
 // import { application } from '@hotwired/stimulus'
 import Popover from 'stimulus-popover'
 import BadgesController from "./badges_controller"

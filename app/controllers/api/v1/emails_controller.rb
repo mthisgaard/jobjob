@@ -10,8 +10,11 @@ class Api::V1::EmailsController < Api::V1::BaseController
       @email.job = @job
       @email.user = @user
       if @email.save
-        render json: @email
-        # notice: "New email from #{@email.sender} added to #{@job.company}"
+        UserChannel.broadcast_to(
+          @user,
+          "New email from #{@job.company}"
+        )
+        head :ok
       else
         render_error
       end
