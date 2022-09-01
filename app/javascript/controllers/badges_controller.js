@@ -16,4 +16,6 @@ export default class extends Controller {
     const index = this.badgeImageTargets.indexOf(e.currentTarget)
     this.badgeInfoTargets[index].classList.add("d-none")
   }
+  // insert the badge with the given information (returning json)
+  // set the data target to the element you want
 }
