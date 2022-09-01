@@ -41,7 +41,7 @@ Rails.application.reloader.to_prepare do
   }, {
     id: 5,
     name: 'Steve Jobs',
-    description: "Applied to 5 jobs",
+    description: "Applied to 10 jobs",
     custom_fields: { icon: "badge5_static.png", badge: "badge5.gif" }
   }, {
     id: 6,
@@ -51,7 +51,7 @@ Rails.application.reloader.to_prepare do
   }, {
     id: 7,
     name: 'Jobbapalooza',
-    description: "Get 5 interviews",
+    description: "Get 10 interviews",
     custom_fields: { icon: "badge7_static.png", badge: "badge7.gif" }
   }, {
     id: 8,
