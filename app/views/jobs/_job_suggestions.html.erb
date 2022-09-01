@@ -1,20 +1,18 @@
-<div class="row">
-  <% job_suggestions.first(4).each do |job| %>
+<div class="suggestion-carousel">
+  <% job_suggestions.each do |job| %>
     <% unless jobs.where(company: job[:company]).any? && jobs.where(title: job[:title]).any? %>
-      <div class="col-sm-6 col-md-3">
-        <div class="card-suggested-job mb-3">
-          <div class="card-suggested-job-infos gap-2">
-            <%= image_tag job[:logo_url], class: 'company-logo' %>
-            <div class="m-0">
-              <p class="m-0"><strong><%= job[:company] %></strong></p>
-              <p class="m-0" style="opacity: 0.75;"><%= job[:title].length > 20 ? "#{job[:title][0..20]...}" : job[:title] %></p>
-            </div>
+      <div class="card-suggested-job mb-3">
+        <div class="card-suggested-job-infos gap-2">
+          <%= image_tag job[:logo_url], class: 'company-logo' %>
+          <div class="m-0">
+            <p class="m-0"><strong><%= job[:company] %></strong></p>
+            <p class="m-0" style="opacity: 0.75;"><%= job[:title].length > 20 ? "#{job[:title][0..20]...}" : job[:title] %></p>
           </div>
-          <%= render 'add_suggestion_form', new_job: @new_job, job: job %>
-          <%= link_to job[:url], class: 'url-link suggestion-link', target: :_blank do %>
-            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-          <% end %>
         </div>
+        <%= render 'add_suggestion_form', new_job: @new_job, job: job %>
+        <%= link_to job[:url], class: 'url-link suggestion-link', target: :_blank do %>
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        <% end %>
       </div>
     <% end %>
   <% end %>
