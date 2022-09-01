@@ -82,7 +82,7 @@
         <div>
           <p><strong>Emails from company</strong></p>
           <% if job.emails.present? %>
-            <%= render 'emails', emails: job.emails %>
+            <%= render 'emails', emails: job.emails.order(created_at: :desc) %>
           <% else %>
             <p class="email-info">No emails yet...</p>
           <% end %>
