@@ -2,14 +2,17 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title fs-5" id="exampleModalLabel"><%= job.title %></h5>
+        <h5 class="modal-title fs-5" id="exampleModalLabel"><strong><%= job.company %></strong> | <%= job.title %></h5>
         <button type="button" class="btn-close fs-6" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <p class="fs-6">Attach documents</p>
         <%= simple_form_for(job) do |f| %>
-          <%= f.input :cv, as: :file %>
+        <% unless job.cv.attached? %>
+          <%= f.input :cv, as: :file, :label => "CV"  %>
+        <% end %>
+        <% unless job.cover_letter.attached? %>
           <%= f.input :cover_letter, as: :file %>
+        <% end %>
           <%= f.submit 'Save', class: 'btn btn-primary' %>
         <% end %>
       </div>
