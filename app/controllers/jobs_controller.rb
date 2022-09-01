@@ -45,10 +45,10 @@ class JobsController < ApplicationController
 
     if params[:status].present?
       @status_count = policy_scope(Job.where(status: params[:status])).count
-      @pagy, @jobs_p = pagy(policy_scope(Job.where(status: params[:status]).order(created_at: :desc)), items: 5)
+      @pagy, @jobs_p = pagy(policy_scope(Job.where(status: params[:status]).order(created_at: :desc)), items: 4)
       # @jobs_p = policy_scope(Job.where(status: params[:status]))
     else
-      @pagy, @jobs_p = pagy(policy_scope(Job).order(created_at: :desc), items: 3)
+      @pagy, @jobs_p = pagy(policy_scope(Job).order(created_at: :desc), items: 4)
       @status_count = @jobs.count
     end
 
