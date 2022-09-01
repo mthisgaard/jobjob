@@ -6,7 +6,7 @@ export default class extends Controller {
   connect() {
   }
 
-  update() {
-    console.log(this.statusTarget)
+  show(e) {
+    this.statusTarget.classList.toggle('d-none');
   }
 }
