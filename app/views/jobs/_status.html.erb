@@ -44,12 +44,17 @@
           <% end %>
         </div>
       </div>
-    <% else %>
-      <%= simple_form_for(job) do |f| %>
-        <%= f.hidden_field :status, value: job.status_id %>
-        <div class="d-flex flex-column align-items-end" data-controller="update-status">
-          <button class="job-status <%= job.status %> " data-bs-target= "#job-status<%= job.id %>" >
-            <%= job.status %>
-          </button>
+    <% elsif job.status == "offer" %>
+      <div class="d-flex flex-column align-items-end" disabled data-controller="update-status">
+        <button class="job-status <%= job.status %> " data-bs-target= "#job-status<%= job.id %>" >
+          <%= job.status %>
+        </button>
+      <% else %>
+        <%= simple_form_for(job) do |f| %>
+          <%= f.hidden_field :status, value: job.status_id %>
+          <div class="d-flex flex-column align-items-end" data-controller="update-status">
+            <button class="job-status <%= job.status %> " data-bs-target= "#job-status<%= job.id %>" >
+              <%= job.status %>
+            </button>
+          <% end %>
         <% end %>
-      <% end %>
