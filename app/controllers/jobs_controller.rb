@@ -115,9 +115,9 @@ class JobsController < ApplicationController
 
   def check_badges
     current_user.add_badge(4) if current_user.jobs.where(status: 1).count + current_user.jobs.where(status: 2).count + current_user.jobs.where(status: 3).count + current_user.jobs.where(status: 4).count >= 3 && !current_user.badges.find { |badge| badge.id == 4 }
-    current_user.add_badge(5) if current_user.jobs.where(status: 1).count + current_user.jobs.where(status: 2).count + current_user.jobs.where(status: 3).count + current_user.jobs.where(status: 4).count >= 5 && !current_user.badges.find { |badge| badge.id == 5 }
+    current_user.add_badge(5) if current_user.jobs.where(status: 1).count + current_user.jobs.where(status: 2).count + current_user.jobs.where(status: 3).count + current_user.jobs.where(status: 4).count >= 10 && !current_user.badges.find { |badge| badge.id == 5 }
     current_user.add_badge(6) if current_user.jobs.where(status: 2).count + current_user.jobs.where(status: 2).count + current_user.jobs.where(status: 3).count + current_user.jobs.where(status: 4).count >= 3 && !current_user.badges.find { |badge| badge.id == 6 }
-    current_user.add_badge(7) if current_user.jobs.where(status: 2).count + current_user.jobs.where(status: 2).count + current_user.jobs.where(status: 3).count + current_user.jobs.where(status: 4).count >= 5 && !current_user.badges.find { |badge| badge.id == 7 }
+    current_user.add_badge(7) if current_user.jobs.where(status: 2).count + current_user.jobs.where(status: 3).count + current_user.jobs.where(status: 4).count >= 5 && !current_user.badges.find { |badge| badge.id == 7 }
     current_user.add_badge(8) if current_user.jobs.where(status: 3).count + current_user.jobs.where(status: 3).count >= 1 && !current_user.badges.find { |badge| badge.id == 8 }
     current_user.save
   end
