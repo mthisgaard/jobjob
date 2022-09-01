@@ -88,6 +88,8 @@ class JobsController < ApplicationController
 
   def update
     authorize @job
+    job_params[:status] = job_params[:status].to_i
+
     if job_params[:url].present?
       grover = Grover.new(job_params[:url], format: 'A4')
       pdf = grover.to_pdf

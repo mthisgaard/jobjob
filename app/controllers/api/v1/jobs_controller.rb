@@ -24,7 +24,7 @@ class Api::V1::JobsController < Api::V1::BaseController
   private
 
   def job_params
-    params.require(:job).permit(:title, :company, :url, :logo_url)
+    params.require(:job).permit(:title, :company, :url, :logo_url, :status)
   end
 
   def render_error
