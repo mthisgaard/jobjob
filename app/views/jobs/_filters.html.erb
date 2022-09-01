@@ -1,4 +1,4 @@
-<ul class="list-inline tabs-underlined mb-4">
+<ul class="list-inline tabs-underlined mb-1">
   <li>
     <%= link_to jobs_path, class: "tab-underlined #{"active" unless params[:status]}", data: {action: "click->filter#open", filter_target: "tab"} do  %>
       <span>All</span><span>(<%= @jobs.count %>)</span>
