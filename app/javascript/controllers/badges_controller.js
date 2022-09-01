@@ -4,7 +4,7 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["badgeImage", "badgeInfo"]
   connect() {
-    console.log(this.badgeInfoTargets)
+    // console.log(this.badgeInfoTargets)
   }
 
   show(e) {
