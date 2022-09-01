@@ -42,21 +42,31 @@
           <br>
           <br>
           <br>
-          <div class="position-absolute bottom-0 d-flex gap-2">
-            <% if job.job_posting.attached? %>
-              <%= link_to cl_image_path(job.job_posting.key), target: :_blank, class: "job-doc-btn" do %>
-                <i class="fa-solid fa-file"></i><span> Listing </span>
+          <div class="position-absolute bottom-0 w-100 d-flex gap-2 justify-content-between align-items-end">
+            <div class="d-flex gap-2">
+              <% if job.job_posting.attached? %>
+                <%= link_to cl_image_path(job.job_posting.key), target: :_blank, class: "job-doc-btn" do %>
+                  <i class="fa-solid fa-file"></i><span> Listing </span>
+                <% end %>
               <% end %>
-            <% end %>
-            <% if job.cv.attached? %>
-              <%= link_to cl_image_path(job.cv.key), target: :_blank, class: "job-doc-btn" do %>
-                <i class="fa-solid fa-file"></i><span> CV</span>
+              <% if job.cv.attached? %>
+                <%= link_to cl_image_path(job.cv.key), target: :_blank, class: "job-doc-btn" do %>
+                  <i class="fa-solid fa-file"></i><span> CV</span>
+                <% end %>
               <% end %>
-            <% end %>
-            <% if job.cover_letter.attached? %>
-              <%= link_to cl_image_path(job.cover_letter.key), target: :_blank, class: "job-doc-btn" do %>
-                <i class="fa-solid fa-file"></i><span> Cover Letter</span>
+              <% if job.cover_letter.attached? %>
+                <%= link_to cl_image_path(job.cover_letter.key), target: :_blank, class: "job-doc-btn" do %>
+                  <i class="fa-solid fa-file"></i><span> Cover Letter</span>
+                <% end %>
               <% end %>
+            </div>
+            <% if !job.cv.attached? || !job.cover_letter.attached? %>
+              <div class="d-flex flex-column align-items-end">
+                <button class="job-add-doc-btn" data-bs-toggle="modal" data-bs-target= "#job-doc<%= job.id %>" >
+                  <i class="fa-solid fa-file-import"></i><span>&nbsp; Add doc</span>
+                </button>
+                <%= render "add_document_modal", job: job %>
+              </div>
             <% end %>
           </div>
         </div>

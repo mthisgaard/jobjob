@@ -6,7 +6,7 @@
   <%# <%= f.input :logo_url, :label => "Company logo url" %>
   <%= f.input :status, as: :select, collection: Job.statuses.keys, selected: job.status%>
   <%= f.input :notes %>
-  <%= f.input :cv, as: :file %>
+  <%= f.input :cv, as: :file, :label => "CV" %>
   <%= f.input :cover_letter, as: :file %>
   <% if job.persisted? %>
     <%= f.submit 'Save changes', class: 'btn btn-primary' %>
