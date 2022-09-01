@@ -1,0 +1,13 @@
+.email-link {
+  color: $gray;
+  text-decoration: none;
+  margin: 0;
+  font-size: 14px;
+  opacity: 0.7;
+
+  &:hover {
+    color: $gray;
+    opacity: 1;
+  }
+
+}

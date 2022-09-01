@@ -6,11 +6,11 @@ class JobsController < ApplicationController
 
   def index
     @jobs = policy_scope(Job) #getting from all pages
-    @pending = @jobs.filter { |job| job.pending? }.count
-    @applied = @jobs.filter { |job| job.applied? }.count
-    @interviews = @jobs.filter { |job| job.interview? }.count
-    @rejected = @jobs.filter { |job| job.rejected? }.count
-    @offers = @jobs.filter { |job| job.offer? }.count
+    @pending = @jobs.pending.count
+    @applied = @jobs.applied.count
+    @interviews = @jobs.interview.count
+    @rejected = @jobs.rejected.count
+    @offers = @jobs.offer.count
 
     # Job funnel data
     @all_jobs = @jobs.count
@@ -44,17 +44,22 @@ class JobsController < ApplicationController
 
     if params[:status].present?
       @status_count = policy_scope(Job.where(status: params[:status])).count
-      @pagy, @jobs_p = pagy(policy_scope(Job.where(status: params[:status]).order(created_at: :desc)), items: 5)
+      @pagy, @jobs_p = pagy(policy_scope(Job.where(status: params[:status]).order(created_at: :desc)), items: 4)
       # @jobs_p = policy_scope(Job.where(status: params[:status]))
     else
-      @pagy, @jobs_p = pagy(policy_scope(Job).order(created_at: :desc), items: 3)
+      @pagy, @jobs_p = pagy(policy_scope(Job).order(created_at: :desc), items: 4)
       @status_count = @jobs.count
     end
 
     @new_job = Job.new
     @new_task = Task.new
-    @job_suggestions = ScrapeJobsService.new.call
+    @job_suggestions = ScrapeJobsService.new.call unless request.format.symbol == :text
     authorize @jobs
+
+    respond_to do |format|
+      format.html # Follow regular flow of Rails
+      format.text { render partial: 'jobs/filter_jobs', locals: { jobs: @jobs_p }, formats: [:html] }
+    end
   end
 
   def create
@@ -81,13 +86,15 @@ class JobsController < ApplicationController
       redirect_to jobs_path, notice: "Job added to your jobs list!"
     else
       # render "/jobs", status: :unprocessable_entity
-      redirect_to jobs_path
+      redirect_to jobs_path, alert: "Failed to add job, required info missing!"
       # render :index, status: :unprocessable_entity
     end
   end
 
   def update
     authorize @job
+    job_params[:status] = job_params[:status].to_i
+
     if job_params[:url].present?
       grover = Grover.new(job_params[:url], format: 'A4')
       pdf = grover.to_pdf
@@ -95,8 +102,16 @@ class JobsController < ApplicationController
     end
     if @job.update(job_params)
       check_badges
+      if @job.status == "interview"
+      ['Re-read job listing', 'Prepare questions to ask at interview'].each do |task|
+        Task.create(
+          job: @job,
+          title: task
+        )
+      end
+    end
       respond_to do |format|
-        format.html { redirect_to jobs_path }
+        format.html { redirect_to jobs_path(status: @job.status),notice: "Job updated!" }
         format.text { render partial: "jobs/note", locals: { job: @job }, formats: [:html] }
       end
     else

@@ -18,14 +18,14 @@
 }
 
 .url-link {
-  color: black;
+  color: $gray;
   text-decoration: none;
   opacity: 0.7;
   margin: 0;
   font-size: 12px;
 
   &:hover {
-    color: black;
+    color: $gray;
     opacity: 1;
   }
 
@@ -179,11 +179,14 @@ background-image: none;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
   align-items: center;
+
+  @media (min-width: 900px){display: flex}
 }
 
 .tabs-underlined .tab-underlined {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  gap: 8px;
   align-items: center;
   color: black;
   padding: 8px;

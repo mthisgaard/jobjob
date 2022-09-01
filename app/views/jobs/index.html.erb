@@ -3,13 +3,12 @@
     <div class="col-lg-3 job-stats my-2">
       <h4>Hello, <%= current_user.first_name.capitalize %>!</h4>
       <br>
-      <!-- display badges -->
-      <br>
       <h3>Application progress</h3>
       <div data-controller="chart" data-chart-data-value="<%= @data_value %>" class="p-2 align-items-center">
         <canvas data-chart-target="canvas" id="myChart" width="500" height="500"></canvas>
       </div>
       <div class="job-stats my-2">
+      <!-- display badges -->
         <h4>Achievements</h4>
         <div data-controller="badges">
           <div class="d-flex flex-wrap">
@@ -34,24 +33,11 @@
           <%= render 'modal', job: @new_job %>
         </div>
       </div>
-      <div class="container jobs list-group" >
-        <ul class="list-inline tabs-underlined mb-4" >
-          <li>
-            <%= link_to jobs_path, class: "tab-underlined #{"active" unless params[:status]}" do  %>
-              <span>All</span><span><%= @jobs.count %></span>
-            <% end %>
-          </li>
-          <% Job.statuses.keys.each do |status| %>
-            <li>
-              <%= link_to jobs_path(:status => status), class: "tab-underlined #{"active" if params[:status] == status}" do %>
-                <span><%= status.capitalize %></span> <span><%= @jobs.where(status: status).count %></span>
-              <% end %>
-            </li>
-          <% end %>
-        </ul>
-        <% @jobs_p.each do |job| %>
-          <%= render 'jobs/job_list', job: job %>
-        <% end %>
+      <div class="container jobs list-group" data-controller="filter" >
+        <%= render 'filters', job: @job %>
+        <div data-filter-target="jobs">
+          <%= render 'jobs/filter_jobs', jobs: @jobs_p %>
+        </div>
       </div>
       <div class='d-flex justify-content-center'>
         <% if @status_count > 4 %>
