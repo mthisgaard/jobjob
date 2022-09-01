@@ -54,7 +54,7 @@ class JobsController < ApplicationController
 
     @new_job = Job.new
     @new_task = Task.new
-    @job_suggestions = ScrapeJobsService.new.call if request.format.symbol == :html
+    @job_suggestions = ScrapeJobsService.new.call unless request.format.symbol == :text
     authorize @jobs
 
     respond_to do |format|
