@@ -26,6 +26,6 @@ class Api::V1::EmailsController < Api::V1::BaseController
   end
 
   def email_params
-    params.require(:email).permit(:sender, :from, :to, :subject, :date, :url)
+    params.require(:email).permit(:sender, :from, :to, :subject, :date, :url, :content)
   end
 end

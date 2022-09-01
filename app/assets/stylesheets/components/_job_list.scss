@@ -18,14 +18,14 @@
 }
 
 .url-link {
-  color: black;
+  color: $gray;
   text-decoration: none;
   opacity: 0.7;
   margin: 0;
   font-size: 12px;
 
   &:hover {
-    color: black;
+    color: $gray;
     opacity: 1;
   }
 
