@@ -3,7 +3,6 @@ require "open-uri"
 
 class JobsController < ApplicationController
   before_action :set_job, only: [:update, :destroy]
-  before_action :check_badges, only: [:index]
 
   def index
     @jobs = policy_scope(Job) #getting from all pages
@@ -95,6 +94,7 @@ class JobsController < ApplicationController
       @job.job_posting.attach(io: StringIO.new(pdf), filename: job_params[:company], content_type: "application/pdf")
     end
     if @job.update(job_params)
+      check_badges
       respond_to do |format|
         format.html { redirect_to jobs_path }
         format.text { render partial: "jobs/note", locals: { job: @job }, formats: [:html] }
@@ -102,7 +102,6 @@ class JobsController < ApplicationController
     else
       redirect_to jobs_path, status: :unprocessable_entity
     end
-    check_badges
   end
 
   def destroy
@@ -114,11 +113,16 @@ class JobsController < ApplicationController
   private
 
   def check_badges
-    current_user.add_badge(4) if current_user.jobs.where(status: 1).count + current_user.jobs.where(status: 2).count + current_user.jobs.where(status: 3).count + current_user.jobs.where(status: 4).count >= 3 && !current_user.badges.find { |badge| badge.id == 4 }
-    current_user.add_badge(5) if current_user.jobs.where(status: 1).count + current_user.jobs.where(status: 2).count + current_user.jobs.where(status: 3).count + current_user.jobs.where(status: 4).count >= 10 && !current_user.badges.find { |badge| badge.id == 5 }
-    current_user.add_badge(6) if current_user.jobs.where(status: 2).count + current_user.jobs.where(status: 2).count + current_user.jobs.where(status: 3).count + current_user.jobs.where(status: 4).count >= 3 && !current_user.badges.find { |badge| badge.id == 6 }
-    current_user.add_badge(7) if current_user.jobs.where(status: 2).count + current_user.jobs.where(status: 3).count + current_user.jobs.where(status: 4).count >= 5 && !current_user.badges.find { |badge| badge.id == 7 }
-    current_user.add_badge(8) if current_user.jobs.where(status: 3).count + current_user.jobs.where(status: 3).count >= 1 && !current_user.badges.find { |badge| badge.id == 8 }
+    add_badge_flash(4) if current_user.jobs.where(status: 1).count + current_user.jobs.where(status: 2).count + current_user.jobs.where(status: 3).count + current_user.jobs.where(status: 4).count >= 3 && !current_user.badges.find { |badge| badge.id == 4 }
+    add_badge_flash(5) if current_user.jobs.where(status: 1).count + current_user.jobs.where(status: 2).count + current_user.jobs.where(status: 3).count + current_user.jobs.where(status: 4).count >= 10 && !current_user.badges.find { |badge| badge.id == 5 }
+    add_badge_flash(6) if current_user.jobs.where(status: 2).count + current_user.jobs.where(status: 2).count + current_user.jobs.where(status: 3).count + current_user.jobs.where(status: 4).count >= 3 && !current_user.badges.find { |badge| badge.id == 6 }
+    add_badge_flash(7) if current_user.jobs.where(status: 2).count + current_user.jobs.where(status: 3).count + current_user.jobs.where(status: 4).count >= 10 && !current_user.badges.find { |badge| badge.id == 7 }
+    add_badge_flash(8) if current_user.jobs.where(status: 3).count + current_user.jobs.where(status: 3).count >= 1 && !current_user.badges.find { |badge| badge.id == 8 }
+  end
+
+  def add_badge_flash(number)
+    current_user.add_badge(number)
+    flash.now[:notice] = 'New achievement unlocked!'
     current_user.save
   end
 

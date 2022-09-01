@@ -855,6 +855,11 @@ node-releases@^2.0.6:
   resolved "https://registry.npmjs.org/node-releases/-/node-releases-2.0.6.tgz"
   integrity sha512-PiVXnNuFm5+iYkLBNeq5211hvO38y63T0i2KKh2KnUs3RpzJ+JtODFjkD8yjLwnDkTYF1eKXheUwdssR+NRZdg==
 
+noty@^3.2.0-beta-deprecated:
+  version "3.2.0-beta-deprecated"
+  resolved "https://registry.yarnpkg.com/noty/-/noty-3.2.0-beta-deprecated.tgz#f74126808b40ba11d7cea3eefc836b32ff7a30f2"
+  integrity sha512-ntRbHuQ9SnnnVFZm/oq5L1DBCaHQUvsU24AwZH3PGjAWx2YqR/IhOadMk11vmJovYiQo00oqTj6Hp+D6PGtmLA==
+
 once@^1.3.0, once@^1.3.1, once@^1.4.0:
   version "1.4.0"
   resolved "https://registry.npmjs.org/once/-/once-1.4.0.tgz"
@@ -1134,15 +1139,9 @@ tar-stream@^2.1.4:
     readable-stream "^3.1.1"
 
 terser-webpack-plugin@^5.1.3:
-
-  version "5.3.5"
-  resolved "https://registry.npmjs.org/terser-webpack-plugin/-/terser-webpack-plugin-5.3.5.tgz"
-  integrity sha512-AOEDLDxD2zylUGf/wxHxklEkOe2/r+seuyOWujejFrIxHf11brA1/dWQNIgXa1c6/Wkxgu7zvv0JhOWfc2ELEA==
-
   version "5.3.6"
   resolved "https://registry.yarnpkg.com/terser-webpack-plugin/-/terser-webpack-plugin-5.3.6.tgz#5590aec31aa3c6f771ce1b1acca60639eab3195c"
   integrity sha512-kfLFk+PoLUQIbLmB1+PZDMRSZS99Mp+/MHqDNmMA6tOItzRt+Npe3E+fsMs5mfcM0wCtrrdU387UnV+vnSffXQ==
-
   dependencies:
     "@jridgewell/trace-mapping" "^0.3.14"
     jest-worker "^27.4.5"

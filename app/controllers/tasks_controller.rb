@@ -22,10 +22,17 @@ class TasksController < ApplicationController
   def update
     authorize @task
     @user = current_user
-    unless @task.update(task_params)
+    flash[:notice] = 'New achievement unlocked!'
+    if @task.update(task_params)
+      check_badges(@task)
+      respond_to do |format|
+        format.text { render partial: "shared/flashes", formats: [:html] }
+      end
+    else
       render partial: "jobs/tasks", status: :unprocessable_entity
     end
-    check_badges(@task)
+    # this action should add a badge to the user and also return the value which badge was added -> variable
+    # return the value and render information to json
   end
 
   def destroy
@@ -40,9 +47,13 @@ class TasksController < ApplicationController
   private
 
   def check_badges(task)
-    current_user.add_badge(1) if task.job.user.tasks.where(done: true).count >= 3 && !current_user.badges.find { |badge| badge.id == 1 }
-    current_user.add_badge(2) if task.job.user.tasks.where(done: true).count >= 5 && !current_user.badges.find { |badge| badge.id == 2 }
+    add_badge_flash(1) if task.job.user.tasks.where(done: true).count >= 3 && !current_user.badges.find { |badge| badge.id == 1 }
+    add_badge_flash(2) if task.job.user.tasks.where(done: true).count >= 5 && !current_user.badges.find { |badge| badge.id == 2 }
     # current_user.add_badge(3) if task.job.user.jobs.where(status: 1).any? && !current_user.badges.find { |badge| badge.id == 3 }
+  end
+
+  def add_badge_flash(number)
+    current_user.add_badge(number)
     current_user.save
   end
 
