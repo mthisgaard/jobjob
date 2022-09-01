@@ -95,6 +95,12 @@ class JobsController < ApplicationController
       @job.job_posting.attach(io: StringIO.new(pdf), filename: job_params[:company], content_type: "application/pdf")
     end
     if @job.update(job_params)
+      if @job.status == "interview"
+        Task.create(
+          job: @job,
+          title: "Prepare for interview"
+        )
+      end
       respond_to do |format|
         format.html { redirect_to jobs_path }
         format.text { render partial: "jobs/note", locals: { job: @job }, formats: [:html] }
