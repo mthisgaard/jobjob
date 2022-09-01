@@ -6,7 +6,7 @@
 }
 
 .card-suggested-job {
-  min-width: 240px;
+  min-width: 280px;
   height: 150px;
   flex-grow: 1;
   background: white;
@@ -42,4 +42,7 @@
   margin-right: 32px;
   display: flex;
   align-items: start;
+  p {
+    margin: 0px;
+  }
 }
