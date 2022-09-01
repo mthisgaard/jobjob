@@ -43,5 +43,4 @@ class Api::V1::JobsController < Api::V1::BaseController
     @job = Job.find(params[:id])
     authorize @restaurant  # For Pundit
   end
-
 end

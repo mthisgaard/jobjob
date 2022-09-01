@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_31_074036) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_01_085318) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -52,6 +52,22 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_31_074036) do
     t.index ["sash_id"], name: "index_badges_sashes_on_sash_id"
   end
 
+  create_table "emails", force: :cascade do |t|
+    t.string "sender"
+    t.string "from"
+    t.string "to"
+    t.string "subject"
+    t.date "date"
+    t.bigint "job_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "url"
+    t.text "content"
+    t.index ["job_id"], name: "index_emails_on_job_id"
+    t.index ["user_id"], name: "index_emails_on_user_id"
+  end
+
   create_table "jobs", force: :cascade do |t|
     t.string "title"
     t.string "company"
@@ -63,6 +79,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_31_074036) do
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.string "logo_url", default: "company_logo.png"
+    t.string "contact_email"
     t.index ["user_id"], name: "index_jobs_on_user_id"
   end
 
@@ -136,6 +153,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_31_074036) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "emails", "jobs"
+  add_foreign_key "emails", "users"
   add_foreign_key "jobs", "users"
   add_foreign_key "tasks", "jobs"
 end

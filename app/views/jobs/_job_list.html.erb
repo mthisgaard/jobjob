@@ -77,8 +77,12 @@
       </div>
       <div class="appointments d-flex justify-content-between align-items-end pb-3">
         <div>
-          <%# <strong>Appointments</strong>
-          <p class="appointment">no appointments</p> %>
+          <p><strong>Emails from <%= job.company %></strong></p>
+          <% if job.emails.present? %>
+            <%= render 'emails', emails: job.emails.order(created_at: :desc) %>
+          <% else %>
+            <p class="email-info">No emails yet...</p>
+          <% end %>
         </div>
         <div>
           <!-- Button trigger modal -->
