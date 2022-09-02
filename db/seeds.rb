@@ -889,7 +889,7 @@ job = Job.new(
   status: 1,
   logo_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQU2MQZNVwCjygcF-aI4uyBPxBL_3w_icvz4rK6tjWgRw&s',
   notes: 'Expertise knowledge of HTML/CSS/JavaScript',
-  contact_email: 'malenewt@hotmail.com',
+  contact_email: 'nikkirosecarlos@gmail.com',
   user: demo2
 )
 job.save!
