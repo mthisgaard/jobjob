@@ -33,7 +33,7 @@
           <%= render 'modal', job: @new_job %>
         </div>
       </div>
-      <div class="container jobs list-group" data-controller="filter" data-filter-target="jobs">
+      <div class="container jobs list-group" data-controller="filter">
         <%= render 'jobs/jobs', job: @job, jobs: @jobs_p, status_count: @status_count, pagy: @pagy %>
       </div>
     </div>

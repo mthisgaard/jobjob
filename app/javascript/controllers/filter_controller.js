@@ -16,7 +16,8 @@ export default class extends Controller {
     fetch(url, { headers: { 'Accept': 'text/plain' } })
       .then(response => response.text())
       .then((data) => {
-        this.jobsTarget.innerHTML = data;
+        this.element.innerHTML = data;
+        window.history.pushState(url,"");
       })
   }
 
