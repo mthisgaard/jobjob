@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon" <%= style: "margin-bottom: 60px" unless request.original_url == "https://www.jobjob.pro/" %> >
   <div class="container-fluid">
     <%= link_to "/", class: "navbar-brand" do %>
       <%= image_tag 'jobjob_logo.jpg', alt: "logo" %>
