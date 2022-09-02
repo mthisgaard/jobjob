@@ -5,4 +5,22 @@
   z-index: 1000;
 background-color: #68E1FD !important;
 opacity: .6;
+
+animation:alert 4s 1;
+-webkit-animation:alert 4s 1;
+animation-fill-mode: forwards;
+
+animation-delay:4s;
+-webkit-animation-delay:4s; /* Safari and Chrome */
+-webkit-animation-fill-mode: forwards;
+}
+
+@keyframes alert{
+  from {opacity :0.6;}
+  to {opacity :0;}
+}
+
+@-webkit-keyframes alert{
+  from {opacity :0.6;}
+  to {opacity :0;}
 }
