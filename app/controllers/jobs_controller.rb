@@ -58,7 +58,7 @@ class JobsController < ApplicationController
 
     respond_to do |format|
       format.html # Follow regular flow of Rails
-      format.text { render partial: 'jobs/filter_jobs', locals: { jobs: @jobs_p }, formats: [:html] }
+      format.text { render partial: 'jobs/jobs', locals: { job: @job, jobs: @jobs_p, status_count: @status_count, pagy: @pagy}, formats: [:html] }
     end
   end
 

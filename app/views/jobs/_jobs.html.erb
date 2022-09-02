@@ -1,0 +1,9 @@
+        <%= render 'filters', job: job %>
+<div data-filter-target="jobs">
+  <%= render 'jobs/filter_jobs', jobs: jobs %>
+</div>
+<div class='d-flex justify-content-center'>
+  <% if status_count > 4 %>
+    <%== render partial: 'pagy/bootstrap_nav', locals: {pagy: pagy} %>
+  <% end %>
+</div>
