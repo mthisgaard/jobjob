@@ -1,6 +1,8 @@
 # 🔎 JobJob
 
 A job application management app.
+![jobjob2](https://user-images.githubusercontent.com/107089457/188592618-97e8d54b-f616-4da3-ba10-c4ae93a963f6.png) ![jobjob3](https://user-images.githubusercontent.com/107089457/188592625-8459730e-60aa-40e6-abbe-9939b453d67c.png) ![jobjob1](https://user-images.githubusercontent.com/107089457/188592630-2614709e-12ea-4302-b56f-29cbd2189e3d.png)
+
 <br>
 App home: https://www.jobjob.pro/
    
