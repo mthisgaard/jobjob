@@ -31,7 +31,8 @@ Inside `.env`, set these variables. For any APIs, see group Slack channel.
 CLOUDINARY_URL=your_own_cloudinary_url_key
 ```
 
-### DB Setup
+### DB Setup!
+
 ```
 rails db:create
 rails db:migrate
@@ -58,5 +59,5 @@ rails s
 - [Nikki Carlos](https://github.com/nrcrls)
 
 ## Project Management && Contributing
-- [Trello]([https://trello.com/b/Ynq2SMNl/party-outfit-rental-app](https://trello.com/b/MfGzTQUy/jobjob))
-- [DB Schema]([https://kitt.lewagon.com/db/73367](https://kitt.lewagon.com/db/74000))
+- [Trello](https://trello.com/b/MfGzTQUy/jobjob)
+- [DB Schema](https://kitt.lewagon.com/db/74000)
